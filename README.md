@@ -1,2 +1,2 @@
-Friendly.Windows.NativeStandardControls
-=======================================
+NativeStandardControls
+======================

@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3C95E0F9-0F43-4E4D-8A6D-24F90DB8B2C0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Codeer.Friendly.Windows.NativeStandardControls</RootNamespace>
+    <AssemblyName>Codeer.Friendly.Windows.NativeStandardControls</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\Codeer.Friendly.Windows.NativeStandardControls.XML</DocumentationFile>
+    <NoWarn>1591</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\Codeer.Friendly.Windows.NativeStandardControls.XML</DocumentationFile>
+    <NoWarn>1591</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>Codeer.Friendly.Windows.NativeStandardControls.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release-English|AnyCPU'">
+    <OutputPath>bin\Release-English\</OutputPath>
+    <DefineConstants>TRACE;ENG</DefineConstants>
+    <DocumentationFile>bin\Release-English\Codeer.Friendly.Windows.NativeStandardControls.XML</DocumentationFile>
+    <Optimize>true</Optimize>
+    <NoWarn>1591</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Codeer.Friendly, Version=2.0.0.0, Culture=neutral, PublicKeyToken=6c44da6fca38aa86, processorArchitecture=MSIL">
+      <HintPath>packages\Codeer.Friendly.2.1.0\lib\net20\Codeer.Friendly.dll</HintPath>
+    </Reference>
+    <Reference Include="Codeer.Friendly.Windows, Version=2.1.0.0, Culture=neutral, PublicKeyToken=532f270f1da385b3, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\Codeer.Friendly.Windows.2.1.0\lib\net20\Codeer.Friendly.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="Codeer.Friendly.Windows.Grasp, Version=2.2.0.0, Culture=neutral, PublicKeyToken=92809a28945fb91d, processorArchitecture=MSIL">
+      <HintPath>packages\Codeer.Friendly.Windows.Grasp.2.2.0\lib\net20\Codeer.Friendly.Windows.Grasp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Inside\EmulateUtility.cs" />
+    <Compile Include="Inside\ResourcesLocal.cs" />
+    <Compile Include="LVCF.cs" />
+    <Compile Include="LVCOLUMN.cs" />
+    <Compile Include="LVDISPINFO.cs" />
+    <Compile Include="LVIF.cs" />
+    <Compile Include="LVIR.cs" />
+    <Compile Include="LVIS.cs" />
+    <Compile Include="MonthCalendarView.cs" />
+    <Compile Include="Inside\NativeCommonDefine.cs" />
+    <Compile Include="Inside\NativeDataUtility.cs" />
+    <Compile Include="Inside\NativeMethods.cs" />
+    <Compile Include="Inside\Initializer.cs" />
+    <Compile Include="LVITEM.cs" />
+    <Compile Include="NativeMessageBox.cs" />
+    <Compile Include="NativeProgress.cs" />
+    <Compile Include="NativeScrollBar.cs" />
+    <Compile Include="NativeDateTimePicker.cs" />
+    <Compile Include="NativeButton.cs" />
+    <Compile Include="NativeEdit.cs" />
+    <Compile Include="NativeIPAddress.cs" />
+    <Compile Include="NativeListBox.cs" />
+    <Compile Include="NativeListControl.cs" />
+    <Compile Include="NativeMonthCalendar.cs" />
+    <Compile Include="NativeSlider.cs" />
+    <Compile Include="NativeSpinButton.cs" />
+    <Compile Include="NativeTab.cs" />
+    <Compile Include="NativeTree.cs" />
+    <Compile Include="NativeWindow.cs" />
+    <Compile Include="NMDATETIMECHANGE.cs" />
+    <Compile Include="NMHDR.cs" />
+    <Compile Include="NMIPADDRESS.cs" />
+    <Compile Include="NMLISTVIEW.cs" />
+    <Compile Include="NMSELCHANGE.cs" />
+    <Compile Include="NMTRBTHUMBPOSCHANGING.cs" />
+    <Compile Include="NMTREEVIEW.cs" />
+    <Compile Include="NMTVDISPINFO.cs" />
+    <Compile Include="NMUPDOWN.cs" />
+    <Compile Include="POINT.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.ja.Designer.cs">
+      <DependentUpon>Resources.ja.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="RECT.cs" />
+    <Compile Include="SYSTEMTIME.cs" />
+    <Compile Include="TCIF.cs" />
+    <Compile Include="TCIS.cs" />
+    <Compile Include="TCITEM.cs" />
+    <Compile Include="TVHITTESTINFO.cs" />
+    <Compile Include="TVIF.cs" />
+    <Compile Include="TVIS.cs" />
+    <Compile Include="TVITEMEX.cs" />
+    <Compile Include="NativeComboBox.cs" />
+    <Compile Include="TVITEM.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Codeer.Friendly.Windows.NativeStandardControls.snk" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Codeer.Friendly.Windows.NativeStandardControls.Plugin.xml">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.ja.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.ja.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>mkdir "../../../ReleaseBinary"
+mkdir "../../../ReleaseBinary/ja"
+mkdir "../../../ReleaseBinary/plugin"
+if $(ConfigurationName) == Release Copy "$(TargetPath)" "../../../ReleaseBinary/$(TargetFileName)"
+if $(ConfigurationName) == Release Copy "$(TargetDir)\$(TargetName).xml" "../../../ReleaseBinary/ja/$(TargetName).xml"
+if $(ConfigurationName) == Release Copy "$(TargetDir)\ja\$(TargetName).resources.dll" "../../../ReleaseBinary/ja/$(TargetName).resources.dll"
+if $(ConfigurationName) == Release Copy "$(ProjectDir)$(TargetName).plugin.xml" "../../../ReleaseBinary/plugin/$(TargetName).plugin.xml"
+if $(ConfigurationName) == Release-English Copy "$(TargetDir)\$(TargetName).xml" "../../../ReleaseBinary/$(TargetName).xml"</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

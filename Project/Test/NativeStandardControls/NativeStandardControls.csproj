@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D53D0CEE-8F60-42B0-B935-3AFD6D5E134B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NativeStandardControls</RootNamespace>
+    <AssemblyName>NativeStandardControls</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
+    <IsCodedUITest>False</IsCodedUITest>
+    <TestProjectType>UnitTest</TestProjectType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug-Uni|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug-Uni\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;UNI</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Codeer.Friendly">
+      <HintPath>packages\Codeer.Friendly.2.1.0\lib\net40\Codeer.Friendly.dll</HintPath>
+    </Reference>
+    <Reference Include="Codeer.Friendly.Dynamic">
+      <HintPath>packages\Codeer.Friendly.2.1.0\lib\net40\Codeer.Friendly.Dynamic.dll</HintPath>
+    </Reference>
+    <Reference Include="Codeer.Friendly.Windows">
+      <HintPath>packages\Codeer.Friendly.Windows.2.1.0\lib\net20\Codeer.Friendly.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="Codeer.Friendly.Windows.Grasp">
+      <HintPath>packages\Codeer.Friendly.Windows.Grasp.2.2.0\lib\net20\Codeer.Friendly.Windows.Grasp.dll</HintPath>
+    </Reference>
+    <Reference Include="Codeer.Friendly.Windows.NativeStandardControls">
+      <HintPath>packages\Codeer.Friendly.Windows.NativeStandardControls.2.1.1\lib\net20\Codeer.Friendly.Windows.NativeStandardControls.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+  <Choose>
+    <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+      </ItemGroup>
+    </When>
+    <Otherwise>
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
+      </ItemGroup>
+    </Otherwise>
+  </Choose>
+  <ItemGroup>
+    <Compile Include="NativeButtonTest.cs" />
+    <Compile Include="NativeComboBoxTest.cs" />
+    <Compile Include="NativeDateTimePickerTest.cs" />
+    <Compile Include="NativeEditTest.cs" />
+    <Compile Include="NativeIPAddressTest.cs" />
+    <Compile Include="NativeListBoxTest.cs" />
+    <Compile Include="NativeListControlTest.cs" />
+    <Compile Include="NativeMessageBoxTest.cs" />
+    <Compile Include="NativeMonthCalendarTest.cs" />
+    <Compile Include="NativeProgressTest.cs" />
+    <Compile Include="NativeScrollBarTest.cs" />
+    <Compile Include="NativeSliderTest.cs" />
+    <Compile Include="NativeSpinButtonTest.cs" />
+    <Compile Include="NativeTabTest.cs" />
+    <Compile Include="NativeTreeTest.cs" />
+    <Compile Include="NativeWindowTest.cs" />
+    <Compile Include="TestLib\AssertEx.cs" />
+    <Compile Include="TestLib\CodeInfo.cs" />
+    <Compile Include="TestLib\EventChecker.cs" />
+    <Compile Include="TestLib\MessageBoxUtility.cs" />
+    <Compile Include="TestLib\NativeDataUtility.cs" />
+    <Compile Include="TestLib\NativeMethods.cs" />
+    <Compile Include="TestLib\OSUtility.cs" />
+    <Compile Include="TestLib\TargetPath.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Choose>
+    <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.CodedUITestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Extension, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITesting, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

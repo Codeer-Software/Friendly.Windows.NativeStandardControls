@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0E004C2C-CDA1-4E19-90DD-5DB95D84327C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Codeer.Friendly.Windows.NativeStandardControls.Generator</RootNamespace>
+    <AssemblyName>Codeer.Friendly.Windows.NativeStandardControls.Generator</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\Codeer.Friendly.Windows.NativeStandardControls.Generator.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>Properties\Codeer.Friendly.Windows.NativeStandardControls.Generator.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release-English|AnyCPU'">
+    <OutputPath>bin\Release-English\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile>bin\Release\Codeer.Friendly.Windows.NativeStandardControls.Generator.XML</DocumentationFile>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Codeer.Friendly, Version=2.0.0.0, Culture=neutral, PublicKeyToken=6c44da6fca38aa86, processorArchitecture=MSIL">
+      <HintPath>..\Codeer.Friendly.Windows.NativeStandardControls\packages\Codeer.Friendly.2.1.0\lib\net20\Codeer.Friendly.dll</HintPath>
+    </Reference>
+    <Reference Include="Codeer.Friendly.Windows, Version=2.1.0.0, Culture=neutral, PublicKeyToken=532f270f1da385b3, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Codeer.Friendly.Windows.NativeStandardControls\packages\Codeer.Friendly.Windows.2.1.0\lib\net20\Codeer.Friendly.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="Codeer.Friendly.Windows.Grasp, Version=2.2.0.0, Culture=neutral, PublicKeyToken=92809a28945fb91d, processorArchitecture=MSIL">
+      <HintPath>..\Codeer.Friendly.Windows.NativeStandardControls\packages\Codeer.Friendly.Windows.Grasp.2.2.0\lib\net20\Codeer.Friendly.Windows.Grasp.dll</HintPath>
+    </Reference>
+    <Reference Include="Codeer.TestAssistant.GeneratorToolKit, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f7af39ab9bcf13fe, processorArchitecture=MSIL">
+      <HintPath>..\Codeer.Friendly.Windows.NativeStandardControls\packages\Codeer.TestAssistant.GeneratorToolKit.1.0.0\lib\net20\Codeer.TestAssistant.GeneratorToolKit.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Inside\Hook\AnalyzeMessage.cs" />
+    <Compile Include="Inside\Hook\HookBase.cs" />
+    <Compile Include="Inside\Hook\HookCallWndProc.cs" />
+    <Compile Include="Inside\Hook\HookGetMessage.cs" />
+    <Compile Include="Inside\Hook\ThreadMessageHookManager.cs" />
+    <Compile Include="Inside\TimerInvoker.cs" />
+    <Compile Include="NativeButtonGenerator.cs" />
+    <Compile Include="NativeComboBoxGenerator.cs" />
+    <Compile Include="NativeCommandGenerator.cs" />
+    <Compile Include="NativeDateTimePickerGenerator.cs" />
+    <Compile Include="NativeEditGenerator.cs" />
+    <Compile Include="NativeGeneratorBase.cs" />
+    <Compile Include="NativeIPAddressGenerator.cs" />
+    <Compile Include="NativeListBoxGenerator.cs" />
+    <Compile Include="NativeListControlGenerator.cs" />
+    <Compile Include="NativeMonthCalendarGenerator.cs" />
+    <Compile Include="NativeScrollBarGenerator.cs" />
+    <Compile Include="NativeSliderGenerator.cs" />
+    <Compile Include="NativeSpinButtonGenerator.cs" />
+    <Compile Include="NativeTabGenerator.cs" />
+    <Compile Include="NativeTreeGenerator.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Properties\Codeer.Friendly.Windows.NativeStandardControls.Generator.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Codeer.Friendly.Windows.NativeStandardControls\Codeer.Friendly.Windows.NativeStandardControls.csproj">
+      <Project>{3C95E0F9-0F43-4E4D-8A6D-24F90DB8B2C0}</Project>
+      <Name>Codeer.Friendly.Windows.NativeStandardControls</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Codeer.Friendly.Windows.NativeStandardControls.Generator.Plugin.xml">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>if $(ConfigurationName) == Release Copy "$(TargetPath)" "../../../ReleaseBinary/$(TargetFileName)"
+if $(ConfigurationName) == Release Copy "$(ProjectDir)$(TargetName).plugin.xml" "../../../ReleaseBinary/plugin/$(TargetName).plugin.xml"</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
