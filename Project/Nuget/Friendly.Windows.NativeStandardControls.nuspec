@@ -12,8 +12,6 @@
     <description>You will be able to manipulate Win32 Controls. This library is built on Friendly Layer.</description>
     <tags>Friendly Testing Windows Win32 Automation</tags>
     <dependencies>
-      <dependency id="Codeer.Friendly" version="2.1.0" />
-      <dependency id="Codeer.Friendly.Windows" version="2.2.0" />
       <dependency id="Codeer.Friendly.Windows.Grasp" version="2.2.1" />
     </dependencies>
   </metadata>
