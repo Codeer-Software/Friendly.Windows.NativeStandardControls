@@ -61,9 +61,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>packages\Codeer.Friendly.Windows.2.4.0\lib\net20\Codeer.Friendly.Windows.dll</HintPath>
     </Reference>
-    <Reference Include="Codeer.Friendly.Windows.Grasp, Version=2.2.3.0, Culture=neutral, PublicKeyToken=92809a28945fb91d, processorArchitecture=MSIL">
+    <Reference Include="Codeer.Friendly.Windows.Grasp, Version=2.3.0.0, Culture=neutral, PublicKeyToken=92809a28945fb91d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Codeer.Friendly.Windows.Grasp.2.2.3\lib\net20\Codeer.Friendly.Windows.Grasp.dll</HintPath>
+      <HintPath>packages\Codeer.Friendly.Windows.Grasp.2.3.0\lib\net20\Codeer.Friendly.Windows.Grasp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
