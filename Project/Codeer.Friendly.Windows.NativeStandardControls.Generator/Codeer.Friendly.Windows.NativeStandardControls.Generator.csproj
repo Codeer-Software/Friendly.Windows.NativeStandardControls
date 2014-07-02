@@ -49,17 +49,14 @@
     <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Codeer.Friendly, Version=2.2.0.0, Culture=neutral, PublicKeyToken=6c44da6fca38aa86, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Codeer.Friendly.Windows.NativeStandardControls\packages\Codeer.Friendly.2.2.0\lib\net20\Codeer.Friendly.dll</HintPath>
+    <Reference Include="Codeer.Friendly">
+      <HintPath>..\Codeer.Friendly.Windows.NativeStandardControls\packages\Codeer.Friendly.2.3.0\lib\net20\Codeer.Friendly.dll</HintPath>
     </Reference>
-    <Reference Include="Codeer.Friendly.Windows, Version=2.4.0.0, Culture=neutral, PublicKeyToken=532f270f1da385b3, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Codeer.Friendly.Windows.NativeStandardControls\packages\Codeer.Friendly.Windows.2.4.0\lib\net20\Codeer.Friendly.Windows.dll</HintPath>
+    <Reference Include="Codeer.Friendly.Windows">
+      <HintPath>..\Codeer.Friendly.Windows.NativeStandardControls\packages\Codeer.Friendly.Windows.2.4.1\lib\net20\Codeer.Friendly.Windows.dll</HintPath>
     </Reference>
-    <Reference Include="Codeer.Friendly.Windows.Grasp, Version=2.3.0.0, Culture=neutral, PublicKeyToken=92809a28945fb91d, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Codeer.Friendly.Windows.NativeStandardControls\packages\Codeer.Friendly.Windows.Grasp.2.3.0\lib\net20\Codeer.Friendly.Windows.Grasp.dll</HintPath>
+    <Reference Include="Codeer.Friendly.Windows.Grasp">
+      <HintPath>..\Codeer.Friendly.Windows.NativeStandardControls\packages\Codeer.Friendly.Windows.Grasp.2.4.0\lib\net20\Codeer.Friendly.Windows.Grasp.dll</HintPath>
     </Reference>
     <Reference Include="Codeer.TestAssistant.GeneratorToolKit, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f7af39ab9bcf13fe, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
