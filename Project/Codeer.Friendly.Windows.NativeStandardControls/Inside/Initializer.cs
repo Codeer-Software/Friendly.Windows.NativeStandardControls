@@ -13,9 +13,10 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Inside
         /// 初期化。対象のアプリケーションにアセンブリを読み込ませます。
         /// </summary>
         /// <param name="app">アプリケーション操作クラス。</param>
-        /// <param name="myType">タイプ。</param>
-        internal static void Initialize(WindowsAppFriend app, Type myType)
+        internal static void Initialize(WindowsAppFriend app)
         {
+            Type myType = typeof(Initializer);
+
             //初期化は一度だけ。
             //何度呼び出しても問題はないが、パフォーマンスに効いてくるのでWindowsAppFriendのキャッシュを利用します。
             string key = myType.Module.Name + "[Initialize]";

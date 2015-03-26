@@ -40,7 +40,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
         public NativeSpinButton(WindowControl src)
             : base(src)
         {
-            Initializer.Initialize(App, GetType());
+            Initializer.Initialize(App);
         }
         
 #if ENG
@@ -59,7 +59,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
         public NativeSpinButton(WindowsAppFriend app, IntPtr windowHandle)
             : base(app, windowHandle)
         {
-            Initializer.Initialize(App, GetType());
+            Initializer.Initialize(App);
         }
         
 #if ENG
