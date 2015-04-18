@@ -61,15 +61,19 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>packages\Codeer.Friendly.Windows.2.5.1\lib\net20\Codeer.Friendly.Windows.dll</HintPath>
     </Reference>
-    <Reference Include="Codeer.Friendly.Windows.Grasp, Version=2.5.0.0, Culture=neutral, PublicKeyToken=92809a28945fb91d, processorArchitecture=MSIL">
+    <Reference Include="Codeer.Friendly.Windows.Grasp, Version=2.6.0.0, Culture=neutral, PublicKeyToken=92809a28945fb91d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Codeer.Friendly.Windows.Grasp.2.5.0\lib\net20\Codeer.Friendly.Windows.Grasp.dll</HintPath>
+      <HintPath>packages\Codeer.Friendly.Windows.Grasp.2.6.0\lib\net20\Codeer.Friendly.Windows.Grasp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NativeButtonModal.cs" />
+    <Compile Include="NativeButtonModalOrSync.cs" />
+    <Compile Include="NativeButtonModeless.cs" />
+    <Compile Include="NativeButtonSync.cs" />
     <Compile Include="Inside\EmulateUtility.cs" />
     <Compile Include="Inside\ResourcesLocal.cs" />
     <Compile Include="LVCF.cs" />
