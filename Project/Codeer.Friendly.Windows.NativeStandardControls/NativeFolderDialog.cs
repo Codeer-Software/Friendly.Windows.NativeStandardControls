@@ -141,7 +141,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
             /// </summary>
             /// <param name="paths">パス。</param>
 #endif
-            public void SelectFolder(params string[] paths)
+            public void EmulateSelectFolder(params string[] paths)
             {
                 for (int i = 1; i <= paths.Length; i++)
                 {

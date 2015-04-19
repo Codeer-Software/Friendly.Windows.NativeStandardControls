@@ -2,6 +2,7 @@
 using Codeer.Friendly.Windows.Grasp.ScreenTransition;
 using Codeer.Friendly.Windows.NativeStandardControls.Properties;
 using System;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
 namespace Codeer.Friendly.Windows.NativeStandardControls
@@ -138,10 +139,24 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
             _window = window;
             _sync = sync;
 
+            List<WindowControl> combos = new List<WindowControl>();
+            combos.AddRange(_window.GetFromWindowClass("ComboBoxEx32"));
+            foreach (var e in _window.GetFromWindowClass("ComboBox"))
+            {
+                if (e.ParentWindow.TypeFullName != "ComboBoxEx32")
+                {
+                    combos.Add(e);
+                }
+            }
+
             int top = 0;
             WindowControl combo = null;
-            foreach(var e in _window.GetFromWindowClass("ComboBoxEx32"))
+            foreach(var e in combos)
             {
+                if (e.GetFromWindowClass("Edit").Length != 1)
+                {
+                    continue;
+                }
                 RECT rc;
                 GetWindowRect(e.Handle, out rc);
                 if (top < rc.Top)

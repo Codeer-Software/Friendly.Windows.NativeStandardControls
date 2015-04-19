@@ -45,6 +45,8 @@ namespace NativeStandardControls
         {
             if (app != null)
             {
+                //閉じるときにイベント発生でメッセージボックスが出ないようにする
+                app[typeof(EventChecker), "ClearAsyncMsgBox"](testDlg.Handle);
                 new NativeButton(testDlg.IdentifyFromWindowText("OK")).EmulateClick();
                 MessageBoxUtility.CloseAll(testDlg);
                 app.Dispose();

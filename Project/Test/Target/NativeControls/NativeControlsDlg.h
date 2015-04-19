@@ -32,4 +32,5 @@ public:
 	afx_msg void OnBnClickedButtonEdit();
 	afx_msg void OnBnClickedButtonListctrl();
 	afx_msg void OnBnClickedButtonTree();
+	afx_msg void OnBnClickedButtonModelless();
 };

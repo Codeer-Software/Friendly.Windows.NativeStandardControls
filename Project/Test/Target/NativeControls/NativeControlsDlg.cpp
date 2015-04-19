@@ -33,6 +33,7 @@ BEGIN_MESSAGE_MAP(CNativeControlsDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_BUTTON_EDIT, &CNativeControlsDlg::OnBnClickedButtonEdit)
 	ON_BN_CLICKED(IDC_BUTTON_LISTCTRL, &CNativeControlsDlg::OnBnClickedButtonListctrl)
 	ON_BN_CLICKED(IDC_BUTTON_TREE, &CNativeControlsDlg::OnBnClickedButtonTree)
+	ON_BN_CLICKED(IDC_BUTTON_MODELLESS, &CNativeControlsDlg::OnBnClickedButtonModelless)
 END_MESSAGE_MAP()
 
 BOOL CNativeControlsDlg::OnInitDialog()
@@ -162,11 +163,19 @@ void CNativeControlsDlg::OnBnClickedButtonEdit()
 void CNativeControlsDlg::OnBnClickedButtonListctrl()
 {
 	CListCtrlTestDlg dlg;
-	dlg.DoModal();}
+	dlg.DoModal();
+}
 
 #include "TreeTestDlg.h"
 void CNativeControlsDlg::OnBnClickedButtonTree()
 {
 	CTreeTestDlg dlg;
 	dlg.DoModal();
+}
+
+void CNativeControlsDlg::OnBnClickedButtonModelless()
+{
+	CButtonTestDlg* dlg = new CButtonTestDlg();
+	dlg->Create(CButtonTestDlg::IDD, this);
+	dlg->ShowWindow(SW_SHOW);
 }

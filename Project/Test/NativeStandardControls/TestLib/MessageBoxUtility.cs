@@ -20,12 +20,17 @@ namespace NativeStandardControls.TestLib
         {
             for (int i = 0; true; i++)
             {
-                WindowControl msg = testDlg.WaitForNextModal(async);
-                if (msg == null)
+                WindowControl msg = WindowControl.FromZTop(testDlg.App);
+                if (msg.Handle == testDlg.Handle)
                 {
+                    if (!async.IsCompleted)
+                    {
+                        i--;
+                        continue;
+                    }
                     return i;
                 }
-                new NativeMessageBox(msg).EmulateButtonClick("OK");
+                msg.SendMessage(0x0010, IntPtr.Zero, IntPtr.Zero);
             }
         }
 
