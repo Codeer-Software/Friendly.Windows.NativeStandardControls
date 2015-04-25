@@ -117,33 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ButtonAbort" xml:space="preserve">
-    <value>&amp;Abort</value>
-  </data>
-  <data name="ButtonCancel" xml:space="preserve">
-    <value>Cancel</value>
-  </data>
-  <data name="ButtonIgnore" xml:space="preserve">
-    <value>&amp;Ignore</value>
-  </data>
-  <data name="ButtonNo" xml:space="preserve">
-    <value>&amp;No</value>
-  </data>
-  <data name="ButtonOK" xml:space="preserve">
-    <value>OK</value>
-  </data>
-  <data name="ButtonOpen" xml:space="preserve">
-    <value>&amp;Open</value>
-  </data>
-  <data name="ButtonRetry" xml:space="preserve">
-    <value>&amp;Retry</value>
-  </data>
-  <data name="ButtonSave" xml:space="preserve">
-    <value>&amp;Save</value>
-  </data>
-  <data name="ButtonYes" xml:space="preserve">
-    <value>&amp;Yes</value>
-  </data>
   <data name="CheckStateIsNotSupported" xml:space="preserve">
     <value>The appointed check state is not supported.
 In the case of a radio button, a check cannot be turned OFF.

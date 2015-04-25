@@ -117,33 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ButtonAbort" xml:space="preserve">
-    <value>中止(&amp;A)</value>
-  </data>
-  <data name="ButtonCancel" xml:space="preserve">
-    <value>キャンセル</value>
-  </data>
-  <data name="ButtonIgnore" xml:space="preserve">
-    <value>無視(&amp;I)</value>
-  </data>
-  <data name="ButtonNo" xml:space="preserve">
-    <value>いいえ(&amp;N)</value>
-  </data>
-  <data name="ButtonOK" xml:space="preserve">
-    <value>OK</value>
-  </data>
-  <data name="ButtonOpen" xml:space="preserve">
-    <value>開く(&amp;O)</value>
-  </data>
-  <data name="ButtonRetry" xml:space="preserve">
-    <value>再試行(&amp;R)</value>
-  </data>
-  <data name="ButtonSave" xml:space="preserve">
-    <value>保存(&amp;S)</value>
-  </data>
-  <data name="ButtonYes" xml:space="preserve">
-    <value>はい(&amp;Y)</value>
-  </data>
   <data name="CheckStateIsNotSupported" xml:space="preserve">
     <value>指定のチェック状態はサポートされていません。
 ラジオボタンの場合、チェックをOFFにすることはできません。
