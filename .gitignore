@@ -131,6 +131,7 @@ DebugUnicode/
 Release/
 packages/
 ReleaseBinary/
+.vs/
 !Project/Test/NativeStandardControls/Debug/
 !Project/Test/NativeStandardControls/Debug/NativeControls.exe
 !Project/Test/NativeStandardControls/Debug-Uni/
