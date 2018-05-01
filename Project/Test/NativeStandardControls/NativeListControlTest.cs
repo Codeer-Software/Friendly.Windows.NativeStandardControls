@@ -117,7 +117,7 @@ namespace NativeStandardControls
         {
             NativeListControl list = new NativeListControl(testDlg.IdentifyFromDialogId(1037));
             list.EnsureVisible(list.ItemCount - 1, false);
-            Assert.AreEqual(((isUni && OSUtility.Is7or8()) ? 90 : 87), list.TopIndex);
+            Assert.AreEqual(((isUni && OSUtility.Is7or8or10()) ? 90 : 87), list.TopIndex);
         }
 
         /// <summary>
@@ -194,7 +194,7 @@ namespace NativeStandardControls
         [TestMethod]
         public void TestItemRect()
         {
-            if (!OSUtility.Is7or8())
+            if (!OSUtility.Is7or8or10())
             {
                 //矩形は環境によって変わるので7のみ。しかし、7なら常に同じ矩形とも限らない。
                 //このテストデータが使えるOSの設定は限られる。
@@ -297,7 +297,7 @@ namespace NativeStandardControls
             Assert.AreEqual(setData.iSubItem, column.iSubItem);
             Assert.AreEqual(setData.iImage, column.iImage);
             Assert.AreEqual(setData.iOrder, column.iOrder);
-            if (isUni && OSUtility.Is7or8())
+            if (isUni && OSUtility.Is7or8or10())
             {
                 Assert.AreEqual(setData.cxMin, column.cxMin);
                 Assert.AreEqual(setData.cxDefault, column.cxDefault);
@@ -364,6 +364,9 @@ namespace NativeStandardControls
         [TestMethod]
         public void TestEmulateEditEvent()
         {
+            //2017ビルドではユニコードの場合は動作が変わった
+            if (isUni) return;
+
             NativeListControl list = new NativeListControl(testDlg.IdentifyFromDialogId(1037));
 
             //同期実行。LVN_BEGINLABELEDIT,LVN_ENDLABELEDITが発生していることを確認。
@@ -412,6 +415,9 @@ namespace NativeStandardControls
         [TestMethod]
         public void TestEmulateChangeStateEvent()
         {
+            //2017ビルドではユニコードの場合は動作が変わった
+            if (isUni) return;
+
             NativeListControl list = new NativeListControl(testDlg.IdentifyFromDialogId(1037));
             Assert.IsTrue(EventChecker.IsSameTestEvent(testDlg,
                 delegate { list.EmulateChangeItemState(2, LVIS.FOCUSED, LVIS.FOCUSED); },

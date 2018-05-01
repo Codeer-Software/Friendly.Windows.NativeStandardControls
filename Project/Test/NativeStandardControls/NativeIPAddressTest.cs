@@ -45,7 +45,7 @@ namespace NativeStandardControls
         {
             if (app != null)
             {
-                new NativeButton(testDlg.IdentifyFromWindowText("OK")).EmulateClick();
+                testDlg.Close();
                 MessageBoxUtility.CloseAll(testDlg);
                 app.Dispose();
                 Process process = Process.GetProcessById(app.ProcessId);

@@ -72,6 +72,10 @@ namespace NativeStandardControls.TestLib
         internal static extern bool EnableWindow(IntPtr hWnd, bool bEnable);
 
         [DllImport("user32.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        internal static extern bool IsWindowEnabled(IntPtr hWnd);
+
+        [DllImport("user32.dll")]
         internal static extern IntPtr SetFocus(IntPtr hWnd);
         /// <summary>
         /// 指定されたウィンドウに関する情報を取得。

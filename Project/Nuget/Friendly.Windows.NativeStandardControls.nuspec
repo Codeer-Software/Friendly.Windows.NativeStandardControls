@@ -2,13 +2,13 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>Codeer.Friendly.Windows.NativeStandardControls</id>
-    <version>2.4.0</version>
+    <version>2.5.0</version>
     <title>Friendly.Windows.NativeStandardControls</title>
     <authors>Codeer</authors>
     <owners>Codeer</owners>
     <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0.html</licenseUrl>
-    <projectUrl>http://www.english.codeer.co.jp/test-automation/api-reference/codeer-friendly-windows-nativestandardcontrols-dll</projectUrl>
-    <iconUrl>http://goo.gl/Zoqzdj</iconUrl>
+    <projectUrl>https://github.com/Codeer-Software/Friendly.Windows.NativeStandardControls</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/Codeer-Software/Friendly/master/FriendlyNuget128.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>You will be able to manipulate Win32 Controls. This library is built on Friendly Layer.</description>
     <tags>Friendly Testing Windows Win32 Automation</tags>
@@ -16,7 +16,7 @@
       <frameworkAssembly assemblyName="System.Windows.Forms"/>
     </frameworkAssemblies>
     <dependencies>
-      <dependency id="Codeer.Friendly.Windows.Grasp" version="2.7.0" />
+      <dependency id="Codeer.Friendly.Windows.Grasp" version="2.7.1" />
     </dependencies>
   </metadata>
   <files>

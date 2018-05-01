@@ -173,7 +173,7 @@ namespace NativeStandardControls
         [TestMethod]
         public void TestItemRect()
         {
-            if (!OSUtility.Is7or8())
+            if (!OSUtility.Is7or8or10())
             {
                 //矩形は環境によって変わるので7のみ。しかし、7なら常に同じ矩形とも限らない。
                 //このテストデータが使えるOSの設定は限られる。

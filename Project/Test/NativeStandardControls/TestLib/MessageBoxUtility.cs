@@ -18,15 +18,19 @@ namespace NativeStandardControls.TestLib
         /// <returns>閉じたダイアログの個数</returns>
         internal static int CloseAll(WindowControl testDlg, Async async)
         {
-            for (int i = 0; true; i++)
+            int i = 0;
+            while (!async.IsCompleted)
             {
-                WindowControl msg = testDlg.WaitForNextModal(async);
-                if (msg == null)
+                foreach (var e in WindowControl.GetTopLevelWindows(testDlg.App))
                 {
-                    return i;
+                    if (e.Handle != testDlg.Handle)
+                    {
+                        i++;
+                        e.Close();
+                    }
                 }
-                new NativeMessageBox(msg).EmulateButtonClick("OK");
             }
+            return i;
         }
 
         internal static void CloseAll(WindowControl testDlg)

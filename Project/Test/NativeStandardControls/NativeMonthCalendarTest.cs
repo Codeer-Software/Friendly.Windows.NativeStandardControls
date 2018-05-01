@@ -241,7 +241,7 @@ namespace NativeStandardControls
         public void TestViewValue()
         {
             NativeMonthCalendar calendar = new NativeMonthCalendar(testDlg.IdentifyFromDialogId(1033));
-            if (!NativeMethods.IsWindowUnicode(testDlg.Handle) || !OSUtility.Is7or8())
+            if (!NativeMethods.IsWindowUnicode(testDlg.Handle) || !OSUtility.Is7or8or10())
             {
                 return;
             }
@@ -264,7 +264,7 @@ namespace NativeStandardControls
         [TestMethod]
         public void TestViewEvent()
         {
-            if (!NativeMethods.IsWindowUnicode(testDlg.Handle) || !OSUtility.Is7or8())
+            if (!NativeMethods.IsWindowUnicode(testDlg.Handle) || !OSUtility.Is7or8or10())
             {
                 return;
             } 
@@ -280,7 +280,7 @@ namespace NativeStandardControls
         [TestMethod]
         public void TestViewEventAsync()
         {
-            if (!NativeMethods.IsWindowUnicode(testDlg.Handle) || !OSUtility.Is7or8())
+            if (!NativeMethods.IsWindowUnicode(testDlg.Handle) || !OSUtility.Is7or8or10())
             {
                 return;
             }

@@ -126,36 +126,6 @@ namespace NativeStandardControls
         }
 
         /// <summary>
-        /// EmulateChangePosのイベントテスト。
-        /// </summary>
-        [TestMethod]
-        public void TestPosEvent()
-        {
-            NativeSlider slider = new NativeSlider(testDlg.IdentifyFromDialogId(1019));
-            NativeSlider vslider = new NativeSlider(testDlg.IdentifyFromDialogId(1026));
-
-            //同期実行。
-            Assert.IsTrue(EventChecker.IsSameTestEvent(testDlg,
-                delegate { slider.EmulateChangePos(100); },
-                new CodeInfo(1019, NativeMethods.WM_NOTIFY, TRBN_THUMBPOSCHANGING),
-                new CodeInfo(1019, NativeMethods.WM_HSCROLL, SB_THUMBPOSITION, 100)));
-
-            //同期実行　縦方向。
-            Assert.IsTrue(EventChecker.IsSameTestEvent(testDlg,
-                delegate { vslider.EmulateChangePos(100); },
-                new CodeInfo(1026, NativeMethods.WM_NOTIFY, TRBN_THUMBPOSCHANGING),
-                new CodeInfo(1026, NativeMethods.WM_VSCROLL, SB_THUMBPOSITION, 100)));
-
-            //詳細な通知内容の確認。
-            NMTRBTHUMBPOSCHANGING[] expectation = new NMTRBTHUMBPOSCHANGING[1];
-            expectation[0].nReason = TB_THUMBTRACK;
-            expectation[0].dwPos = 150;
-            Assert.IsTrue(EventChecker.CheckNotifyDetail(testDlg,
-                delegate { slider.EmulateChangePos(150); },
-                expectation));
-        }
-
-        /// <summary>
         /// EmulateChangePosの非同期実行イベントテスト。
         /// </summary>
         [TestMethod]

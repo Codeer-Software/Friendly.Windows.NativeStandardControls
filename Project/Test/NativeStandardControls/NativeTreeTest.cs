@@ -82,7 +82,7 @@ namespace NativeStandardControls
             {
                 //閉じるときにイベント発生でメッセージボックスが出ないようにする
                 app[typeof(EventChecker), "ClearAsyncMsgBox"](testDlg.Handle);
-                new NativeButton(testDlg.IdentifyFromWindowText("OK")).EmulateClick();
+                testDlg.Close();
                 MessageBoxUtility.CloseAll(testDlg);
                 Process process = Process.GetProcessById(app.ProcessId);
                 app.Dispose();
@@ -220,7 +220,7 @@ namespace NativeStandardControls
         [TestMethod]
         public void TestGetItemRect()
         {
-            if (!OSUtility.Is7or8())
+            if (!OSUtility.Is7or8or10())
             {
                 //矩形は環境によって変わるので7のみ。しかし、7なら常に同じ矩形とも限らない。
                 //このテストデータが使えるOSの設定は限られる。
@@ -523,7 +523,7 @@ namespace NativeStandardControls
         [TestMethod]
         public void TestEmulateChangeItemEvent()
         {
-            if (!isUni || !OSUtility.Is7or8())
+            if (!isUni || !OSUtility.Is7or8or10())
             {
                 //設定によってはこのイベントは発生しない。
                 return;
@@ -558,7 +558,7 @@ namespace NativeStandardControls
         [TestMethod]
         public void TestEmulateCheckEvent()
         {
-            if (!isUni || !OSUtility.Is7or8())
+            if (!isUni || !OSUtility.Is7or8or10())
             {
                 //設定によってはこのイベントは発生しない。
                 return;
@@ -580,7 +580,7 @@ namespace NativeStandardControls
         [TestMethod]
         public void TestEmulateChangeItemEventAsync()
         {
-            if (!isUni || !OSUtility.Is7or8())
+            if (!isUni || !OSUtility.Is7or8or10())
             {
                 //設定によってはこのイベントは発生しない。
                 return;
@@ -604,7 +604,7 @@ namespace NativeStandardControls
         [TestMethod]
         public void TestEmulateCheckEventAsync()
         {
-            if (!isUni || !OSUtility.Is7or8())
+            if (!isUni || !OSUtility.Is7or8or10())
             {
                 //設定によってはこのイベントは発生しない。
                 return;
