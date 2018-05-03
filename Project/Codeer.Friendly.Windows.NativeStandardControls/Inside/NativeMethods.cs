@@ -517,5 +517,46 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Inside
         /// <returns>スレッドID</returns>
         [DllImport("user32.dll")]
         internal static extern int GetWindowThreadProcessId(IntPtr hWnd, out int lpdwProcessId);
+
+        [StructLayout(LayoutKind.Sequential)]
+        internal struct MENUITEMINFO
+        {
+            public uint cbSize;
+            public uint fMask;
+            public uint fType;
+            public uint fState;
+            public int wID;
+            public int hSubMenu;
+            public int hbmpChecked;
+            public int hbmpUnchecked;
+            public int dwItemData;
+            public string dwTypeData;
+            public uint cch;
+            public int hbmpItem;
+        }
+
+
+        [DllImport("user32.dll")]
+        internal static extern int GetMenuItemCount(IntPtr hMenu);
+
+        [DllImport("user32.dll", CharSet = CharSet.Unicode)]
+        internal static extern int GetMenuString(IntPtr hMenu, int uIDItem, [Out, MarshalAs(UnmanagedType.LPWStr)] StringBuilder lpString, int nMaxCount, uint uFlag);
+
+        [DllImport("user32.dll")]
+        internal static extern bool GetMenuItemRect(IntPtr hWnd, IntPtr hMenu, int uItem, out RECT lprcItem);
+        internal const int MF_BYPOSITION = 0x00000400;
+        internal const int MN_GETHMENU = 0x01E1;
+        internal const int MIIM_STATE = 0x00000001;
+        internal const int MIIM_ID = 0x00000002;
+        internal const int MF_ENABLED = 0x00000000;
+
+        [DllImport("user32.dll")]
+        internal static extern int GetMenuItemID(IntPtr hMenu, int nPos);
+
+        [DllImport("user32.dll")]
+        internal static extern bool GetMenuItemInfo(IntPtr hMenu, uint uItem, bool fByPosition, ref MENUITEMINFO lpmii);
+
+        [DllImport("user32.dll")]
+        internal static extern IntPtr GetMenu(IntPtr hwnd);
     }
 }

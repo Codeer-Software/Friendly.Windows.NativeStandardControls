@@ -81,6 +81,7 @@
     <Compile Include="Inside\NativeMethods.cs" />
     <Compile Include="Inside\Initializer.cs" />
     <Compile Include="LVITEM.cs" />
+    <Compile Include="NativeMenuItem.cs" />
     <Compile Include="NativeMessageBox.cs" />
     <Compile Include="NativeProgress.cs" />
     <Compile Include="NativeScrollBar.cs" />

@@ -33,6 +33,7 @@ BEGIN_MESSAGE_MAP(CNativeControlsDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_BUTTON_EDIT, &CNativeControlsDlg::OnBnClickedButtonEdit)
 	ON_BN_CLICKED(IDC_BUTTON_LISTCTRL, &CNativeControlsDlg::OnBnClickedButtonListctrl)
 	ON_BN_CLICKED(IDC_BUTTON_TREE, &CNativeControlsDlg::OnBnClickedButtonTree)
+	ON_COMMAND(ID_B0_B7, &CNativeControlsDlg::OnB0_1_1_1)
 END_MESSAGE_MAP()
 
 BOOL CNativeControlsDlg::OnInitDialog()
@@ -169,4 +170,9 @@ void CNativeControlsDlg::OnBnClickedButtonTree()
 {
 	CTreeTestDlg dlg;
 	dlg.DoModal();
+}
+
+void CNativeControlsDlg::OnB0_1_1_1()
+{
+	::AfxMessageBox(_T("AAA"));
 }
