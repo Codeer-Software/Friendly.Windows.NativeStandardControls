@@ -13,7 +13,7 @@ Install Friendly.Windows from NuGet
     PM> Install-Package Codeer.Friendly.Windows.NativeStandardControls
 https://www.nuget.org/packages/Codeer.Friendly.Windows.NativeStandardControls/
 
-============================<br>
+***
 Friendly.Windows.NativeStandardControls defines the following classes.   
 They can operate Win32/MFC control easily from a separate process.  
 
@@ -34,7 +34,7 @@ They can operate Win32/MFC control easily from a separate process.
 * NativeTab
 * NativeTree
 
-============================
+***
 ```cs  
 //sample  
 var process = Process.GetProcessesByName("NativeTarget")[0];  
@@ -55,8 +55,10 @@ using (var app = new WindowsAppFriend(process))
     tree.EmulateEdit(tree.Nodes[0], "new text"); 
 }  
 ```
+### More samples
+https://github.com/Codeer-Software/Friendly.Windows.NativeStandardControls/tree/master/Project/Test
 
-============================<br>
+***
 For other GUI types, use the following libraries:
 
 * For WPF.  
@@ -68,7 +70,7 @@ https://www.nuget.org/packages/Ong.Friendly.FormsStandardControls/
 * For getting the target window.  
 https://www.nuget.org/packages/Codeer.Friendly.Windows.Grasp/  
 
-============================<br>
+***
 If you use PinInterface, you map control simple.  
 https://www.nuget.org/packages/VSHTC.Friendly.PinInterface/
 
