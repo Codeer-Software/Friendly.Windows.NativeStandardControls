@@ -37,6 +37,17 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Inside
         /// <param name="lParam">lParam。</param>
         /// <returns>結果。</returns>
         [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        public static extern IntPtr SendMessage(IntPtr hWnd, int msg, IntPtr wParam, ref TBBUTTON lParam);
+
+        /// <summary>
+        /// メッセージを送信します。
+        /// </summary>
+        /// <param name="hWnd">ウィンドウハンドル。</param>
+        /// <param name="msg">メッセージ。</param>
+        /// <param name="wParam">wParam。</param>
+        /// <param name="lParam">lParam。</param>
+        /// <returns>結果。</returns>
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
         internal static extern IntPtr SendMessage(IntPtr hWnd, int msg, IntPtr wParam, StringBuilder lParam);
 
         /// <summary>
@@ -518,23 +529,42 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Inside
         [DllImport("user32.dll")]
         internal static extern int GetWindowThreadProcessId(IntPtr hWnd, out int lpdwProcessId);
 
-        [StructLayout(LayoutKind.Sequential)]
-        internal struct MENUITEMINFO
+        [Flags]
+        internal enum MIIM
         {
-            public uint cbSize;
-            public uint fMask;
-            public uint fType;
-            public uint fState;
-            public int wID;
-            public int hSubMenu;
-            public int hbmpChecked;
-            public int hbmpUnchecked;
-            public int dwItemData;
-            public string dwTypeData;
-            public uint cch;
-            public int hbmpItem;
+            BITMAP = 0x00000080,
+            CHECKMARKS = 0x00000008,
+            DATA = 0x00000020,
+            FTYPE = 0x00000100,
+            ID = 0x00000002,
+            STATE = 0x00000001,
+            STRING = 0x00000040,
+            SUBMENU = 0x00000004,
+            TYPE = 0x00000010
         }
 
+        [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
+        public class MENUITEMINFO
+        {
+            public Int32 cbSize = Marshal.SizeOf(typeof(MENUITEMINFO));
+            public MIIM fMask;
+            public UInt32 fType;
+            public UInt32 fState;
+            public UInt32 wID;
+            public IntPtr hSubMenu;
+            public IntPtr hbmpChecked;
+            public IntPtr hbmpUnchecked;
+            public IntPtr dwItemData;
+            public string dwTypeData = null;
+            public UInt32 cch; // length of dwTypeData
+            public IntPtr hbmpItem;
+
+            public MENUITEMINFO() { }
+            public MENUITEMINFO(MIIM pfMask)
+            {
+                fMask = pfMask;
+            }
+        }
 
         [DllImport("user32.dll")]
         internal static extern int GetMenuItemCount(IntPtr hMenu);
@@ -549,14 +579,18 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Inside
         internal const int MIIM_STATE = 0x00000001;
         internal const int MIIM_ID = 0x00000002;
         internal const int MF_ENABLED = 0x00000000;
+        internal const int MF_DISABLED = 0x00000002;
 
         [DllImport("user32.dll")]
         internal static extern int GetMenuItemID(IntPtr hMenu, int nPos);
 
-        [DllImport("user32.dll")]
-        internal static extern bool GetMenuItemInfo(IntPtr hMenu, uint uItem, bool fByPosition, ref MENUITEMINFO lpmii);
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        internal static extern bool GetMenuItemInfo(IntPtr hMenu, UInt32 uItem, bool fByPosition, [In, Out] MENUITEMINFO lpmii);
 
         [DllImport("user32.dll")]
         internal static extern IntPtr GetMenu(IntPtr hwnd);
+
+        [DllImport("kernel32.dll")]
+        internal static extern uint GetLastError();
     }
 }

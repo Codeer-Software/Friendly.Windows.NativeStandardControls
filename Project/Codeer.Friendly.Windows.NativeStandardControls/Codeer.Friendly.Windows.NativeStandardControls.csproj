@@ -95,6 +95,8 @@
     <Compile Include="NativeSlider.cs" />
     <Compile Include="NativeSpinButton.cs" />
     <Compile Include="NativeTab.cs" />
+    <Compile Include="NativeToolBar.cs" />
+    <Compile Include="NativeToolBarItem.cs" />
     <Compile Include="NativeTree.cs" />
     <Compile Include="NativeWindow.cs" />
     <Compile Include="NMDATETIMECHANGE.cs" />
@@ -120,6 +122,7 @@
     </Compile>
     <Compile Include="RECT.cs" />
     <Compile Include="SYSTEMTIME.cs" />
+    <Compile Include="TBBUTTON.cs" />
     <Compile Include="TCIF.cs" />
     <Compile Include="TCIS.cs" />
     <Compile Include="TCITEM.cs" />

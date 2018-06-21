@@ -122,6 +122,9 @@
 In the case of a radio button, a check cannot be turned OFF.
 Please turn OFF the appointed radio button by turning ON the check of other radio buttons.</value>
   </data>
+  <data name="MenuItemNotFound" xml:space="preserve">
+    <value>The specified menu item was not found.</value>
+  </data>
   <data name="SpinButtonHasNoBuddy" xml:space="preserve">
     <value>Corresponding edit box does not exist.</value>
   </data>

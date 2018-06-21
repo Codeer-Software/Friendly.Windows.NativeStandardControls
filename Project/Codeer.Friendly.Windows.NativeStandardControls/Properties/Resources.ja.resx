@@ -122,6 +122,9 @@
 ラジオボタンの場合、チェックをOFFにすることはできません。
 他のラジオボタンのチェックをONにすることで指定のラジオボタンをOFFにしてください。</value>
   </data>
+  <data name="MenuItemNotFound" xml:space="preserve">
+    <value>指定のメニューアイテムは見つかりませんでした。</value>
+  </data>
   <data name="SpinButtonHasNoBuddy" xml:space="preserve">
     <value>対応するエディットが存在しません。</value>
   </data>

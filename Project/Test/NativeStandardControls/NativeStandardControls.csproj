@@ -44,25 +44,33 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Codeer.Friendly, Version=2.5.0.0, Culture=neutral, PublicKeyToken=6c44da6fca38aa86, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Codeer.Friendly.2.5.0\lib\net40\Codeer.Friendly.dll</HintPath>
+    <Reference Include="Codeer.Friendly, Version=2.5.2.0, Culture=neutral, PublicKeyToken=6c44da6fca38aa86, processorArchitecture=MSIL">
+      <HintPath>packages\Codeer.Friendly.2.5.2\lib\net40\Codeer.Friendly.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Codeer.Friendly.Dynamic, Version=2.5.0.0, Culture=neutral, PublicKeyToken=376bc779077733e8, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Codeer.Friendly.2.5.0\lib\net40\Codeer.Friendly.Dynamic.dll</HintPath>
+    <Reference Include="Codeer.Friendly.Dynamic, Version=2.5.2.0, Culture=neutral, PublicKeyToken=376bc779077733e8, processorArchitecture=MSIL">
+      <HintPath>packages\Codeer.Friendly.2.5.2\lib\net40\Codeer.Friendly.Dynamic.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Codeer.Friendly.Windows, Version=2.7.0.0, Culture=neutral, PublicKeyToken=532f270f1da385b3, processorArchitecture=MSIL">
-      <HintPath>packages\Codeer.Friendly.Windows.2.7.0\lib\net20\Codeer.Friendly.Windows.dll</HintPath>
+    <Reference Include="Codeer.Friendly.Windows, Version=2.9.0.0, Culture=neutral, PublicKeyToken=532f270f1da385b3, processorArchitecture=MSIL">
+      <HintPath>packages\Codeer.Friendly.Windows.2.9.0\lib\net20\Codeer.Friendly.Windows.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Codeer.Friendly.Windows.Grasp.2.0, Version=2.7.0.0, Culture=neutral, PublicKeyToken=92809a28945fb91d, processorArchitecture=MSIL">
-      <HintPath>packages\Codeer.Friendly.Windows.Grasp.2.7.0\lib\net35\Codeer.Friendly.Windows.Grasp.2.0.dll</HintPath>
+    <Reference Include="Codeer.Friendly.Windows.Grasp.2.0, Version=2.7.1.0, Culture=neutral, PublicKeyToken=92809a28945fb91d, processorArchitecture=MSIL">
+      <HintPath>packages\Codeer.Friendly.Windows.Grasp.2.7.1\lib\net35\Codeer.Friendly.Windows.Grasp.2.0.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Codeer.Friendly.Windows.Grasp.3.5, Version=2.7.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\Codeer.Friendly.Windows.Grasp.2.7.0\lib\net35\Codeer.Friendly.Windows.Grasp.3.5.dll</HintPath>
+    <Reference Include="Codeer.Friendly.Windows.Grasp.3.5, Version=2.7.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Codeer.Friendly.Windows.Grasp.2.7.1\lib\net35\Codeer.Friendly.Windows.Grasp.3.5.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Codeer.Friendly.Windows.NativeStandardControls, Version=2.4.0.0, Culture=neutral, PublicKeyToken=90759bf0c8b8639e, processorArchitecture=MSIL">
-      <HintPath>packages\Codeer.Friendly.Windows.NativeStandardControls.2.4.0\lib\net20\Codeer.Friendly.Windows.NativeStandardControls.dll</HintPath>
+    <Reference Include="Codeer.Friendly.Windows.KeyMouse.2.0, Version=1.1.0.0, Culture=neutral, PublicKeyToken=315dcaa3c3e851c2, processorArchitecture=MSIL">
+      <HintPath>packages\Codeer.Friendly.Windows.KeyMouse.1.1.0\lib\net35\Codeer.Friendly.Windows.KeyMouse.2.0.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Codeer.Friendly.Windows.KeyMouse.3.5, Version=1.1.0.0, Culture=neutral, PublicKeyToken=39f6ecaa6ad3a1f3, processorArchitecture=MSIL">
+      <HintPath>packages\Codeer.Friendly.Windows.KeyMouse.1.1.0\lib\net35\Codeer.Friendly.Windows.KeyMouse.3.5.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
@@ -89,6 +97,7 @@
     <Compile Include="NativeIPAddressTest.cs" />
     <Compile Include="NativeListBoxTest.cs" />
     <Compile Include="NativeListControlTest.cs" />
+    <Compile Include="NativeMenuTest.cs" />
     <Compile Include="NativeMessageBoxTest.cs" />
     <Compile Include="NativeMonthCalendarTest.cs" />
     <Compile Include="NativeProgressTest.cs" />
@@ -108,7 +117,12 @@
     <Compile Include="TestLib\TargetPath.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\..\Codeer.Friendly.Windows.NativeStandardControls\Codeer.Friendly.Windows.NativeStandardControls.csproj">
+      <Project>{3c95e0f9-0f43-4e4d-8a6d-24f90db8b2c0}</Project>
+      <Name>Codeer.Friendly.Windows.NativeStandardControls</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />

@@ -132,13 +132,5 @@ Release/
 packages/
 ReleaseBinary/
 .vs/
-!Project/Test/NativeStandardControls/Debug/
-!Project/Test/NativeStandardControls/Debug/NativeControls.exe
-!Project/Test/NativeStandardControls/Debug-Uni/
-!Project/Test/NativeStandardControls/Debug-Uni/NativeControls.exe
-!Project/Test/NativeStandardControls/Debug64/
-!Project/Test/NativeStandardControls/Debug64/NativeControls.exe
-!Project/Test/NativeStandardControls/Debug64-Uni/
-!Project/Test/NativeStandardControls/Debug64-Uni/NativeControls.exe
-!Project/Setup/Codeer.Friendly.Windows.NativeStandardControls/Release
-!Project/Setup/Codeer.Friendly.Windows.NativeStandardControls/Release/setup.exe
+
+*.db

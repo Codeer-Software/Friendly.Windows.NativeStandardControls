@@ -38,9 +38,36 @@ namespace NativeStandardControls
         {
             Process.GetProcessById(app.ProcessId).Kill();
         }
-        
+
         [TestMethod]
-        public void TesClickMenu()
+        public void TestGetMenuItems()
+        {
+            var items = NativeMenuItem.GetMenuItems(main);
+
+        //    var xxx = NativeMenuItem.GetMenuItems(main.Handle, (IntPtr)main.App["Codeer.Friendly.Windows.NativeStandardControls.Inside.NativeMethods.GetMenu"](main.Handle).Core);
+
+            Assert.AreEqual(items.Length, 2);
+            Assert.AreEqual(items[0].Text, "A0");
+            Assert.AreEqual(items[1].Text, "B0");
+
+            var b0 = NativeMenuItem.GetMenuItem(main, "B0");
+            b0.Click();
+
+            var popupItems = NativeMenuItem.GetPopupMenuItems(app);
+            Assert.AreEqual(popupItems.Length, 3);
+            Assert.AreEqual(popupItems[0].Text, "B0-0");
+            Assert.AreEqual(popupItems[1].Text, "B0-1");
+            Assert.AreEqual(popupItems[2].Text, "B0-2");
+
+
+            var window = WindowControl.FromZTop(app);
+            var x = window.SendMessage(0x01E1, IntPtr.Zero, IntPtr.Zero);
+        //    NativeMenuItem.GetMenuItems(window.Handle, x);
+
+        }
+
+        [TestMethod]
+        public void TestClickMenu()
         {
             var b0 = NativeMenuItem.GetMenuItem(main, "B0");
             b0.Click();
@@ -56,8 +83,9 @@ namespace NativeStandardControls
 
             var b0111 = NativeMenuItem.GetPopupMenuItem(app, "B0-1-1-1𩸽");
             Assert.IsTrue(b0111.Enabled);
-            const int ID_B0_B7 = 32784;
+            const int ID_B0_B7 = 32778;
             Assert.AreEqual(b0111.Id, ID_B0_B7);
+            Assert.AreEqual(b0111.Text, "B0-1-1-1𩸽");
             b0111.Click();
 
             var msg = new NativeMessageBox(app.FromZTop());
