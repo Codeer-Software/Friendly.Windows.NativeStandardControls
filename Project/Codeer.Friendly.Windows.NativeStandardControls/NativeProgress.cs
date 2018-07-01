@@ -1,6 +1,7 @@
 ﻿using System;
 using Codeer.Friendly.Windows.Grasp;
 using Codeer.Friendly.Windows.NativeStandardControls.Inside;
+using Codeer.TestAssistant.GeneratorToolKit;
 
 namespace Codeer.Friendly.Windows.NativeStandardControls
 {
@@ -13,6 +14,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
     /// WindowClassがmsctls_progress32のウィンドウに対応した操作を提供します。
     /// </summary>
 #endif
+    [ControlDriver(WindowClassName = "msctls_progress32")]
     public class NativeProgress : NativeWindow
     {
         const int PBM_GETRANGE = (NativeCommonDefine.WM_USER + 7);

@@ -1,10 +1,6 @@
 ﻿using Codeer.Friendly.Windows.Grasp;
 using System.Drawing;
 using System;
-using System.Text;
-using System.Runtime.InteropServices;
-using Codeer.Friendly.Windows.NativeStandardControls.Properties;
-using Codeer.Friendly.Windows.NativeStandardControls.Inside;
 
 namespace Codeer.Friendly.Windows.NativeStandardControls
 {

@@ -1,11 +1,16 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Codeer.Friendly.Windows.NativeStandardControls", "Codeer.Friendly.Windows.NativeStandardControls.csproj", "{3C95E0F9-0F43-4E4D-8A6D-24F90DB8B2C0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Codeer.Friendly.Windows.NativeStandardControls.Generator", "..\Codeer.Friendly.Windows.NativeStandardControls.Generator\Codeer.Friendly.Windows.NativeStandardControls.Generator.csproj", "{0E004C2C-CDA1-4E19-90DD-5DB95D84327C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Nuget", "Nuget", "{03C380E0-FA09-40F0-B93B-E8A62334A085}"
+	ProjectSection(SolutionItems) = preProject
+		..\Nuget\Friendly.Windows.NativeStandardControls.nuspec = ..\Nuget\Friendly.Windows.NativeStandardControls.nuspec
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,5 +34,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DDDB5FC4-E998-4381-9B00-78B00FAA1598}
 	EndGlobalSection
 EndGlobal

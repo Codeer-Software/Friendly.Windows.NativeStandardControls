@@ -2,6 +2,7 @@
 using System.Text;
 using Codeer.Friendly.Windows.Grasp;
 using Codeer.Friendly.Windows.NativeStandardControls.Inside;
+using Codeer.TestAssistant.GeneratorToolKit;
 
 namespace Codeer.Friendly.Windows.NativeStandardControls
 {
@@ -14,6 +15,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
     /// WindowClassがEdit、RichEdit20A、RichEdit20Wのウィンドウに対応した操作を提供します。
     /// </summary>    
 #endif
+    [ControlDriver(WindowClassName = "Edit|RichEdit20A|RichEdit20W")]
     public class NativeEdit : NativeWindow
     {
         internal const int EM_GETSEL = 0x00B0;

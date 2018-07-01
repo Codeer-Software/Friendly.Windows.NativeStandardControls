@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using Codeer.Friendly.Windows.NativeStandardControls.Inside;
 using Codeer.TestAssistant.GeneratorToolKit;
 
 namespace Codeer.Friendly.Windows.NativeStandardControls.Generator
@@ -9,6 +7,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Generator
     /// <summary>
     /// WindowClassがSysTabControl32の操作をトレースしてコード生成。
     /// </summary>
+    [Generator("Codeer.Friendly.Windows.NativeStandardControls.NativeTab")]
     public class NativeTabGenerator : NativeGeneratorBase
     {
         /// <summary>

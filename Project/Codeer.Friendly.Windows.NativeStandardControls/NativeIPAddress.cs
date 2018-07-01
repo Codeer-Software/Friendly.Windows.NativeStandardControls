@@ -1,6 +1,7 @@
 ﻿using System;
 using Codeer.Friendly.Windows.Grasp;
 using Codeer.Friendly.Windows.NativeStandardControls.Inside;
+using Codeer.TestAssistant.GeneratorToolKit;
 
 namespace Codeer.Friendly.Windows.NativeStandardControls
 {
@@ -13,6 +14,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
     /// WindowClassがSysIPAddress32のウィンドウに対応した操作を提供します。
     /// </summary>
 #endif
+    [ControlDriver(WindowClassName = "SysIPAddress32")]
     public class NativeIPAddress : NativeWindow
     {
         internal const int IPM_SETADDRESS = (NativeCommonDefine.WM_USER + 101);

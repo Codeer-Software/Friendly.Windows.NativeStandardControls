@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using Codeer.Friendly.Windows.NativeStandardControls.Inside;
 using Codeer.TestAssistant.GeneratorToolKit;
@@ -9,6 +8,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Generator
     /// <summary>
     /// WindowClassがSysListView32の操作をトレースしてコード生成。
     /// </summary>
+    [Generator("Codeer.Friendly.Windows.NativeStandardControls.NativeListControl")]
     public class NativeListControlGenerator : NativeGeneratorBase
     {
         /// <summary>

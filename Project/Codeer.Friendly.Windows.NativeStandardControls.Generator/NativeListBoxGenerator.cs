@@ -8,6 +8,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Generator
     /// <summary>
     /// WindowClassがListBoxの操作をトレースしてコード生成。
     /// </summary>
+    [Generator("Codeer.Friendly.Windows.NativeStandardControls.NativeListBox")]
     public class NativeListBoxGenerator : NativeGeneratorBase
     {
         int[] _lastSelected;

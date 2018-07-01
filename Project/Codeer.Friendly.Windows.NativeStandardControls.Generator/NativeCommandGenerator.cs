@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using Codeer.Friendly.Windows.NativeStandardControls.Inside;
-using System.Runtime.InteropServices;
 using Codeer.Friendly.Windows.NativeStandardControls.Generator.Inside.Hook;
 using Codeer.TestAssistant.GeneratorToolKit;
 
 namespace Codeer.Friendly.Windows.NativeStandardControls.Generator
 {
+    //TODO
     /// <summary>
     /// ネイティブのWM_COMMANDに対応する処理を生成するクラス。
     /// </summary>

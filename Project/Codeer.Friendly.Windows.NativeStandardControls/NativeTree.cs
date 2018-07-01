@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using Codeer.Friendly.Windows.Grasp;
 using Codeer.Friendly.Windows.NativeStandardControls.Inside;
+using Codeer.TestAssistant.GeneratorToolKit;
 
 namespace Codeer.Friendly.Windows.NativeStandardControls
 {
@@ -17,6 +18,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
     /// WindowClassがSysTreeView32のウィンドウに対応した操作を提供します。
     /// </summary>    
 #endif
+    [ControlDriver(WindowClassName = "SysTreeView32")]
     public class NativeTree : NativeWindow
     {
         internal const int TV_FIRST = 0x1100;

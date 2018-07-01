@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using Codeer.Friendly.Windows.Grasp;
 using Codeer.Friendly.Windows.NativeStandardControls.Inside;
+using Codeer.TestAssistant.GeneratorToolKit;
 
 namespace Codeer.Friendly.Windows.NativeStandardControls
 {
@@ -14,6 +15,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
     /// WindowClassがSysMonthCal32のウィンドウに対応した操作を提供します。
     /// </summary>    
 #endif
+    [ControlDriver(WindowClassName = "SysMonthCal32")]
     public class NativeMonthCalendar : NativeWindow
     {
         internal const int MCM_FIRST = 0x1000;

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows.Forms;
-using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using Codeer.Friendly.Windows.NativeStandardControls.Inside;
 using Codeer.TestAssistant.GeneratorToolKit;
@@ -10,6 +9,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Generator
     /// <summary>
     /// WindowClassがSysTreeView32の操作をトレースしてコード生成。
     /// </summary>
+    [Generator("Codeer.Friendly.Windows.NativeStandardControls.NativeTree")]
     public class NativeTreeGenerator : NativeGeneratorBase
     {
         /// <summary>

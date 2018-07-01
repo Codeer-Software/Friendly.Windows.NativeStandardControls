@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using Codeer.Friendly.Windows.Grasp;
 using Codeer.Friendly.Windows.NativeStandardControls.Inside;
+using Codeer.TestAssistant.GeneratorToolKit;
 
 namespace Codeer.Friendly.Windows.NativeStandardControls
 {
@@ -14,6 +15,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
     /// WindowClassがButtonのウィンドウに対応した操作を提供します。
     /// </summary>
 #endif
+    [ControlDriver(WindowClassName = "Button")]
     public class NativeButton : NativeWindow
     {
         internal const int BM_GETCHECK = 0x00F0;

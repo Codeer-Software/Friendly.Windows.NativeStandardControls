@@ -2,6 +2,7 @@
 using System.Text;
 using Codeer.Friendly.Windows.Grasp;
 using Codeer.Friendly.Windows.NativeStandardControls.Inside;
+using Codeer.TestAssistant.GeneratorToolKit;
 
 namespace Codeer.Friendly.Windows.NativeStandardControls
 {
@@ -14,6 +15,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
     /// WindowClassがComboBox、ComboBoxEx32のウィンドウに対応した操作を提供します。
     /// </summary>
 #endif
+    [ControlDriver(WindowClassName = "ComboBox|ComboBoxEx32")]
     public class NativeComboBox : NativeWindow
     {
         internal const int CB_SHOWDROPDOWN = 0x014F;

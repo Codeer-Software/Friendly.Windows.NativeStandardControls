@@ -2,6 +2,7 @@
 using System.Drawing;
 using Codeer.Friendly.Windows.Grasp;
 using Codeer.Friendly.Windows.NativeStandardControls.Inside;
+using Codeer.TestAssistant.GeneratorToolKit;
 
 namespace Codeer.Friendly.Windows.NativeStandardControls
 {
@@ -14,6 +15,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
     /// WindowClassがmsctls_trackbar32のウィンドウに対応した操作を提供します。
     /// </summary>
 #endif
+    [ControlDriver(WindowClassName = "msctls_trackbar32")]
     public class NativeSlider : NativeWindow
     {
         const int TBM_GETPOS = (NativeCommonDefine.WM_USER);

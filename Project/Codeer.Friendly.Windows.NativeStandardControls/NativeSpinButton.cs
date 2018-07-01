@@ -3,6 +3,7 @@ using System.Text;
 using System.Globalization;
 using Codeer.Friendly.Windows.Grasp;
 using Codeer.Friendly.Windows.NativeStandardControls.Inside;
+using Codeer.TestAssistant.GeneratorToolKit;
 
 namespace Codeer.Friendly.Windows.NativeStandardControls
 {
@@ -15,6 +16,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
     /// WindowClassがmsctls_updown32のウィンドウに対応した操作を提供します。
     /// </summary>
 #endif
+    [ControlDriver(WindowClassName = "msctls_updown32")]
     public class NativeSpinButton : NativeWindow
     {
         const int UDM_GETRANGE = (NativeCommonDefine.WM_USER + 102);

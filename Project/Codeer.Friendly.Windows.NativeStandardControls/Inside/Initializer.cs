@@ -1,6 +1,5 @@
-﻿using System;
-using System.Reflection;
-using System.Windows.Forms;
+﻿using Codeer.TestAssistant.GeneratorToolKit;
+using System;
 
 namespace Codeer.Friendly.Windows.NativeStandardControls.Inside
 {
@@ -24,6 +23,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Inside
             if (!app.TryGetAppControlInfo(key, out isInit))
             {
                 //身初期化の場合はアセンブリを読み込ませます。
+                WindowsAppExpander.LoadAssembly(app, typeof(ControlDriverAttribute).Assembly);
                 WindowsAppExpander.LoadAssembly(app, myType.Assembly);
                 //文字列のローカライズと初期化
                 ResourcesLocal.Initialize(app);

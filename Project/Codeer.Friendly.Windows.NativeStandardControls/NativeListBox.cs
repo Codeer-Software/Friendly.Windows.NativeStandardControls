@@ -3,6 +3,7 @@ using System.Text;
 using System.Drawing;
 using Codeer.Friendly.Windows.Grasp;
 using Codeer.Friendly.Windows.NativeStandardControls.Inside;
+using Codeer.TestAssistant.GeneratorToolKit;
 
 namespace Codeer.Friendly.Windows.NativeStandardControls
 {
@@ -15,6 +16,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
     /// WindowClassがListBoxのウィンドウに対応した操作を提供します。
     /// </summary>    
 #endif
+    [ControlDriver(WindowClassName = "ListBox")]
     public class NativeListBox : NativeWindow
     {
         internal const int LB_SETSEL = 0x0185;

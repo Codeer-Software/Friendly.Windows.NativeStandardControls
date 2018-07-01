@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using Codeer.Friendly.Windows.NativeStandardControls.Inside;
-using System.Windows.Forms;
-using System.Text;
 using System.Runtime.InteropServices;
 using Codeer.TestAssistant.GeneratorToolKit;
 
@@ -11,6 +8,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Generator
     /// <summary>
     /// WindowClassがSysMonthCal32の操作をトレースしてコード生成。
     /// </summary>
+    [Generator("Codeer.Friendly.Windows.NativeStandardControls.NativeMonthCalendar")]
     public class NativeMonthCalendarGenerator : NativeGeneratorBase
     {
         /// <summary>

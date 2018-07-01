@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Windows.Forms;
-using System.Collections.Generic;
 using Codeer.Friendly.Windows.NativeStandardControls.Inside;
 using Codeer.TestAssistant.GeneratorToolKit;
 
@@ -9,6 +7,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Generator
     /// <summary>
     /// WindowClassがButtonの操作をトレースしてコード生成。
     /// </summary>
+    [Generator("Codeer.Friendly.Windows.NativeStandardControls.NativeButton")]
     public class NativeButtonGenerator : NativeGeneratorBase
     {
         bool _hasCheckState;

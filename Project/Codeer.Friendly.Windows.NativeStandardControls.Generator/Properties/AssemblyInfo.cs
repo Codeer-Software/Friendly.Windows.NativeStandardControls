@@ -35,3 +35,4 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyVersion("2.6.0.0")]
 [assembly: AssemblyFileVersion("2.6.0.0")]
 [assembly: System.CLSCompliant(true)]
+[assembly: Codeer.TestAssistant.GeneratorToolKit.RequiredDlls("Codeer.Friendly.dll|Codeer.Friendly.Windows.dll|Codeer.Friendly.Windows.Grasp.2.0|Codeer.Friendly.Windows.NativeStandardControls.dll")]

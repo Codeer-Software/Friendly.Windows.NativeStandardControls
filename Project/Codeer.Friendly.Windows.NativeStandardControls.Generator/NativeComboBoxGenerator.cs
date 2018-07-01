@@ -8,6 +8,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Generator
     /// <summary>
     /// WindowClassがComboBox、ComboBoxEx32の操作をトレースしてコード生成。
     /// </summary>
+    [Generator("Codeer.Friendly.Windows.NativeStandardControls.NativeComboBox")]
     public class NativeComboBoxGenerator : NativeGeneratorBase
     {
         bool _isDropDownList;
