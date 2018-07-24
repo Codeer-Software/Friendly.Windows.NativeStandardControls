@@ -12,7 +12,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Generator
     /// <summary>
     /// Nativeコントロールのコード生成基本クラス。
     /// </summary>
-    public abstract class NativeGeneratorBase : GeneratorBase
+    public abstract class NativeGeneratorBase : CaptureCodeGeneratorBase
     {
         int _controlId;
         IntPtr _parentHandle;

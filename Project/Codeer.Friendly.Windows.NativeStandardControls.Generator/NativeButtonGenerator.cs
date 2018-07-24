@@ -7,7 +7,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Generator
     /// <summary>
     /// WindowClassがButtonの操作をトレースしてコード生成。
     /// </summary>
-    [Generator("Codeer.Friendly.Windows.NativeStandardControls.NativeButton")]
+    [CaptureCodeGenerator("Codeer.Friendly.Windows.NativeStandardControls.NativeButton")]
     public class NativeButtonGenerator : NativeGeneratorBase
     {
         bool _hasCheckState;

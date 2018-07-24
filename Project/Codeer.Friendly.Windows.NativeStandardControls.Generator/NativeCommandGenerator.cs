@@ -9,7 +9,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Generator
     /// <summary>
     /// ネイティブのWM_COMMANDに対応する処理を生成するクラス。
     /// </summary>
-    public class NativeCommandGenerator : GeneratorBase
+    public class NativeCommandGenerator : CaptureCodeGeneratorBase
     {
         int _threadId;
 

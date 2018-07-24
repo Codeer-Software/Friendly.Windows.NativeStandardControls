@@ -7,7 +7,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Generator
     /// <summary>
     /// WindowClassがmsctls_updown32の操作をトレースしてコード生成。
     /// </summary>
-    [Generator("Codeer.Friendly.Windows.NativeStandardControls.NativeSpinButton")]
+    [CaptureCodeGenerator("Codeer.Friendly.Windows.NativeStandardControls.NativeSpinButton")]
     public class NativeSpinButtonGenerator : NativeGeneratorBase
     {
         /// <summary>

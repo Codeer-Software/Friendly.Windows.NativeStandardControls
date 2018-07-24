@@ -9,7 +9,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Generator
     /// <summary>
     /// WindowClassがSysTreeView32の操作をトレースしてコード生成。
     /// </summary>
-    [Generator("Codeer.Friendly.Windows.NativeStandardControls.NativeTree")]
+    [CaptureCodeGenerator("Codeer.Friendly.Windows.NativeStandardControls.NativeTree")]
     public class NativeTreeGenerator : NativeGeneratorBase
     {
         /// <summary>

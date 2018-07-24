@@ -9,7 +9,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Generator
     /// <summary>
     /// WindowClassがSysDateTimePick32の操作をトレースしてコード生成。
     /// </summary>
-    [Generator("Codeer.Friendly.Windows.NativeStandardControls.NativeDateTimePicker")]
+    [CaptureCodeGenerator("Codeer.Friendly.Windows.NativeStandardControls.NativeDateTimePicker")]
     public class NativeDateTimePickerGenerator : NativeGeneratorBase
     {
         /// <summary>

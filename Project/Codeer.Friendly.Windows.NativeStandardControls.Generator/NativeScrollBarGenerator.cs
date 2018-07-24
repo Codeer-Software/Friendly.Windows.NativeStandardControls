@@ -8,7 +8,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Generator
     /// <summary>
     /// WindowClassがScrollBarの操作をトレースしてコード生成。
     /// </summary>
-    [Generator("Codeer.Friendly.Windows.NativeStandardControls.NativeScrollBar")]
+    [CaptureCodeGenerator("Codeer.Friendly.Windows.NativeStandardControls.NativeScrollBar")]
     public class NativeScrollBarGenerator : NativeGeneratorBase
     {
         /// <summary>

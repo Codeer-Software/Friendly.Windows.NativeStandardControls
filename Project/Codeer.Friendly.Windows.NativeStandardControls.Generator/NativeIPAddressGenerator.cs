@@ -8,7 +8,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Generator
     /// <summary>
     /// WindowClassがSysIPAddress32のウィンドウに対応した操作を提供します。
     /// </summary>
-    [Generator("Codeer.Friendly.Windows.NativeStandardControls.NativeIPAddress")]
+    [CaptureCodeGenerator("Codeer.Friendly.Windows.NativeStandardControls.NativeIPAddress")]
     public class NativeIPAddressGenerator : NativeGeneratorBase
     {
         /// <summary>

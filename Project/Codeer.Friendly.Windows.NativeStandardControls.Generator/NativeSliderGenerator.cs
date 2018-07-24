@@ -7,7 +7,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Generator
     /// <summary>
     /// WindowClassがmsctls_trackbar32の操作をトレースしてコード生成。
     /// </summary>
-    [Generator("Codeer.Friendly.Windows.NativeStandardControls.NativeSlider")]
+    [CaptureCodeGenerator("Codeer.Friendly.Windows.NativeStandardControls.NativeSlider")]
     public class NativeSliderGenerator : NativeGeneratorBase
     {
         /// <summary>

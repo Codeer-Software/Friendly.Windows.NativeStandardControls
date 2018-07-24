@@ -7,7 +7,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Generator
     /// <summary>
     /// WindowClassがSysTabControl32の操作をトレースしてコード生成。
     /// </summary>
-    [Generator("Codeer.Friendly.Windows.NativeStandardControls.NativeTab")]
+    [CaptureCodeGenerator("Codeer.Friendly.Windows.NativeStandardControls.NativeTab")]
     public class NativeTabGenerator : NativeGeneratorBase
     {
         /// <summary>

@@ -8,7 +8,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Generator
     /// <summary>
     /// WindowClassがSysMonthCal32の操作をトレースしてコード生成。
     /// </summary>
-    [Generator("Codeer.Friendly.Windows.NativeStandardControls.NativeMonthCalendar")]
+    [CaptureCodeGenerator("Codeer.Friendly.Windows.NativeStandardControls.NativeMonthCalendar")]
     public class NativeMonthCalendarGenerator : NativeGeneratorBase
     {
         /// <summary>

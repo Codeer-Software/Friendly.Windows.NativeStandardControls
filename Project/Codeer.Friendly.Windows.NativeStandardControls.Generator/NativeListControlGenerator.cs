@@ -8,7 +8,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Generator
     /// <summary>
     /// WindowClassがSysListView32の操作をトレースしてコード生成。
     /// </summary>
-    [Generator("Codeer.Friendly.Windows.NativeStandardControls.NativeListControl")]
+    [CaptureCodeGenerator("Codeer.Friendly.Windows.NativeStandardControls.NativeListControl")]
     public class NativeListControlGenerator : NativeGeneratorBase
     {
         /// <summary>
