@@ -17,7 +17,7 @@
     </frameworkAssemblies>
     <dependencies>
       <dependency id="Codeer.Friendly.Windows.Grasp" version="2.7.1" />
-      <dependency id="Codeer.TestAssistant.GeneratorToolKit" version="2.4.0" />
+      <dependency id="Codeer.TestAssistant.GeneratorToolKit" version="2.4.1" />
     </dependencies>
   </metadata>
   <files>
