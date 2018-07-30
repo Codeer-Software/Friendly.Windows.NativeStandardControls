@@ -312,7 +312,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
                 mii.dwTypeData = new String(' ', (int)mii.cch);
                 ret = NativeMethods.GetMenuItemInfo(menuHandle, (uint)index, true, mii);
             }
-            enabled = ret && !IsOn(mii.fState, NativeMethods.MF_DISABLED);
+            enabled = ret && !IsOn(mii.fState, NativeMethods.MF_DISABLED) && !IsOn(mii.fState, NativeMethods.MF_GRAYED);
             text = mii.dwTypeData;
             return ret;
         }

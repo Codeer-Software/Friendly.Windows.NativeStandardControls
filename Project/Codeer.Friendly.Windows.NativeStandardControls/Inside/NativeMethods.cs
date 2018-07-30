@@ -579,6 +579,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Inside
         internal const int MIIM_STATE = 0x00000001;
         internal const int MIIM_ID = 0x00000002;
         internal const int MF_ENABLED = 0x00000000;
+        internal const int MF_GRAYED = 0x00000001;
         internal const int MF_DISABLED = 0x00000002;
 
         [DllImport("user32.dll")]
