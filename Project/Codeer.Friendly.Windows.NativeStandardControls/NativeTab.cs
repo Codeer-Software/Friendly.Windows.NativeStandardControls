@@ -15,7 +15,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
     /// WindowClassがSysTabControl32のウィンドウに対応した操作を提供します。
     /// </summary>    
 #endif
-    [ControlDriver(WindowClassName = "SysTabControl32")]
+    [ControlDriver(WindowClassName = "SysTabControl32", SearchDescendantUserControls = true)]
     public class NativeTab : NativeWindow
     {
         internal const int TCN_FIRST = -550;
