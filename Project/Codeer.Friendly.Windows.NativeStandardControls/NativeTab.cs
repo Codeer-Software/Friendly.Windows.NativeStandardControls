@@ -21,7 +21,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
         internal const int TCN_FIRST = -550;
         internal const int TCN_SELCHANGE = TCN_FIRST - 1;
         internal const int TCN_SELCHANGING = TCN_FIRST - 2;
-        internal const int TCM_FIRST = 0x1300;
+        internal const int TCM_FIRST = 0x1300;f
         internal const int TCM_GETITEMA = (TCM_FIRST + 5);
         internal const int TCM_GETITEMW = (TCM_FIRST + 60);
         internal const int TCM_GETCURSEL = (TCM_FIRST + 11);
