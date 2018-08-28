@@ -32,7 +32,7 @@ using System.Runtime.InteropServices;
 // すべての値を指定するか、下のように '*' を使ってビルドおよびリビジョン番号を 
 // 既定値にすることができます:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("2.8.7.0")]
-[assembly: AssemblyFileVersion("2.8.7.0")]
+[assembly: AssemblyVersion("2.8.8.0")]
+[assembly: AssemblyFileVersion("2.8.8.0")]
 [assembly: System.CLSCompliant(true)]
 [assembly: Codeer.TestAssistant.GeneratorToolKit.RequiredDlls("Codeer.Friendly.dll|Codeer.Friendly.Windows.dll|Codeer.Friendly.Windows.Grasp.2.0|Codeer.Friendly.Windows.NativeStandardControls.dll")]
