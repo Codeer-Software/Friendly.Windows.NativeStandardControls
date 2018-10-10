@@ -72,7 +72,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Generator
                                 path = GetNodePathCode(info.itemNew.hItem);
                                 if (!string.IsNullOrEmpty(path))
                                 {
-                                    AddSentence(new TokenName(), ".EmulateExpand(" + path + ", " +
+                                    AddSentence(new TokenName(), path + ".EmulateExpand(" +
                                         NativeTree.IsExpandedInTarget(WindowHandle, info.itemNew.hItem).ToString().ToLower(), new TokenAsync(CommaType.Before), ");");
                                 }
                             }
@@ -90,7 +90,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Generator
                             string text = isUni ? Marshal.PtrToStringUni(info.item.pszText) :
                                      Marshal.PtrToStringAnsi(info.item.pszText);
                             text = NativeEditGenerator.AdjustText(text);
-                            AddSentence(new TokenName(), ".EmulateEdit(" + path + ", " + text, new TokenAsync(CommaType.Before), ");");
+                            AddSentence(new TokenName(), path + ".EmulateEdit(" + text, new TokenAsync(CommaType.Before), ");");
                         }
                     }
                     break;
@@ -112,7 +112,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Generator
                 bool isCurChecked = NativeTree.IsCheckedInTarget(WindowHandle, hItem);
                 if (isChecked != isCurChecked)
                 {
-                    AddSentence(new TokenName(), ".EmulateCheck(" + path + ", " + isCurChecked.ToString().ToLower(), new TokenAsync(CommaType.Before), ");");
+                    AddSentence(new TokenName(), path + ".EmulateCheck(" + isCurChecked.ToString().ToLower(), new TokenAsync(CommaType.Before), ");");
                 }
             });
         }
@@ -161,7 +161,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Generator
                 path = NativeEditGenerator.AdjustText(text) + path;
                 hItem = NativeMethods.SendMessage(WindowHandle, NativeTree.TVM_GETNEXTITEM, new IntPtr(NativeTree.TVGN_PARENT), hItem);
             }
-            return string.IsNullOrEmpty(path) ? string.Empty : Name + ".FindNode(" + path + ")";
+            return string.IsNullOrEmpty(path) ? string.Empty : Name + ".FindNodeObj(" + path + ")";
         }
     }
 }

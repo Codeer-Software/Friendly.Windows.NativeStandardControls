@@ -101,6 +101,7 @@
     <Compile Include="NativeToolBar.cs" />
     <Compile Include="NativeToolBarItem.cs" />
     <Compile Include="NativeTree.cs" />
+    <Compile Include="NativeTreeNode.cs" />
     <Compile Include="NativeWindow.cs" />
     <Compile Include="NMDATETIMECHANGE.cs" />
     <Compile Include="NMHDR.cs" />

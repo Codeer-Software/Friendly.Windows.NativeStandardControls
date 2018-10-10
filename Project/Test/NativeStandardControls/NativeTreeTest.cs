@@ -120,6 +120,16 @@ namespace NativeStandardControls
         }
 
         /// <summary>
+        /// GetItemTextのテスト。
+        /// </summary>
+        [TestMethod]
+        public void TestGetItemTextoBJ()
+        {
+            NativeTree tree = new NativeTree(testDlg.IdentifyFromDialogId(1041));
+            Assert.AreEqual("0", tree.NodeObjs[0].Text);
+        }
+
+        /// <summary>
         /// Nodesのテスト。
         /// </summary>
         [TestMethod]
@@ -130,6 +140,19 @@ namespace NativeStandardControls
             Assert.AreEqual(2, nodes.Length);
             Assert.AreEqual("0", tree.GetItemText(nodes[0]));
             Assert.AreEqual("10", tree.GetItemText(nodes[1]));
+        }
+
+        /// <summary>
+        /// Nodesのテスト。
+        /// </summary>
+        [TestMethod]
+        public void TestNodeObjs()
+        {
+            NativeTree tree = new NativeTree(testDlg.IdentifyFromDialogId(1041));
+            var nodes = tree.NodeObjs;
+            Assert.AreEqual(2, nodes.Length);
+            Assert.AreEqual("0", nodes[0].Text);
+            Assert.AreEqual("10", nodes[1].Text);
         }
 
         /// <summary>
@@ -153,6 +176,28 @@ namespace NativeStandardControls
         }
 
         /// <summary>
+        /// EmulateSelectItemとSelectedItemのテスト。
+        /// </summary>
+        [TestMethod]
+        public void TestSelectedItemObj()
+        {
+            NativeTree tree = new NativeTree(testDlg.IdentifyFromDialogId(1041));
+            var node = tree.FindNodeObj(0, 1);
+            node.EmulateSelectItem();
+            Assert.AreEqual("2", tree.SelectedNodeObj.Text);
+            Assert.IsTrue(node.IsSelected);
+
+            //非同期でも同様の効果があることの確認。
+            Async a = new Async();
+            tree.FindNodeObj(1, 0).EmulateSelectItem(a);
+            while (!a.IsCompleted)
+            {
+                Thread.Sleep(10);
+            }
+            Assert.AreEqual("0", tree.SelectedNodeObj.Text);
+        }
+
+        /// <summary>
         /// FindNodeのテスト。
         /// </summary>
         [TestMethod]
@@ -161,6 +206,17 @@ namespace NativeStandardControls
             NativeTree tree = new NativeTree(testDlg.IdentifyFromDialogId(1041));
             Assert.AreEqual("2", tree.GetItemText(tree.FindNode(0, 1)));
             Assert.AreEqual("1", tree.GetItemText(tree.FindNode("0", "1")));
+        }
+
+        /// <summary>
+        /// FindNodeのテスト。
+        /// </summary>
+        [TestMethod]
+        public void TestFindNodeObj()
+        {
+            NativeTree tree = new NativeTree(testDlg.IdentifyFromDialogId(1041));
+            Assert.AreEqual("2", tree.FindNodeObj(0, 1).Text);
+            Assert.AreEqual("1", tree.FindNodeObj("0", "1").Text);
         }
 
         /// <summary>
@@ -215,6 +271,16 @@ namespace NativeStandardControls
         }
 
         /// <summary>
+        /// GetItemDataのテスト。
+        /// </summary>
+        [TestMethod]
+        public void TestGetItemDataObj()
+        {
+            NativeTree tree = new NativeTree(testDlg.IdentifyFromDialogId(1041));
+            Assert.AreEqual(new IntPtr(100), tree.NodeObjs[0].GetItemData());
+        }
+
+        /// <summary>
         /// GetItemRectのテスト。
         /// </summary>
         [TestMethod]
@@ -227,8 +293,26 @@ namespace NativeStandardControls
                 return;
             }
             NativeTree tree = new NativeTree(testDlg.IdentifyFromDialogId(1041));
-            Assert.AreEqual(new  Rectangle(0, 0, 128, 17), tree.GetItemRect(tree.Nodes[0], false));
+            Assert.AreEqual(new Rectangle(0, 0, 128, 17), tree.GetItemRect(tree.Nodes[0], false));
             Assert.AreEqual(new Rectangle(35, 0, 11, 17), tree.GetItemRect(tree.Nodes[0], true));
+        }
+
+
+        /// <summary>
+        /// GetItemRectのテスト。
+        /// </summary>
+        [TestMethod]
+        public void TestGetItemRectObj()
+        {
+            if (!OSUtility.Is7or8or10())
+            {
+                //矩形は環境によって変わるので7のみ。しかし、7なら常に同じ矩形とも限らない。
+                //このテストデータが使えるOSの設定は限られる。
+                return;
+            }
+            NativeTree tree = new NativeTree(testDlg.IdentifyFromDialogId(1041));
+            Assert.AreEqual(new Rectangle(0, 0, 128, 17), tree.NodeObjs[0].GetItemRect(false));
+            Assert.AreEqual(new Rectangle(35, 0, 11, 17), tree.NodeObjs[0].GetItemRect(true));
         }
 
         /// <summary>
@@ -254,6 +338,28 @@ namespace NativeStandardControls
         }
 
         /// <summary>
+        /// EmulateExpandとIsExpandedのテスト。
+        /// </summary>
+        [TestMethod]
+        public void TestExpandedObj()
+        {
+            NativeTree tree = new NativeTree(testDlg.IdentifyFromDialogId(1041));
+            tree.NodeObjs[0].EmulateExpand(true);
+            Assert.IsTrue(tree.NodeObjs[0].IsExpanded);
+            tree.NodeObjs[0].EmulateExpand(false);
+            Assert.IsFalse(tree.NodeObjs[0].IsExpanded);
+
+            //非同期でも同様の効果があることの確認。
+            Async a = new Async();
+            tree.NodeObjs[0].EmulateExpand(true, a);
+            while (!a.IsCompleted)
+            {
+                Thread.Sleep(10);
+            }
+            Assert.IsTrue(tree.NodeObjs[0].IsExpanded);
+        }
+
+        /// <summary>
         /// EmulateCheckとIsCheckedのテスト。
         /// </summary>
         [TestMethod]
@@ -273,6 +379,28 @@ namespace NativeStandardControls
                 Thread.Sleep(10);
             }
             Assert.IsTrue(tree.IsChecked(tree.Nodes[0]));
+        }
+
+        /// <summary>
+        /// EmulateCheckとIsCheckedのテスト。
+        /// </summary>
+        [TestMethod]
+        public void TestCheckedObj()
+        {
+            NativeTree tree = new NativeTree(testDlg.IdentifyFromDialogId(1041));
+            tree.NodeObjs[0].EmulateCheck(true);
+            Assert.IsTrue(tree.IsChecked(tree.Nodes[0]));
+            tree.NodeObjs[0].EmulateCheck(false);
+            Assert.IsFalse(tree.NodeObjs[0].IsChecked);
+
+            //非同期でも同様の効果があることの確認。
+            Async a = new Async();
+            tree.NodeObjs[0].EmulateCheck(true, a);
+            while (!a.IsCompleted)
+            {
+                Thread.Sleep(10);
+            }
+            Assert.IsTrue(tree.NodeObjs[0].IsChecked);
         }
 
         /// <summary>
@@ -336,6 +464,67 @@ namespace NativeStandardControls
             Assert.AreEqual(TVIS.SELECTED, check.state & TVIS.SELECTED);
         }
 
+
+
+
+        /// <summary>
+        /// SetItemとGetItemのテスト。
+        /// </summary>
+        [TestMethod]
+        public void TestSetGetItemObj()
+        {
+            NativeTree tree = new NativeTree(testDlg.IdentifyFromDialogId(1041));
+            TVITEMEX item = new TVITEMEX();
+            foreach (TVIF element in (TVIF[])Enum.GetValues(typeof(TVIF)))
+            {
+                item.mask |= element;
+            }
+            foreach (TVIS element in (TVIS[])Enum.GetValues(typeof(TVIS)))
+            {
+                item.stateMask |= element;
+            }
+
+            //アイテムのすべての情報が正常に取得できることを確認。
+            tree.NodeObjs[0].GetItem(item);
+            Assert.AreEqual("0", item.pszText);
+            Assert.AreEqual(0, item.iImage);
+            Assert.AreEqual(4, item.iSelectedImage);
+            Assert.AreEqual(1, item.cChildren);
+            Assert.AreEqual(new IntPtr(100), item.lParam);
+            Assert.AreEqual((TVIS)0, (item.state & TVIS.EXPANDED));
+            tree.EmulateExpand(item.hItem, true);
+            tree.NodeObjs[0].GetItem(item);
+            Assert.AreEqual(TVIS.EXPANDED, (item.state & TVIS.EXPANDED));
+            tree.FindNodeObj(0, 0).GetItem(item); //iImageは上記では0確認であるため、念のため、値の入ったアイテムでもテスト。
+            Assert.AreEqual(1, item.iImage);
+
+            //全ての情報情報を設定できることを確認。
+            tree.NodeObjs[0].GetItem(item);//もとに戻す用
+            TVITEMEX newItem = new TVITEMEX();
+            newItem.mask = item.mask;
+            newItem.pszText = "xxx";
+            newItem.iImage = 1;
+            newItem.iSelectedImage = 2;
+            newItem.cChildren = 0;
+            newItem.lParam = new IntPtr(200);
+            newItem.stateMask = TVIS.SELECTED;
+            newItem.state = TVIS.SELECTED;
+            tree.NodeObjs[0].EmulateChangeItem(newItem);
+
+            TVITEMEX check = new TVITEMEX();
+            check.mask = item.mask;
+            check.stateMask = item.stateMask;
+            tree.NodeObjs[0].GetItem(check);
+            Assert.AreEqual("xxx", check.pszText);
+            Assert.AreEqual(1, check.iImage);
+            Assert.AreEqual(2, check.iSelectedImage);
+            Assert.AreEqual(0, check.cChildren);
+            Assert.AreEqual(new IntPtr(200), check.lParam);
+            Assert.AreEqual(TVIS.SELECTED, check.state & TVIS.SELECTED);
+        }
+
+
+
         /// <summary>
         /// 編集テスト
         /// </summary>
@@ -369,6 +558,24 @@ namespace NativeStandardControls
             Assert.IsTrue(tree.EnsureVisible(node));
             Assert.IsTrue(rect.Contains(tree.GetItemRect(node, false)));
         }
+        
+        /// <summary>
+        /// EnsureVisibleのテスト
+        /// </summary>
+        [TestMethod]
+        public void TestEnsureVisibleObj()
+        {
+            NativeTree tree = new NativeTree(testDlg.IdentifyFromDialogId(1041));
+            tree.EmulateExpand(tree.Nodes[1], true);
+            var node = tree.FindNodeObj(1, 99);
+            RECT native = new RECT();
+            NativeMethods.GetWindowRect(tree.Handle, out native);
+
+            Rectangle rect = new Rectangle(0, 0, native.Right - native.Left + 1, native.Bottom - native.Top + 1);
+            Assert.IsFalse(rect.Contains(node.GetItemRect(false)));
+            Assert.IsTrue(node.EnsureVisible());
+            Assert.IsTrue(rect.Contains(node.GetItemRect(false)));
+        }
 
         /// <summary>
         /// 編集テスト
@@ -383,6 +590,26 @@ namespace NativeStandardControls
             //非同期でも同様の効果があることの確認。
             Async a = new Async();
             tree.EmulateEdit(tree.Nodes[0], "test2", a);
+            while (!a.IsCompleted)
+            {
+                Thread.Sleep(10);
+            }
+            Assert.AreEqual("test2", tree.GetItemText(tree.Nodes[0]));
+        }
+
+        /// <summary>
+        /// 編集テスト
+        /// </summary>
+        [TestMethod]
+        public void TestEditObj()
+        {
+            NativeTree tree = new NativeTree(testDlg.IdentifyFromDialogId(1041));
+            tree.NodeObjs[0].EmulateEdit("test");
+            Assert.AreEqual("test", tree.GetItemText(tree.Nodes[0]));
+
+            //非同期でも同様の効果があることの確認。
+            Async a = new Async();
+            tree.NodeObjs[0].EmulateEdit("test2", a);
             while (!a.IsCompleted)
             {
                 Thread.Sleep(10);

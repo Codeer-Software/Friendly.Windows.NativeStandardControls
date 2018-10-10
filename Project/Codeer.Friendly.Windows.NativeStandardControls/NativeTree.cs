@@ -93,7 +93,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
         {
             Initializer.Initialize(App);
         }
-        
+
 #if ENG
         /// <summary>
         /// Returns the item handle of the selected item.
@@ -110,7 +110,18 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
                 return SendMessage(TVM_GETNEXTITEM, new IntPtr(TVGN_CARET), IntPtr.Zero);
             }
         }
-        
+
+#if ENG
+        /// <summary>
+        /// Returns the item handle of the selected item.
+        /// </summary>
+#else
+        /// <summary>
+        /// 選択されているアイテムハンドルです。
+        /// </summary>
+#endif
+        public NativeTreeNode SelectedNodeObj => new NativeTreeNode(this, SelectedItem);
+
 #if ENG
         /// <summary>
         /// Returns the item handles of the top-level nodes.
@@ -125,6 +136,28 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
             get
             {
                 return (IntPtr[])App[MyType, "GetRootNodesInTarget"](Handle).Core;
+            }
+        }
+
+#if ENG
+        /// <summary>
+        /// Returns the item handles of the top-level nodes.
+        /// </summary>
+#else
+        /// <summary>
+        /// トップレベルのノードのアイテムハンドルです。
+        /// </summary>
+#endif
+        public NativeTreeNode[] NodeObjs
+        {
+            get
+            {
+                var list = new List<NativeTreeNode>();
+                foreach (var e in Nodes)
+                {
+                    list.Add(new NativeTreeNode(this, e));
+                }
+                return list.ToArray();
             }
         }
         
@@ -199,7 +232,26 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
         {
             return (IntPtr)App[MyType, "FindNodeInTarget"](Handle, nodeText).Core;
         }
-        
+
+#if ENG
+        /// <summary>
+        /// Searches for a node.
+        /// </summary>
+        /// <param name="nodeText">The text of each node.</param>
+        /// <returns>The item handle of the found node or IntPtr.Zero if it is not found.</returns>
+#else
+        /// <summary>
+        /// ノードを検索します。
+        /// </summary>
+        /// <param name="nodeText">各ノードのテキスト。</param>
+        /// <returns>検索されたノードのアイテムハンドル。未発見時はIntPtr.Zeroが返ります。</returns>
+#endif
+        public NativeTreeNode FindNodeObj(params string[] nodeText)
+        {
+            var ptr = FindNode(nodeText);
+            return ptr == IntPtr.Zero ? null : new NativeTreeNode(this, ptr);
+        }
+
 #if ENG
         /// <summary>
         /// Searches for a node.
@@ -217,7 +269,26 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
         {
             return (IntPtr)App[MyType, "FindNodeInTarget"](Handle, nodeIndex).Core;
         }
-        
+
+#if ENG
+        /// <summary>
+        /// Searches for a node.
+        /// </summary>
+        /// <param name="nodeIndex"> The index of each node.</param>
+        /// <returns>The item handle of the found node or IntPtr.Zero if it is not found.</returns>
+#else
+        /// <summary>
+        /// ノードを検索します。
+        /// </summary>
+        /// <param name="nodeIndex">各ノードでのインデックス。</param>
+        /// <returns>検索されたノードのアイテムハンドル。未発見時はIntPtr.Zeroが返ります。</returns>
+#endif
+        public NativeTreeNode FindNodeObj(params int[] nodeIndex)
+        {
+            var ptr = FindNode(nodeIndex);
+            return ptr == IntPtr.Zero ? null : new NativeTreeNode(this, ptr);
+        }
+
 #if ENG
         /// <summary>
         /// Obtains item information.
