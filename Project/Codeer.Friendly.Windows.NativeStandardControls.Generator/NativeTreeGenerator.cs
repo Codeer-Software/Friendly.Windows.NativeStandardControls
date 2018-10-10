@@ -57,7 +57,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Generator
                     {
                         if (HasFocus() && GetCurrentItemAndPath(ref hItem, ref path))
                         {
-                            AddSentence(new TokenName(), ".EmulateSelectItem(" + path, new TokenAsync(CommaType.Before), ");");
+                            AddSentence(new TokenName(), path + ".EmulateSelectItem(", new TokenAsync(CommaType.Before), ");");
                         }
                     });
                     break;
@@ -161,7 +161,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Generator
                 path = NativeEditGenerator.AdjustText(text) + path;
                 hItem = NativeMethods.SendMessage(WindowHandle, NativeTree.TVM_GETNEXTITEM, new IntPtr(NativeTree.TVGN_PARENT), hItem);
             }
-            return string.IsNullOrEmpty(path) ? string.Empty : Name + ".FindNodeObj(" + path + ")";
+            return string.IsNullOrEmpty(path) ? string.Empty : ".FindNodeObj(" + path + ")";
         }
     }
 }
