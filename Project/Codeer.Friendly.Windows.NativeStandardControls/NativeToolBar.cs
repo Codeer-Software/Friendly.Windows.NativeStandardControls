@@ -16,6 +16,8 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
 #endif
     public class NativeToolBar : NativeWindow
     {
+        Type MyType => typeof(NativeToolBar);
+
         const int WM_USER = 0x0400;
         const int TB_GETBUTTON = (WM_USER + 23);
         const int TB_BUTTONCOUNT = (WM_USER + 24);
@@ -71,7 +73,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
 #endif
         public NativeToolBarItem[] GetItems()
         {
-            var cores = (NativeToolBarItem.Core[])App[GetType(), nameof(GetItemsCore)](Handle).Core;
+            var cores = (NativeToolBarItem.Core[])App[MyType, nameof(GetItemsCore)](Handle).Core;
             var items = new NativeToolBarItem[cores.Length];
             for (int i = 0; i < cores.Length; i++)
             {

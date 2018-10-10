@@ -18,6 +18,8 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
     [ControlDriver(WindowClassName = "SysMonthCal32")]
     public class NativeMonthCalendar : NativeWindow
     {
+        Type MyType => typeof(NativeMonthCalendar);
+
         internal const int MCM_FIRST = 0x1000;
         internal const int MCM_GETCURSEL = (MCM_FIRST + 1);
         internal const int MCM_SETCURSEL = (MCM_FIRST + 2);
@@ -179,7 +181,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
         public bool GetSelectionRange(ref DateTime min, ref DateTime max)
         {
             AppVar inTarget = App.Dim(new SYSTEMTIME[2]);
-            if (!(bool)App[GetType(), "GetSelectionRangeInTarget"](Handle, inTarget).Core)
+            if (!(bool)App[MyType, "GetSelectionRangeInTarget"](Handle, inTarget).Core)
             {
                 return false;
             }
@@ -204,7 +206,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
 #endif
         public void EmulateSelectDay(DateTime day)
         {
-            App[GetType(), "EmulateSelectDayInTarget"](Handle, day);
+            App[MyType, "EmulateSelectDayInTarget"](Handle, day);
         }
 
 #if ENG
@@ -226,7 +228,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
 #endif
         public void EmulateSelectDay(DateTime day, Async async)
         {
-            App[GetType(), "EmulateSelectDayInTarget", async](Handle, day);
+            App[MyType, "EmulateSelectDayInTarget", async](Handle, day);
         }
 
 #if ENG
@@ -248,7 +250,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
 #endif
         public void EmulateSelectDay(DateTime min, DateTime max)
         {
-            App[GetType(), "EmulateSelectDayInTarget"](Handle, min, max);
+            App[MyType, "EmulateSelectDayInTarget"](Handle, min, max);
         }
 
 #if ENG
@@ -274,7 +276,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
 #endif
         public void EmulateSelectDay(DateTime min, DateTime max, Async async)
         {
-            App[GetType(), "EmulateSelectDayInTarget", async](Handle, min, max);
+            App[MyType, "EmulateSelectDayInTarget", async](Handle, min, max);
         }
 
 #if ENG
@@ -292,7 +294,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
 #endif
         public void EmulateChangeView(MonthCalendarView view)
         {
-            App[GetType(), "EmulateChangeViewInTarget"](Handle, view);
+            App[MyType, "EmulateChangeViewInTarget"](Handle, view);
         }
 
 #if ENG
@@ -314,7 +316,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
 #endif
         public void EmulateChangeView(MonthCalendarView view, Async async)
         {
-            App[GetType(), "EmulateChangeViewInTarget", async](Handle, view);
+            App[MyType, "EmulateChangeViewInTarget", async](Handle, view);
         }
 
         /// <summary>

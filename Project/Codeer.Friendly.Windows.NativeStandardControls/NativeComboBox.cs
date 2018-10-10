@@ -18,6 +18,8 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
     [ControlDriver(WindowClassName = "ComboBox|ComboBoxEx32")]
     public class NativeComboBox : NativeWindow
     {
+        Type MyType => typeof(NativeComboBox);
+
         internal const int CB_SHOWDROPDOWN = 0x014F;
         internal const int CB_GETDROPPEDSTATE = 0x0157;
         internal const int CB_SETCURSEL = 0x014E;
@@ -103,7 +105,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
         {
             get
             {
-                return (int)App[GetType(), "GetCurSelInTarget"](Handle).Core;
+                return (int)App[MyType, "GetCurSelInTarget"](Handle).Core;
             }
         }
         
@@ -163,7 +165,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
 #endif
         public string GetItemText(int index)
         {
-            return (string)App[GetType(), "GetLBTextInTarget"](Handle, index).Core;
+            return (string)App[MyType, "GetLBTextInTarget"](Handle, index).Core;
         }
         
 #if ENG
@@ -186,7 +188,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
 #endif
         public int FindItem(int findStart, string text)
         {
-            return (int)App[GetType(), "FindItemInTarget"](Handle, findStart, text).Core;
+            return (int)App[MyType, "FindItemInTarget"](Handle, findStart, text).Core;
         }
         
 #if ENG
@@ -206,7 +208,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
 #endif
         public void EmulateSelectItem(int index)
         {
-            App[GetType(), "EmulateSelectItemInTarget"](Handle, index);
+            App[MyType, "EmulateSelectItemInTarget"](Handle, index);
         }
         
 #if ENG
@@ -230,7 +232,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
 #endif
         public void EmulateSelectItem(int index, Async async)
         {
-            App[GetType(), "EmulateSelectItemInTarget", async](Handle, index);
+            App[MyType, "EmulateSelectItemInTarget", async](Handle, index);
         }
         
 #if ENG
@@ -250,7 +252,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
 #endif
         public void EmulateChangeEditText(string newText)
         {
-            App[GetType(), "EmulateChangeEditTextInTarget"](Handle, newText);
+            App[MyType, "EmulateChangeEditTextInTarget"](Handle, newText);
         }
         
 #if ENG
@@ -274,7 +276,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
 #endif
         public void EmulateChangeEditText(string newText, Async async)
         {
-            App[GetType(), "EmulateChangeEditTextInTarget", async](Handle, newText);
+            App[MyType, "EmulateChangeEditTextInTarget", async](Handle, newText);
         }
         
 #if ENG
@@ -293,7 +295,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
 #endif
         public void EmulateChangeDropDownVisible(bool visible)
         {
-            App[GetType(), "EmulateChangeDropDownVisibleInTarget"](Handle, visible);
+            App[MyType, "EmulateChangeDropDownVisibleInTarget"](Handle, visible);
         }
         
 #if ENG
@@ -316,7 +318,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
 #endif
         public void EmulateChangeDropDownVisible(bool visible, Async async)
         {
-            App[GetType(), "EmulateChangeDropDownVisibleInTarget", async](Handle, visible);
+            App[MyType, "EmulateChangeDropDownVisibleInTarget", async](Handle, visible);
         }
 
         /// <summary>

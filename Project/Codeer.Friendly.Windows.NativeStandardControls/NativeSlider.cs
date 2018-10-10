@@ -18,6 +18,8 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
     [ControlDriver(WindowClassName = "msctls_trackbar32")]
     public class NativeSlider : NativeWindow
     {
+        Type MyType => typeof(NativeSlider);
+
         const int TBM_GETPOS = (NativeCommonDefine.WM_USER);
         const int TBM_GETRANGEMIN = (NativeCommonDefine.WM_USER + 1);
         const int TBM_GETRANGEMAX = (NativeCommonDefine.WM_USER + 2);
@@ -128,7 +130,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
         {
             get
             {
-                return (int)App[GetType(), "GetPosInTarget"](Handle).Core;
+                return (int)App[MyType, "GetPosInTarget"](Handle).Core;
             }
         }
         
@@ -149,7 +151,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
 #endif
         public void EmulateChangePos(int pos)
         {
-            App[GetType(), "EmulateChangePosInTarget"](Handle, IsVertical, pos);
+            App[MyType, "EmulateChangePosInTarget"](Handle, IsVertical, pos);
         }
         
 #if ENG
@@ -173,7 +175,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
 #endif
         public void EmulateChangePos(int pos, Async async)
         {
-            App[GetType(), "EmulateChangePosInTarget", async](Handle, IsVertical, pos);
+            App[MyType, "EmulateChangePosInTarget", async](Handle, IsVertical, pos);
         }
 
         /// <summary>

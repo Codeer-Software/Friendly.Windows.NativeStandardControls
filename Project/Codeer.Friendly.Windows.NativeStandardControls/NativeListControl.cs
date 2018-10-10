@@ -22,6 +22,8 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
     [ControlDriver(WindowClassName = "SysListView32")]
     public class NativeListControl : NativeWindow
     {
+        Type MyType => typeof(NativeListControl);
+
         internal const int LVM_FIRST = 0x1000;
         internal const int LVM_GETITEMRECT = (LVM_FIRST + 14);
         internal const int LVM_GETSUBITEMRECT = (LVM_FIRST + 56);
@@ -119,7 +121,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
         {
             get
             { 
-                return (int[])App[GetType(), "SelectedIndicesInTarget"](Handle).Core; 
+                return (int[])App[MyType, "SelectedIndicesInTarget"](Handle).Core; 
             }
         }
         
@@ -210,7 +212,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
 #endif
         public LVIS GetItemState(int itemIndex, LVIS stateMask)
         {
-            return (LVIS)App[GetType(), "GetItemStateInTarget"](Handle, itemIndex, stateMask).Core;
+            return (LVIS)App[MyType, "GetItemStateInTarget"](Handle, itemIndex, stateMask).Core;
         }
         
 #if ENG
@@ -282,7 +284,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
         public bool GetColumn(int col, LVCOLUMN column)
         {
             AppVar inTarget = App.Dim(column);
-            bool ret = (bool)App[GetType(), "GetColumnInTarget"](Handle, col, inTarget).Core;
+            bool ret = (bool)App[MyType, "GetColumnInTarget"](Handle, col, inTarget).Core;
             LVCOLUMN data = (LVCOLUMN)inTarget.Core;
             column._core = data._core;
             column._pszText = data._pszText;
@@ -333,7 +335,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
 #endif
         public int FindItem(int findStart, int targetSubItemIndex, string text)
         {
-            return (int)App[GetType(), "FindItemInTarget"](Handle, findStart, targetSubItemIndex, text).Core;
+            return (int)App[MyType, "FindItemInTarget"](Handle, findStart, targetSubItemIndex, text).Core;
         }
         
 #if ENG
@@ -393,7 +395,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
 #endif
         public void EmulateChangeItem(LVITEM item)
         {
-            App[GetType(), "EmulateChangeItemInTarget"](Handle, item);
+            App[MyType, "EmulateChangeItemInTarget"](Handle, item);
         }
         
 #if ENG
@@ -415,7 +417,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
 #endif
         public void EmulateChangeItem(LVITEM item, Async async)
         {
-            App[GetType(), "EmulateChangeItemInTarget", async](Handle, item);
+            App[MyType, "EmulateChangeItemInTarget", async](Handle, item);
         }
         
 #if ENG
@@ -435,7 +437,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
 #endif
         public void EmulateEdit(int itemIndex, string text)
         {
-            App[GetType(), "EmulateEditInTarget"](Handle, itemIndex, text, SelectedIndices);
+            App[MyType, "EmulateEditInTarget"](Handle, itemIndex, text, SelectedIndices);
         }
         
 #if ENG
@@ -459,7 +461,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
 #endif
         public void EmulateEdit(int itemIndex, string text, Async async)
         {
-            App[GetType(), "EmulateEditInTarget", async](Handle, itemIndex, text, SelectedIndices);
+            App[MyType, "EmulateEditInTarget", async](Handle, itemIndex, text, SelectedIndices);
         }
         
 #if ENG
@@ -563,7 +565,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
 #endif
         public void EmulateChangeItemState(int itemIndex, LVIS mask, LVIS state)
         {
-            App[GetType(), "EmulateChangeItemStateInTarget"](Handle, itemIndex, mask, state);
+            App[MyType, "EmulateChangeItemStateInTarget"](Handle, itemIndex, mask, state);
         }
         
 #if ENG
@@ -588,7 +590,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
 #endif
         public void EmulateChangeItemState(int itemIndex, LVIS mask, LVIS state, Async async)
         {
-            App[GetType(), "EmulateChangeItemStateInTarget", async](Handle, itemIndex, mask, state);
+            App[MyType, "EmulateChangeItemStateInTarget", async](Handle, itemIndex, mask, state);
         }
 
         /// <summary>
@@ -708,7 +710,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
         private IntPtr GetItemCore(bool isUni, int message, IntPtr wParam, LVITEM item)
         {
             AppVar inTarget = App.Dim(item);
-            IntPtr ret = (IntPtr)App[GetType(), "GetItemCoreInTarget"](Handle, isUni, message, wParam, inTarget).Core;
+            IntPtr ret = (IntPtr)App[MyType, "GetItemCoreInTarget"](Handle, isUni, message, wParam, inTarget).Core;
             LVITEM getData = (LVITEM)inTarget.Core;
             item._core = getData._core;
             item.pszText = getData.pszText;

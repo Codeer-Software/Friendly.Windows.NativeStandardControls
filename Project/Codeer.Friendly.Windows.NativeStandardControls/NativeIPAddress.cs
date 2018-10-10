@@ -17,6 +17,8 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
     [ControlDriver(WindowClassName = "SysIPAddress32")]
     public class NativeIPAddress : NativeWindow
     {
+        Type MyType => typeof(NativeIPAddress);
+
         internal const int IPM_SETADDRESS = (NativeCommonDefine.WM_USER + 101);
         internal const int IPM_GETADDRESS = (NativeCommonDefine.WM_USER + 102);
         internal const int IPN_FIRST = -860;
@@ -81,7 +83,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
             AppVar inTarget1 = App.Dim((byte)0);
             AppVar inTarget2 = App.Dim((byte)0);
             AppVar inTarget3 = App.Dim((byte)0);
-            App[GetType(), "GetAddressInTarget"](Handle, inTarget0, inTarget1, inTarget2, inTarget3);
+            App[MyType, "GetAddressInTarget"](Handle, inTarget0, inTarget1, inTarget2, inTarget3);
             field0 = (byte)inTarget0.Core;
             field1 = (byte)inTarget1.Core;
             field2 = (byte)inTarget2.Core;
@@ -109,7 +111,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
 #endif
         public void EmulateChangeAddress(byte field0, byte field1, byte field2, byte field3)
         {
-            App[GetType(), "EmulateChangeAddressInTarget"](Handle, field0, field1, field2, field3);
+            App[MyType, "EmulateChangeAddressInTarget"](Handle, field0, field1, field2, field3);
         }
         
 #if ENG
@@ -137,7 +139,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
 #endif
         public void EmulateChangeAddress(byte field0, byte field1, byte field2, byte field3, Async async)
         {
-            App[GetType(), "EmulateChangeAddressInTarget", async](Handle, field0, field1, field2, field3);
+            App[MyType, "EmulateChangeAddressInTarget", async](Handle, field0, field1, field2, field3);
         }
 
         /// <summary>

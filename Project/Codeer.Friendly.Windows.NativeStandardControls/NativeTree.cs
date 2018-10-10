@@ -21,6 +21,8 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
     [ControlDriver(WindowClassName = "SysTreeView32")]
     public class NativeTree : NativeWindow
     {
+        Type MyType => typeof(NativeTree);
+
         internal const int TV_FIRST = 0x1100;
         internal const int TVM_GETITEMRECT = (TV_FIRST + 4);
         internal const int TVM_GETITEMA = (TV_FIRST + 12);
@@ -122,7 +124,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
         {
             get
             {
-                return (IntPtr[])App[GetType(), "GetRootNodesInTarget"](Handle).Core;
+                return (IntPtr[])App[MyType, "GetRootNodesInTarget"](Handle).Core;
             }
         }
         
@@ -141,7 +143,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
 #endif
         public IntPtr[] GetChildNodes(IntPtr hParentItem)
         {
-            return (IntPtr[])App[GetType(), "GetChildNodesInTarget"](Handle, hParentItem).Core;
+            return (IntPtr[])App[MyType, "GetChildNodesInTarget"](Handle, hParentItem).Core;
         }
         
 #if ENG
@@ -159,7 +161,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
 #endif
         public IntPtr[] GetBrotherNodes(IntPtr hItem)
         {
-            return (IntPtr[])App[GetType(), "GetBrotherNodesInTarget"](Handle, hItem).Core;
+            return (IntPtr[])App[MyType, "GetBrotherNodesInTarget"](Handle, hItem).Core;
         }
         
 #if ENG
@@ -195,7 +197,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
 #endif
         public IntPtr FindNode(params string[] nodeText)
         {
-            return (IntPtr)App[GetType(), "FindNodeInTarget"](Handle, nodeText).Core;
+            return (IntPtr)App[MyType, "FindNodeInTarget"](Handle, nodeText).Core;
         }
         
 #if ENG
@@ -213,7 +215,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
 #endif
         public IntPtr FindNode(params int[] nodeIndex)
         {
-            return (IntPtr)App[GetType(), "FindNodeInTarget"](Handle, nodeIndex).Core;
+            return (IntPtr)App[MyType, "FindNodeInTarget"](Handle, nodeIndex).Core;
         }
         
 #if ENG
@@ -232,7 +234,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
         public bool GetItem(TVITEMEX item)
         {
             AppVar inTarget = App.Dim(item);
-            bool ret = (bool)App[GetType(), "GetItemInTarget"](Handle, inTarget).Core;
+            bool ret = (bool)App[MyType, "GetItemInTarget"](Handle, inTarget).Core;
             TVITEMEX getData = (TVITEMEX)inTarget.Core;
             item._core = getData._core;
             item.pszText = getData.pszText;
@@ -254,7 +256,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
 #endif
         public string GetItemText(IntPtr hItem)
         {
-            return (string)App[GetType(), "GetItemTextInTarget"](Handle, hItem).Core;
+            return (string)App[MyType, "GetItemTextInTarget"](Handle, hItem).Core;
         }
         
 #if ENG
@@ -329,7 +331,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
 #endif
         public bool IsExpanded(IntPtr hItem)
         {
-            return (bool)App[GetType(), "IsExpandedInTarget"](Handle, hItem).Core; 
+            return (bool)App[MyType, "IsExpandedInTarget"](Handle, hItem).Core; 
         }
         
 #if ENG
@@ -347,7 +349,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
 #endif
         public bool IsChecked(IntPtr hItem)
         {
-            return (bool)App[GetType(), "IsCheckedInTarget"](Handle, hItem).Core;
+            return (bool)App[MyType, "IsCheckedInTarget"](Handle, hItem).Core;
         }
         
 #if ENG
@@ -383,7 +385,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
 #endif
         public void EmulateChangeItem(TVITEMEX item)
         {
-            App[GetType(), "EmulateChangeItemInTarget"](Handle, item);
+            App[MyType, "EmulateChangeItemInTarget"](Handle, item);
         }
         
 #if ENG
@@ -405,7 +407,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
 #endif
         public void EmulateChangeItem(TVITEMEX item, Async async)
         {
-            App[GetType(), "EmulateChangeItemInTarget", async](Handle, item);
+            App[MyType, "EmulateChangeItemInTarget", async](Handle, item);
         }
         
 #if ENG
@@ -425,7 +427,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
 #endif
         public void EmulateExpand(IntPtr hItem, bool isExpanded)
         {
-            App[GetType(), "EmulateExpandInTarget"](Handle, hItem, IsExpanded(hItem), isExpanded);
+            App[MyType, "EmulateExpandInTarget"](Handle, hItem, IsExpanded(hItem), isExpanded);
         }
         
 #if ENG
@@ -449,7 +451,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
 #endif
         public void EmulateExpand(IntPtr hItem, bool isExpanded, Async async)
         {
-            App[GetType(), "EmulateExpandInTarget", async](Handle, hItem, IsExpanded(hItem), isExpanded);
+            App[MyType, "EmulateExpandInTarget", async](Handle, hItem, IsExpanded(hItem), isExpanded);
         }
         
 #if ENG
@@ -513,7 +515,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
 #endif
         public void EmulateSelectItem(IntPtr hItem)
         {
-            App[GetType(), "EmulateSelectItemInTarget"](Handle, hItem);
+            App[MyType, "EmulateSelectItemInTarget"](Handle, hItem);
         }
         
 #if ENG
@@ -535,7 +537,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
 #endif
         public void EmulateSelectItem(IntPtr hItem, Async async)
         {
-            App[GetType(), "EmulateSelectItemInTarget", async](Handle, hItem);
+            App[MyType, "EmulateSelectItemInTarget", async](Handle, hItem);
         }
         
 #if ENG
@@ -555,7 +557,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
 #endif
         public void EmulateEdit(IntPtr hItem, string text)
         {
-            App[GetType(), "EmulateEditInTarget"](Handle, hItem, text);
+            App[MyType, "EmulateEditInTarget"](Handle, hItem, text);
         }
         
 #if ENG
@@ -579,7 +581,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
 #endif
         public void EmulateEdit(IntPtr hItem, string text, Async async)
         {
-            App[GetType(), "EmulateEditInTarget", async](Handle, hItem, text);
+            App[MyType, "EmulateEditInTarget", async](Handle, hItem, text);
         }
         
 #if ENG

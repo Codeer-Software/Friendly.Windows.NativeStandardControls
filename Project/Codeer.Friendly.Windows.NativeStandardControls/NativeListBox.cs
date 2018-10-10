@@ -19,6 +19,8 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
     [ControlDriver(WindowClassName = "ListBox")]
     public class NativeListBox : NativeWindow
     {
+        Type MyType => typeof(NativeListBox);
+
         internal const int LB_SETSEL = 0x0185;
         internal const int LB_SETCURSEL = 0x0186;
         internal const int LB_GETSEL = 0x0187;
@@ -104,7 +106,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
         {
             get
             {
-                return (int)App[GetType(), "GetCurrentSelectedIndexInTarget"](Handle).Core;
+                return (int)App[MyType, "GetCurrentSelectedIndexInTarget"](Handle).Core;
             }
         }
         
@@ -123,7 +125,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
         {
             get
             {
-                return (int[])App[GetType(), "GetSelectedIndicesInTarget"](Handle).Core;
+                return (int[])App[MyType, "GetSelectedIndicesInTarget"](Handle).Core;
             }
         }
         
@@ -177,7 +179,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
 #endif
         public string GetItemText(int index)
         {
-            return (string)App[GetType(), "GetTextInTarget"](Handle, index).Core;
+            return (string)App[MyType, "GetTextInTarget"](Handle, index).Core;
         }
         
 #if ENG
@@ -197,7 +199,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
 #endif
         public int FindItem(int findStart, string text)
         {
-            return (int)App[GetType(), "FindItemInTarget"](Handle, findStart, text).Core;
+            return (int)App[MyType, "FindItemInTarget"](Handle, findStart, text).Core;
         }
         
 #if ENG
@@ -254,7 +256,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
 #endif
         public void EmulateChangeCurrentSelectedIndex(int index)
         {
-            App[GetType(), "EmulateChangeCurrentSelectedIndexInTarget"](Handle, index);
+            App[MyType, "EmulateChangeCurrentSelectedIndexInTarget"](Handle, index);
         }
         
 #if ENG
@@ -278,7 +280,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
 #endif
         public void EmulateChangeCurrentSelectedIndex(int index, Async async)
         {
-            App[GetType(), "EmulateChangeCurrentSelectedIndexInTarget", async](Handle, index);
+            App[MyType, "EmulateChangeCurrentSelectedIndexInTarget", async](Handle, index);
         }
         
 #if ENG
@@ -300,7 +302,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
 #endif
         public void EmulateChangeSelect(int index, bool isSelect)
         {
-            App[GetType(), "EmulateChangeSelectInTarget"](Handle, index, isSelect);
+            App[MyType, "EmulateChangeSelectInTarget"](Handle, index, isSelect);
         }
         
 #if ENG
@@ -326,7 +328,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
 #endif
         public void EmulateChangeSelect(int index, bool isSelect, Async async)
         {
-            App[GetType(), "EmulateChangeSelectInTarget", async](Handle, index, isSelect);
+            App[MyType, "EmulateChangeSelectInTarget", async](Handle, index, isSelect);
         }
 
         /// <summary>

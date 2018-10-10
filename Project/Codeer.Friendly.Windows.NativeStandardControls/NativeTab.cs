@@ -18,6 +18,8 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
     [ControlDriver(WindowClassName = "SysTabControl32", SearchDescendantUserControls = true)]
     public class NativeTab : NativeWindow
     {
+        Type MyType => typeof(NativeTab);
+
         internal const int TCN_FIRST = -550;
         internal const int TCN_SELCHANGE = TCN_FIRST - 1;
         internal const int TCN_SELCHANGING = TCN_FIRST - 2;
@@ -94,7 +96,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
         {
             get
             {
-                return (int)App[GetType(), "GetSelectedItemIndexInTarget"](Handle).Core;
+                return (int)App[MyType, "GetSelectedItemIndexInTarget"](Handle).Core;
             }
         }
         
@@ -156,7 +158,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
         public bool GetItem(int tabIndex, TCITEM item)
         {
             AppVar inTarget = App.Dim(item);
-            bool ret = (bool)App[GetType(), "GetItemInTarget"](Handle, tabIndex, inTarget).Core;
+            bool ret = (bool)App[MyType, "GetItemInTarget"](Handle, tabIndex, inTarget).Core;
             TCITEM getData = (TCITEM)inTarget.Core;
             item._core = getData._core;
             item.pszText = getData.pszText;
@@ -178,7 +180,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
 #endif
         public void EmulateSelectItem(int index)
         {
-            App[GetType(), "EmulateSelectItemInTarget"](Handle, index);
+            App[MyType, "EmulateSelectItemInTarget"](Handle, index);
         }
         
 #if ENG
@@ -200,7 +202,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
 #endif
         public void EmulateSelectItem(int index, Async async)
         {
-            App[GetType(), "EmulateSelectItemInTarget", async](Handle, index);
+            App[MyType, "EmulateSelectItemInTarget", async](Handle, index);
         }
 
         /// <summary>

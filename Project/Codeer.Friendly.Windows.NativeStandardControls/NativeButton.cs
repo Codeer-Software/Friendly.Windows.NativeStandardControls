@@ -18,6 +18,8 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
     [ControlDriver(WindowClassName = "Button")]
     public class NativeButton : NativeWindow
     {
+        Type MyType => typeof(NativeButton);
+
         internal const int BM_GETCHECK = 0x00F0;
         internal const int BM_SETCHECK = 0x00F1;
         internal const int BM_GETSTATE = 0x00F2;
@@ -84,7 +86,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
         {
             get
             {
-                return (CheckState)App[GetType(), "GetCheckStateInTarget"](Handle).Core;
+                return (CheckState)App[MyType, "GetCheckStateInTarget"](Handle).Core;
             }
         }
         
@@ -100,7 +102,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
 #endif
         public void EmulateClick()
         {
-            App[GetType(), "EmulateClickInTarget"](Handle);
+            App[MyType, "EmulateClickInTarget"](Handle);
         }
         
 #if ENG
@@ -119,7 +121,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
 #endif
         public void EmulateClick(Async async)
         {
-            App[GetType(), "EmulateClickInTarget", async](Handle);
+            App[MyType, "EmulateClickInTarget", async](Handle);
         }
         
 #if ENG
@@ -137,7 +139,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
 #endif
         public void EmulateCheck(CheckState state)
         {
-            App[GetType(), "EmulateCheckInTarget"](Handle, state);
+            App[MyType, "EmulateCheckInTarget"](Handle, state);
         }
         
 #if ENG
@@ -159,7 +161,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
 #endif
         public void EmulateCheck(CheckState state, Async async)
         {
-            App[GetType(), "EmulateCheckInTarget", async](Handle, state);
+            App[MyType, "EmulateCheckInTarget", async](Handle, state);
         }
 
         /// <summary>

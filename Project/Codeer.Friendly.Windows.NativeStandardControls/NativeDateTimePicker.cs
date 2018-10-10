@@ -17,6 +17,8 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
     [ControlDriver(WindowClassName = "SysDateTimePick32")]
     public class NativeDateTimePicker : NativeWindow
     {
+        Type MyType => typeof(NativeDateTimePicker);
+
         internal const int DTM_FIRST = 0x1000;
         internal const int DTM_GETSYSTEMTIME = (DTM_FIRST + 1);
         internal const int DTM_SETSYSTEMTIME = (DTM_FIRST + 2);
@@ -94,7 +96,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
 #endif
         public void EmulateSelectDay(DateTime day)
         {
-            App[GetType(), "EmulateSelectDayInTarget"](Handle, day);
+            App[MyType, "EmulateSelectDayInTarget"](Handle, day);
         }
         
 #if ENG
@@ -116,7 +118,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
 #endif
         public void EmulateSelectDay(DateTime day, Async async)
         {
-            App[GetType(), "EmulateSelectDayInTarget", async](Handle, day);
+            App[MyType, "EmulateSelectDayInTarget", async](Handle, day);
         }
 
         /// <summary>

@@ -17,6 +17,8 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
     [ControlDriver(WindowClassName = "ScrollBar")]
     public class NativeScrollBar : NativeWindow
     {
+        Type MyType => typeof(NativeScrollBar);
+
         internal const int SB_CTL = 2;
         internal const int SBS_VERT = 1;
         internal const int WM_HSCROLL = 0x0114;
@@ -134,7 +136,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
 #endif
         public void EmulateScroll(int pos)
         {
-            App[GetType(), "EmulateScrollInTarget"](Handle, IsVertical, pos);
+            App[MyType, "EmulateScrollInTarget"](Handle, IsVertical, pos);
         }
         
 #if ENG
@@ -158,7 +160,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
 #endif
         public void EmulateScroll(int pos, Async async)
         {
-            App[GetType(), "EmulateScrollInTarget", async](Handle, IsVertical, pos);
+            App[MyType, "EmulateScrollInTarget", async](Handle, IsVertical, pos);
         }
                 
         /// <summary>

@@ -19,6 +19,8 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
     [ControlDriver(WindowClassName = "msctls_updown32")]
     public class NativeSpinButton : NativeWindow
     {
+        Type MyType => typeof(NativeSpinButton);
+
         const int UDM_GETRANGE = (NativeCommonDefine.WM_USER + 102);
         const int UDM_GETBUDDY = (NativeCommonDefine.WM_USER + 106);
         const int UDM_SETPOS32 = (NativeCommonDefine.WM_USER + 113);
@@ -77,7 +79,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
         {
             get
             {
-                return (int)App[GetType(), "GetPosInTarget"](Handle).Core;
+                return (int)App[MyType, "GetPosInTarget"](Handle).Core;
             }
         }
         
@@ -120,7 +122,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
 #endif
         public void EmulateChangePos(int pos)
         {
-            App[GetType(), "EmulateChangePosInTarget"](Handle, pos);
+            App[MyType, "EmulateChangePosInTarget"](Handle, pos);
         }
         
 #if ENG
@@ -146,7 +148,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
 #endif
         public void EmulateChangePos(int pos, Async async)
         {
-            App[GetType(), "EmulateChangePosInTarget", async](Handle, pos);
+            App[MyType, "EmulateChangePosInTarget", async](Handle, pos);
         }
 
         /// <summary>

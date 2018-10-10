@@ -18,6 +18,8 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
     [ControlDriver(WindowClassName = "Edit|RichEdit20A|RichEdit20W")]
     public class NativeEdit : NativeWindow
     {
+        Type MyType => typeof(NativeEdit);
+
         internal const int EM_GETSEL = 0x00B0;
         internal const int EM_SETSEL = 0x00B1;
         internal const int EM_SCROLLCARET = 0x00B7;
@@ -146,7 +148,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
 #endif
         public void EmulateChangeText(string newText)
         {
-            App[GetType(), "EmulateChangeTextInTarget"](Handle, newText);
+            App[MyType, "EmulateChangeTextInTarget"](Handle, newText);
         }
         
 #if ENG
@@ -170,7 +172,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
 #endif
         public void EmulateChangeText(string newText, Async async)
         {
-            App[GetType(), "EmulateChangeTextInTarget", async](Handle, newText);
+            App[MyType, "EmulateChangeTextInTarget", async](Handle, newText);
         }
         
 #if ENG
@@ -192,7 +194,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
 #endif
         public void EmulateChangeSelection(int startChar, int endChar)
         {
-            App[GetType(), "EmulateChangeSelectionInTarget"](Handle, startChar, endChar);
+            App[MyType, "EmulateChangeSelectionInTarget"](Handle, startChar, endChar);
         }
         
 #if ENG
@@ -218,7 +220,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
 #endif
         public void EmulateChangeSelection(int startChar, int endChar, Async async)
         {
-            App[GetType(), "EmulateChangeSelectionInTarget", async](Handle, startChar, endChar);
+            App[MyType, "EmulateChangeSelectionInTarget", async](Handle, startChar, endChar);
         }
 
         /// <summary>
