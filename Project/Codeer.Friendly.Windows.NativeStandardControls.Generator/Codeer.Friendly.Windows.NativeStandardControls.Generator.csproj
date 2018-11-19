@@ -74,7 +74,7 @@
     <Compile Include="Inside\TimerInvoker.cs" />
     <Compile Include="NativeButtonGenerator.cs" />
     <Compile Include="NativeComboBoxGenerator.cs" />
-    <Compile Include="NativeCommandGenerator.cs" />
+    <Compile Include="NativeCommandTargetGenerator.cs" />
     <Compile Include="NativeDateTimePickerGenerator.cs" />
     <Compile Include="NativeEditGenerator.cs" />
     <Compile Include="NativeGeneratorBase.cs" />

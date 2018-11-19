@@ -2,50 +2,50 @@
 using Codeer.Friendly.Windows.NativeStandardControls.Inside;
 using Codeer.Friendly.Windows.NativeStandardControls.Generator.Inside.Hook;
 using Codeer.TestAssistant.GeneratorToolKit;
+using System.Collections.Generic;
 
 namespace Codeer.Friendly.Windows.NativeStandardControls.Generator
 {
-    //TODO
     /// <summary>
     /// ネイティブのWM_COMMANDに対応する処理を生成するクラス。
     /// </summary>
-    public class NativeCommandGenerator : CaptureCodeGeneratorBase
+    [CaptureCodeGenerator("Codeer.Friendly.Windows.NativeStandardControls.NativeCommandTarget")]
+    public class NativeCommandTargetGenerator : CaptureCodeGeneratorBase
     {
+        const int WM_COMMAND = 0x0111;
+
         int _threadId;
+        Dictionary<int, string> _commandMap;
 
         /// <summary>
         /// アタッチ
         /// </summary>
         protected override void Attach()
         {
-            //フック。
+            _commandMap = CaptureSetting as Dictionary<int, string>;
+            if (_commandMap == null) _commandMap = new Dictionary<int, string>();
+            
             int lpdwProcessId;
             _threadId = NativeMethods.GetWindowThreadProcessId(WindowHandle, out lpdwProcessId);
             ThreadMessageHookManager<MessageHookGetMessage>.Entry(_threadId, MyAnalyzeMessage);
-            ThreadMessageHookManager<MessageHookCallWndProc>.Entry(_threadId, MyAnalyzeMessage);
         }
+
         /// <summary>
         /// ディタッチ。
         /// </summary>
         protected override void Detach()
         {
             ThreadMessageHookManager<MessageHookGetMessage>.Remove(_threadId, MyAnalyzeMessage);
-            ThreadMessageHookManager<MessageHookCallWndProc>.Remove(_threadId, MyAnalyzeMessage);
         }
 
-        /// <summary>
-        /// メッセージ解析。
-        /// </summary>
-        /// <param name="handle">ハンドル。</param>
-        /// <param name="message">メッセージ。</param>
-        /// <param name="wparam">wparam。</param>
-        /// <param name="lparam">lparam。</param>
         void MyAnalyzeMessage(IntPtr handle, int message, IntPtr wparam, IntPtr lparam)
         {
-            if (handle == WindowHandle && message == NativeCommonDefine.WM_COMMAND && lparam == IntPtr.Zero)
-            {
-                AddSentence(new TokenName(), ".SendMessage(0x111, new IntPtr(" + wparam.ToInt32() + "), IntPtr.Zero", new TokenAsync(CommaType.Before), "); //WM_COMMAND");
-            }
+            if (_commandMap == null) return;
+            if (message != WM_COMMAND) return;
+            
+            if (!_commandMap.TryGetValue(wparam.ToInt32(), out var path)) return;
+
+            AddSentence(new TokenName(), "." + path + ".EmulateClick(", new TokenAsync(CommaType.Non), ");");
         }
     }
 }
