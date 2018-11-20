@@ -27,6 +27,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Generator
             
             int lpdwProcessId;
             _threadId = NativeMethods.GetWindowThreadProcessId(WindowHandle, out lpdwProcessId);
+            ThreadMessageHookManager<MessageHookCallWndProc>.Entry(_threadId, MyAnalyzeMessage);
             ThreadMessageHookManager<MessageHookGetMessage>.Entry(_threadId, MyAnalyzeMessage);
         }
 
@@ -35,6 +36,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Generator
         /// </summary>
         protected override void Detach()
         {
+            ThreadMessageHookManager<MessageHookCallWndProc>.Remove(_threadId, MyAnalyzeMessage);
             ThreadMessageHookManager<MessageHookGetMessage>.Remove(_threadId, MyAnalyzeMessage);
         }
 
