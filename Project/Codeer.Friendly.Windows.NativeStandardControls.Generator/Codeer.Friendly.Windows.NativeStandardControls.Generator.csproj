@@ -66,6 +66,13 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CreateDriver\CollectionUtility.cs" />
+    <Compile Include="CreateDriver\CreateMenu.cs" />
+    <Compile Include="CreateDriver\DriverCreatorUtils.cs" />
+    <Compile Include="CreateDriver\DriverElementNameGeneratorAdaptor.cs" />
+    <Compile Include="CreateDriver\NativeDriverCreator.cs" />
+    <Compile Include="CreateDriver\NativeMethods.cs" />
+    <Compile Include="CreateDriver\ReflectionAccessor.cs" />
     <Compile Include="Inside\Hook\AnalyzeMessage.cs" />
     <Compile Include="Inside\Hook\HookBase.cs" />
     <Compile Include="Inside\Hook\HookCallWndProc.cs" />
