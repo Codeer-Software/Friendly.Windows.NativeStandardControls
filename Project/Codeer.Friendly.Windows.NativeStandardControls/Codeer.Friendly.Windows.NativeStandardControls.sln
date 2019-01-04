@@ -12,6 +12,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Nuget", "Nuget", "{03C380E0
 		..\Nuget\Friendly.Windows.NativeStandardControls.nuspec = ..\Nuget\Friendly.Windows.NativeStandardControls.nuspec
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{B6DE6083-81BA-40E4-ADAB-20584430F7A2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeneratorTest", "..\Test\GeneratorTest\GeneratorTest.csproj", "{CFC19387-372B-4EBB-BA25-51917BE14118}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,9 +35,18 @@ Global
 		{0E004C2C-CDA1-4E19-90DD-5DB95D84327C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0E004C2C-CDA1-4E19-90DD-5DB95D84327C}.Release-English|Any CPU.ActiveCfg = Release-English|Any CPU
 		{0E004C2C-CDA1-4E19-90DD-5DB95D84327C}.Release-English|Any CPU.Build.0 = Release-English|Any CPU
+		{CFC19387-372B-4EBB-BA25-51917BE14118}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFC19387-372B-4EBB-BA25-51917BE14118}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFC19387-372B-4EBB-BA25-51917BE14118}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFC19387-372B-4EBB-BA25-51917BE14118}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFC19387-372B-4EBB-BA25-51917BE14118}.Release-English|Any CPU.ActiveCfg = Release|Any CPU
+		{CFC19387-372B-4EBB-BA25-51917BE14118}.Release-English|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CFC19387-372B-4EBB-BA25-51917BE14118} = {B6DE6083-81BA-40E4-ADAB-20584430F7A2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DDDB5FC4-E998-4381-9B00-78B00FAA1598}

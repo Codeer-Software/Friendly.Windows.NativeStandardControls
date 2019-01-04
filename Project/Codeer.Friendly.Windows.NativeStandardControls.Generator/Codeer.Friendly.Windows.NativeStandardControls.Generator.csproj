@@ -72,7 +72,6 @@
     <Compile Include="CreateDriver\DriverElementNameGeneratorAdaptor.cs" />
     <Compile Include="CreateDriver\NativeDriverCreator.cs" />
     <Compile Include="CreateDriver\NativeMethods.cs" />
-    <Compile Include="CreateDriver\ReflectionAccessor.cs" />
     <Compile Include="Inside\Hook\AnalyzeMessage.cs" />
     <Compile Include="Inside\Hook\HookBase.cs" />
     <Compile Include="Inside\Hook\HookCallWndProc.cs" />

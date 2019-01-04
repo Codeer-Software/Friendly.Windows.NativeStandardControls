@@ -1,7 +1,7 @@
-﻿using Codeer.TestAssistant.GeneratorToolKit;
+﻿using Codeer.Friendly.Windows.Grasp.Inside;
+using Codeer.TestAssistant.GeneratorToolKit;
 using System;
 using System.CodeDom.Compiler;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace Codeer.Friendly.Windows.NativeStandardControls.Generator.CreateDriver
@@ -10,12 +10,6 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Generator.CreateDriver
     {
         private const string TODO_COMMENT = "// TODO It is not the best way to identify. Please change to a better method.";
         private const string INDENT = "    ";
-        private const string PROPERTY_TEXT = "Text";
-        private const string PROPERTY_HANDLE = "Handle";
-        private const string PROPERTY_CHILDREN = "Children";
-        private const string PROPERTY_DIALOGID = "DialogId";
-        private const string PROPERTY_ZINDEX = "ZIndex";
-        private const string PROPERTY_CLASSNAME = "ClassName";
 
         private readonly CodeDomProvider _dom;
         private readonly DriverElementNameGeneratorAdaptor _customNameGenerator;
@@ -26,27 +20,26 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Generator.CreateDriver
             _customNameGenerator = new DriverElementNameGeneratorAdaptor(dom);
         }
 
-        public void CreateDriver(object windowInfoSrc)
+        public void CreateDriver(WindowInfo windowInfoSrc)
         {
             CreateDriver(-1, string.Empty, windowInfoSrc, new List<string>());
         }
 
-        private void CreateDriver(int index, string rootDriver, object windowInfoSrc, List<string> driverNames)
+        private void CreateDriver(int index, string rootDriver, WindowInfo windowInfo, List<string> driverNames)
         {
             //WindowInfoから情報を取り出す
-            var windowInfo = new ReflectionAccessor(windowInfoSrc);
-            var windowText = windowInfo.GetProperty<string>(PROPERTY_TEXT);
-            var windowHandle = windowInfo.GetProperty<IntPtr>(PROPERTY_HANDLE);
+            var windowText = windowInfo.Text;
+            var windowHandle = windowInfo.Handle;
 
             var isTopLevel = NativeMethods.GetAncestor(windowHandle, NativeMethods.Ancestor_Root) == windowHandle;
 
             var driverName = MakeDriverName(windowText, driverNames);
             var dialogIds = new List<int>();
-            foreach (var c in windowInfo.GetProperty<IEnumerable>(PROPERTY_CHILDREN))
+            foreach (var c in windowInfo.Children)
             {
-                dialogIds.Add(new ReflectionAccessor(c).GetProperty<int>(PROPERTY_DIALOGID));
+                dialogIds.Add(c.DialogId);
             }
-            var zIndexes = windowInfo.GetProperty<int[]>(PROPERTY_ZINDEX);
+            var zIndexes = windowInfo.ZIndex;
 
             //子を調べる
             var fileName = $"{driverName}.cs";
@@ -54,11 +47,11 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Generator.CreateDriver
             var usings = new List<string>();
             var childrenZIndexTargetIndex = index + 1;
             var childNames = new List<string>();
-            foreach (var childWindowInfo in OrderByTabOrder(windowInfo.GetProperty<IEnumerable>(PROPERTY_CHILDREN)))
+            foreach (var childWindowInfo in OrderByTabOrder(windowInfo.Children))
             {
                 //ドライバに合致するコントロールであるか
-                string className = childWindowInfo.GetProperty<string>(PROPERTY_CLASSNAME);
-                var handle = childWindowInfo.GetProperty<IntPtr>(PROPERTY_HANDLE);
+                string className = childWindowInfo.ClassName;
+                var handle = childWindowInfo.Handle;
                 var searchDescendantUserControls = true;
                 if (DriverCreatorAdapter.WindowClassNameAndControlDriver.TryGetValue(className, out var ctrlDriver) && ctrlDriver.DriverMappingEnabled)
                 {
@@ -67,9 +60,9 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Generator.CreateDriver
                     var ns = DriverCreatorUtils.GetTypeNamespace(ctrlDriver.ControlDriverTypeFullName);
                     if (!usings.Contains(ns)) usings.Add(ns);
 
-                    var ctrlDriverPropName = _customNameGenerator.MakeDriverPropName(childWindowInfo.GetProperty<IntPtr>(PROPERTY_HANDLE), typeName, childNames);
-                    var dialogId = childWindowInfo.GetProperty<int>(PROPERTY_DIALOGID);
-                    var cZIndexes = childWindowInfo.GetProperty<int[]>(PROPERTY_ZINDEX);
+                    var ctrlDriverPropName = _customNameGenerator.MakeDriverPropName(childWindowInfo.Handle, typeName, childNames);
+                    var dialogId = childWindowInfo.DialogId;
+                    var cZIndexes = childWindowInfo.ZIndex;
                     string key;
                     if (1 < CollectionUtility.Where(dialogIds, x => x == dialogId).Count)
                     {
@@ -85,9 +78,9 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Generator.CreateDriver
                 }
 
                 //さらに子を持っているならUserControlDriverを作成する
-                if (searchDescendantUserControls && (0 < childWindowInfo.GetProperty<Array>(PROPERTY_CHILDREN).Length))
+                if (searchDescendantUserControls && (0 < childWindowInfo.Children.Length))
                 {
-                    CreateDriver(childrenZIndexTargetIndex, driverName, childWindowInfo.Object, driverNames);
+                    CreateDriver(childrenZIndexTargetIndex, driverName, childWindowInfo, driverNames);
                 }
             }
 
@@ -96,17 +89,13 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Generator.CreateDriver
             DriverCreatorAdapter.AddCode(fileName, GenerateCode(isTopLevel, rootDriver, DriverCreatorAdapter.SelectedNamespace, driverName, windowText, zIndex, usings, members), windowHandle);
         }
 
-        private List<ReflectionAccessor> OrderByTabOrder(IEnumerable enumerable)
+        private List<WindowInfo> OrderByTabOrder(WindowInfo[] enumerable)
         {
-            var list = new List<ReflectionAccessor>();
-            foreach (var e in enumerable)
-            {
-                list.Add(new ReflectionAccessor(e));
-            }
+            var list = new List<WindowInfo>(enumerable);
             list.Sort((l, r) =>
             {
-                var la = l.GetProperty<int[]>(PROPERTY_ZINDEX);
-                var ra = r.GetProperty<int[]>(PROPERTY_ZINDEX);
+                var la = l.ZIndex;
+                var ra = r.ZIndex;
                 var lIndex = la.Length == 0 ? -1 : la[la.Length - 1];
                 var rIndex = ra.Length == 0 ? -1 : ra[ra.Length - 1];
                 return rIndex - lIndex;

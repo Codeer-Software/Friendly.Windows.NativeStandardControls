@@ -6,8 +6,6 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Generator.CreateDriver
     {
         public static string Suffix { get; } = "_Driver";
 
-        public static object OtherArray { get; set; }
-
         public static string GetTypeName(string driver)
         {
             var sp = driver.Split(new[] { '.' }, StringSplitOptions.RemoveEmptyEntries);

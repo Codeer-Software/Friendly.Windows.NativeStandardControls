@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Codeer.TestAssistant.GeneratorToolKit;
+using System;
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Reflection;
@@ -7,21 +8,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Generator.CreateDriver
 {
     internal class DriverElementNameGeneratorAdaptor
     {
-        private delegate string GenerateName(object target);
-
-        private class NameGeneratorHolder
-        {
-            public int Priority { get; }
-            public GenerateName GenerateName { get; }
-
-            public NameGeneratorHolder(int priority, GenerateName generateName)
-            {
-                Priority = priority;
-                GenerateName = generateName;
-            }
-        }
-
-        private readonly List<NameGeneratorHolder> _nameGenerators = new List<NameGeneratorHolder>();
+        private readonly List<IDriverElementNameGenerator> _nameGenerators = new List<IDriverElementNameGenerator>();
         private readonly CodeDomProvider _dom;
 
         public DriverElementNameGeneratorAdaptor(CodeDomProvider dom)
@@ -34,9 +21,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Generator.CreateDriver
         private void Initialize()
         {
             //名前カスタムクラスを集める
-            var nameGeneratorType = ReflectionAccessor.GetType("Codeer.TestAssistant.GeneratorToolKit.IDriverElementNameGenerator");
-            var nameGenerateMethod = nameGeneratorType.GetMethod("GenerateName");
-            var namePriority = nameGeneratorType.GetProperty("Priority");
+            var nameGeneratorType = typeof(IDriverElementNameGenerator);
 
             foreach (var type in EnumAllTypes())
             {
@@ -44,10 +29,8 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Generator.CreateDriver
                 {
                     if (nameGeneratorType.IsAssignableFrom(type) && type.IsClass)
                     {
-                        var generator = Activator.CreateInstance(type);
-                        _nameGenerators.Add(new NameGeneratorHolder(
-                            (int)namePriority.GetValue(generator, new object[0]),
-                            c => (string)nameGenerateMethod.Invoke(generator, new[] { c })));
+                        var generator = (IDriverElementNameGenerator)Activator.CreateInstance(type);
+                        _nameGenerators.Add(generator);
                     }
                 }
                 catch { }
