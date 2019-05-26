@@ -702,11 +702,13 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
                 item._core.cchTextMax = 256;
             }
 
+            var pMem = IntPtr.Zero;
             while (true)
             {
                 if (0 < item._core.cchTextMax)
                 {
-                    item._core.pszText = Marshal.AllocCoTaskMem((item._core.cchTextMax + 1) * 8);
+                    pMem = Marshal.AllocCoTaskMem((item._core.cchTextMax + 1) * 8);
+                    item._core.pszText = pMem;
                 }
                 try
                 {
@@ -736,9 +738,9 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
                 }
                 finally
                 {
-                    if (item._core.pszText != IntPtr.Zero)
+                    if (pMem != IntPtr.Zero)
                     {
-                        Marshal.FreeCoTaskMem(item._core.pszText);
+                        Marshal.FreeCoTaskMem(pMem);
                     }
                 }
             }
