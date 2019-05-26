@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using Codeer.Friendly.Windows.NativeStandardControls.Inside;
 
-namespace Codeer.Friendly.Windows.NativeStandardControls.Generator.Inside.Hook
+namespace Codeer.Friendly.Windows.NativeStandardControls.Generator.Hook
 {
     /// <summary>
     /// フックオブジェクト。
     /// 一つのスレッドにあまりに多くのフックを実行すると失敗することがあるのでフック自体は一回にまとめる。
     /// </summary>
-    abstract class HookBase
+    public abstract class HookBase
     {
         NativeMethods.HookProc _traceProc;
         IntPtr _idHook;
@@ -17,13 +17,13 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Generator.Inside.Hook
         /// <summary>
         /// 空であるか。
         /// </summary>
-        internal bool Empty { get { return _proc.Count == 0; } }
+        public bool Empty { get { return _proc.Count == 0; } }
 
         /// <summary>
         /// コンストラクタ。
         /// </summary>
         /// <param name="threadId">スレッドID。</param>
-        internal void Init(int threadId)
+        public void Init(int threadId)
         {
             _traceProc = WindowProcHook;
             _idHook = NativeMethods.SetWindowsHookEx(HookType, _traceProc, IntPtr.Zero, threadId);
@@ -33,7 +33,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Generator.Inside.Hook
         /// 登録。
         /// </summary>
         /// <param name="proc">メッセージ解析メソッド。</param>
-        internal void Entry(AnalyzeMessage proc)
+        public void Entry(AnalyzeMessage proc)
         {
             _proc.Add(proc, true);
         }
@@ -42,7 +42,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Generator.Inside.Hook
         /// 削除。
         /// </summary>
         /// <param name="proc">メッセージ解析メソッド。</param>
-        internal void Remove(AnalyzeMessage proc)
+        public void Remove(AnalyzeMessage proc)
         {
             _proc.Remove(proc);
             if (0 < _proc.Count)

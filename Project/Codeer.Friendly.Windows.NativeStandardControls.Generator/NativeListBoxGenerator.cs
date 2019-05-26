@@ -32,7 +32,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Generator
         /// <param name="message">メッセージ。</param>
         /// <param name="wparam">wparam。</param>
         /// <param name="lparam">lparam。</param>
-        internal override void AnalyzeMessage(int message, IntPtr wparam, IntPtr lparam)
+        protected override void AnalyzeMessage(int message, IntPtr wparam, IntPtr lparam)
         {
             if (HasFocus() &&
                 message == NativeCommonDefine.WM_COMMAND &&

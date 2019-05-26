@@ -2,18 +2,18 @@
 using Codeer.Friendly.Windows.NativeStandardControls.Inside;
 using System.Runtime.InteropServices;
 
-namespace Codeer.Friendly.Windows.NativeStandardControls.Generator.Inside.Hook
+namespace Codeer.Friendly.Windows.NativeStandardControls.Generator.Hook
 {
     /// <summary>
-    /// メッセージフックオブジェクト。
+    /// ウィンドウプロックフックオブジェクト。
     /// </summary>
-    class MessageHookGetMessage : HookBase
+    public class MessageHookCallWndProc : HookBase
     {
         /// <summary>
         /// フックタイプ
         /// </summary>
-        protected override int HookType { get { return NativeMethods.WH_GETMESSAGE; } }
-
+        protected override int HookType { get { return NativeMethods.WH_CALLWNDPROC; } }
+        
         /// <summary>
         /// ウィンドウプロックフック。
         /// </summary>
@@ -27,12 +27,9 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Generator.Inside.Hook
             {
                 return CallNextHookEx(hookCode, wParam, lParam);
             }
-            if (wParam.ToInt32() == 1)
-            {
-                NativeMethods.MSG messageInfo = (NativeMethods.MSG)Marshal.PtrToStructure
-                        (lParam, typeof(NativeMethods.MSG));
-                AnalyzeMessage(messageInfo.hwnd, messageInfo.message, messageInfo.wparam, messageInfo.lparam);
-            }
+            NativeMethods.CWPSTRUCT messageInfo = (NativeMethods.CWPSTRUCT)Marshal.PtrToStructure
+                    (lParam, typeof(NativeMethods.CWPSTRUCT));
+            AnalyzeMessage(messageInfo.hwnd, messageInfo.message, messageInfo.wparam, messageInfo.lparam);
             return CallNextHookEx(hookCode, wParam, lParam);
         }
     }

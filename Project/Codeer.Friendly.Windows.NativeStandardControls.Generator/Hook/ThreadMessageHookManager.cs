@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using Codeer.Friendly.Windows.NativeStandardControls.Inside;
+﻿using System.Collections.Generic;
 
-namespace Codeer.Friendly.Windows.NativeStandardControls.Generator.Inside.Hook
+namespace Codeer.Friendly.Windows.NativeStandardControls.Generator.Hook
 {
     /// <summary>
     /// フック管理。
     /// </summary>
-    static class ThreadMessageHookManager<T> where T : HookBase, new()
+    public static class ThreadMessageHookManager<T> where T : HookBase, new()
     {
         static Dictionary<int, T> threadAndHookHandle = new Dictionary<int, T>();
 
@@ -16,7 +14,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Generator.Inside.Hook
         /// </summary>
         /// <param name="threadId">スレッドID。</param>
         /// <param name="proc">メッセージ解析メソッド。</param>
-        internal static void Entry(int threadId, AnalyzeMessage proc)
+        public static void Entry(int threadId, AnalyzeMessage proc)
         {
             lock (threadAndHookHandle)
             {
@@ -36,7 +34,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Generator.Inside.Hook
         /// </summary>
         /// <param name="threadId">スレッドID。</param>
         /// <param name="proc">メッセージ解析メソッド。</param>
-        internal static void Remove(int threadId, AnalyzeMessage proc)
+        public static void Remove(int threadId, AnalyzeMessage proc)
         {
             lock (threadAndHookHandle)
             {

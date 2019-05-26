@@ -72,11 +72,11 @@
     <Compile Include="CreateDriver\DriverElementNameGeneratorAdaptor.cs" />
     <Compile Include="CreateDriver\NativeDriverCreator.cs" />
     <Compile Include="CreateDriver\NativeMethods.cs" />
-    <Compile Include="Inside\Hook\AnalyzeMessage.cs" />
-    <Compile Include="Inside\Hook\HookBase.cs" />
-    <Compile Include="Inside\Hook\HookCallWndProc.cs" />
-    <Compile Include="Inside\Hook\HookGetMessage.cs" />
-    <Compile Include="Inside\Hook\ThreadMessageHookManager.cs" />
+    <Compile Include="Hook\AnalyzeMessage.cs" />
+    <Compile Include="Hook\HookBase.cs" />
+    <Compile Include="Hook\HookCallWndProc.cs" />
+    <Compile Include="Hook\HookGetMessage.cs" />
+    <Compile Include="Hook\ThreadMessageHookManager.cs" />
     <Compile Include="Inside\TimerInvoker.cs" />
     <Compile Include="NativeButtonGenerator.cs" />
     <Compile Include="NativeComboBoxGenerator.cs" />

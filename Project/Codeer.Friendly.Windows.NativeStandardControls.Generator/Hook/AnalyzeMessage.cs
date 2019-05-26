@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Codeer.Friendly.Windows.NativeStandardControls.Generator.Inside.Hook
+namespace Codeer.Friendly.Windows.NativeStandardControls.Generator.Hook
 {
     /// <summary>
     /// メッセージ解析。
@@ -9,5 +9,5 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Generator.Inside.Hook
     /// <param name="message">メッセージ。</param>
     /// <param name="wparam">wparam。</param>
     /// <param name="lparam">lparam。</param>
-    internal delegate void AnalyzeMessage(IntPtr handle, int message, IntPtr wparam, IntPtr lparam);
+    public delegate void AnalyzeMessage(IntPtr handle, int message, IntPtr wparam, IntPtr lparam);
 }

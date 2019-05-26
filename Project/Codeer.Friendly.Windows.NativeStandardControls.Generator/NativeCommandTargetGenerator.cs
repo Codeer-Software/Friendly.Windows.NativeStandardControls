@@ -1,6 +1,6 @@
 ﻿using System;
 using Codeer.Friendly.Windows.NativeStandardControls.Inside;
-using Codeer.Friendly.Windows.NativeStandardControls.Generator.Inside.Hook;
+using Codeer.Friendly.Windows.NativeStandardControls.Generator.Hook;
 using Codeer.TestAssistant.GeneratorToolKit;
 using System.Collections.Generic;
 

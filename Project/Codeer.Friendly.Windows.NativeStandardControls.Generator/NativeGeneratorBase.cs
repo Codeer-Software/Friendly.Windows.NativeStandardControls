@@ -4,7 +4,7 @@ using System.Windows.Forms;
 using System.Collections.Generic;
 using Codeer.Friendly.Windows.NativeStandardControls.Inside;
 using Codeer.Friendly.Windows.NativeStandardControls.Generator.Inside;
-using Codeer.Friendly.Windows.NativeStandardControls.Generator.Inside.Hook;
+using Codeer.Friendly.Windows.NativeStandardControls.Generator.Hook;
 using Codeer.TestAssistant.GeneratorToolKit;
 
 namespace Codeer.Friendly.Windows.NativeStandardControls.Generator
@@ -75,7 +75,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Generator
         /// フォーカスを持っているか。
         /// </summary>
         /// <returns>フォーカスを持っているか。</returns>
-        internal bool HasFocus()
+        protected bool HasFocus()
         {
             IntPtr focus = NativeMethods.GetFocus();
             while (focus != IntPtr.Zero)
@@ -95,14 +95,14 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Generator
         /// <param name="message">メッセージ。</param>
         /// <param name="wparam">wparam。</param>
         /// <param name="lparam">lparam。</param>
-        internal abstract void AnalyzeMessage(int message, IntPtr wparam, IntPtr lparam);
+        protected abstract void AnalyzeMessage(int message, IntPtr wparam, IntPtr lparam);
 
         /// <summary>
         /// 重複した関数の削除。
         /// </summary>
         /// <param name="list">リスト。</param>
         /// <param name="function">関数。</param>
-        internal void RemoveDuplicationFunction(List<Sentence> list, string function)
+        protected void RemoveDuplicationFunction(List<Sentence> list, string function)
         {
             bool findChangeText = false;
             for (int i = list.Count - 1; 0 <= i; i--)
@@ -150,7 +150,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Generator
         /// 最終行が重複していたら削除。
         /// </summary>
         /// <param name="function">関数名称。</param>
-        internal void RemoveLastLineDuplicationFunction(string function)
+        protected void RemoveLastLineDuplicationFunction(string function)
         {
             if (0 < CurrentCode.Count && IsDuplicationFunction(CurrentCode[CurrentCode.Count - 1], function))
             {
@@ -163,7 +163,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Generator
         /// </summary>
         /// <param name="line">行情報。</param>
         /// <returns>最終行が指定の行と一致するか。</returns>
-        internal bool LastLineIsSame(Sentence line)
+        protected bool LastLineIsSame(Sentence line)
         {
             return (0 < CurrentCode.Count) && (line.Equals(CurrentCode[CurrentCode.Count - 1]));
         }
@@ -172,7 +172,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Generator
         /// 遅延実行。
         /// </summary>
         /// <param name="invoke">実行オブジェクト。</param>
-        internal void BeginInvoke(MethodInvoker invoke)
+        protected void BeginInvoke(MethodInvoker invoke)
         {
             _invoker.BeginInvoke(invoke);
         }
@@ -181,7 +181,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Generator
         /// ウィンドウテキストの取得。
         /// </summary>
         /// <returns>ウィンドウテキスト。</returns>
-        internal string GetWindowText()
+        protected string GetWindowText()
         {
             int len = NativeMethods.GetWindowTextLength(WindowHandle);
             StringBuilder text = new StringBuilder((len + 1) * 8);
