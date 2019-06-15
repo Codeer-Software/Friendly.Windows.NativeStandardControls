@@ -21,6 +21,13 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Generator.CreateDriver
                         new NativeDriverCreator(dom).CreateDriver(WindowAnalyzer.Analyze(handle, new IOtherSystemWindowAnalyzer[0]));
                     }
                 };
+                dic["Create Driver Flat(&F)"] = () =>
+                {
+                    using (var dom = CodeDomProvider.CreateProvider("CSharp"))
+                    {
+                        new NativeDriverCreator(dom).CreateDriverFlat(WindowAnalyzer.Analyze(handle, new IOtherSystemWindowAnalyzer[0]));
+                    }
+                };
             }
             return dic;
         }

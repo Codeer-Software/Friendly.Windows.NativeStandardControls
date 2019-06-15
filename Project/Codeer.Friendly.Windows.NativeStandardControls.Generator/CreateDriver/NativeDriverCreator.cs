@@ -25,6 +25,19 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Generator.CreateDriver
             CreateDriver(-1, string.Empty, windowInfoSrc, new List<string>());
         }
 
+        public void CreateDriverFlat(WindowInfo windowInfoSrc)
+        {
+            var members = new List<string>();
+            var usings = new List<string>();
+
+            var driverName = MakeDriverName(windowInfoSrc.Text, new List<string>());
+            CreateDriverFlat(-1, string.Empty, driverName, windowInfoSrc, members, usings, new List<string>(), false);
+
+            var isTopLevel = NativeMethods.GetAncestor(windowInfoSrc.Handle, NativeMethods.Ancestor_Root) == windowInfoSrc.Handle;
+            var code = GenerateCode(isTopLevel, driverName, DriverCreatorAdapter.SelectedNamespace, driverName, windowInfoSrc.Text, -1, usings, members);
+            DriverCreatorAdapter.AddCode(driverName + ".cs", code, windowInfoSrc.Handle);
+        }
+
         private void CreateDriver(int index, string rootDriver, WindowInfo windowInfo, List<string> driverNames)
         {
             //WindowInfoから情報を取り出す
@@ -89,6 +102,74 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Generator.CreateDriver
             DriverCreatorAdapter.AddCode(fileName, GenerateCode(isTopLevel, rootDriver, DriverCreatorAdapter.SelectedNamespace, driverName, windowText, zIndex, usings, members), windowHandle);
         }
 
+        private void CreateDriverFlat(int index, string parentKey, string driverName, WindowInfo windowInfo, List<string> members, List<string> usings, List<string> childNames, bool isUseZIndex)
+        {
+            //WindowInfoから情報を取り出す
+            var windowText = windowInfo.Text;
+            var windowHandle = windowInfo.Handle;
+
+            var dialogIds = new List<int>();
+            foreach (var c in windowInfo.Children)
+            {
+                dialogIds.Add(c.DialogId);
+            }
+            var zIndexes = windowInfo.ZIndex;
+
+            //子を調べる
+            var fileName = $"{driverName}.cs";
+            var childrenZIndexTargetIndex = index + 1;
+            foreach (var childWindowInfo in OrderByTabOrder(windowInfo.Children))
+            {
+                //ドライバに合致するコントロールであるか
+                string className = childWindowInfo.ClassName;
+                var handle = childWindowInfo.Handle;
+                var searchDescendantUserControls = true;
+                var dialogId = childWindowInfo.DialogId;
+                var cZIndexes = childWindowInfo.ZIndex;
+                if (DriverCreatorAdapter.WindowClassNameAndControlDriver.TryGetValue(className, out var ctrlDriver) && ctrlDriver.DriverMappingEnabled)
+                {
+                    searchDescendantUserControls = ctrlDriver.SearchDescendantUserControls;
+                    var typeName = DriverCreatorUtils.GetTypeName(ctrlDriver.ControlDriverTypeFullName);
+                    var ns = DriverCreatorUtils.GetTypeNamespace(ctrlDriver.ControlDriverTypeFullName);
+                    if (!usings.Contains(ns)) usings.Add(ns);
+
+                    var ctrlDriverPropName = _customNameGenerator.MakeDriverPropName(childWindowInfo.Handle, typeName, childNames);
+
+                    string key;
+                    string todo = isUseZIndex ? TODO_COMMENT : string.Empty;
+                    if (1 < CollectionUtility.Where(dialogIds, x => x == dialogId).Count)
+                    {
+                        todo = TODO_COMMENT;
+                        key = $"Core{parentKey}.IdentifyFromZIndex({cZIndexes[childrenZIndexTargetIndex]})";
+                        members.Add($"public {typeName} {ctrlDriverPropName} => new {typeName}({key}); {todo}");
+                    }
+                    else
+                    {
+                        key = $"Core{parentKey}.IdentifyFromDialogId({dialogId})";
+                        members.Add($"public {typeName} {ctrlDriverPropName} => new {typeName}({key}); {todo}");
+                    }
+                    DriverCreatorAdapter.AddCodeLineSelectInfo(fileName, key, handle);
+                }
+
+                //さらに子を持っているならUserControlDriverを作成する
+                if (searchDescendantUserControls && (0 < childWindowInfo.Children.Length))
+                {
+                    string key;
+                    var isZIndex = false;
+                    if (1 < CollectionUtility.Where(dialogIds, x => x == dialogId).Count)
+                    {
+                        isZIndex = true;
+                        key = $"{parentKey}.IdentifyFromZIndex({cZIndexes[childrenZIndexTargetIndex]})";
+                    }
+                    else
+                    {
+                        key = $"{parentKey}.IdentifyFromDialogId({dialogId})";
+                    }
+                    CreateDriverFlat(childrenZIndexTargetIndex, key, driverName, childWindowInfo, members, usings, childNames, isUseZIndex || isZIndex);
+                }
+            }
+        }
+
         private List<WindowInfo> OrderByTabOrder(WindowInfo[] enumerable)
         {
             var list = new List<WindowInfo>(enumerable);
@@ -105,6 +186,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Generator.CreateDriver
 
         private string MakeDriverName(string text, List<string> names)
         {
+            text = text.Replace(" ", "");
             foreach (var err in "(){}<>+-=*/%!\"#$&'^~\\|@;:,.?")
             {
                 text = text.Replace(err, '_');
