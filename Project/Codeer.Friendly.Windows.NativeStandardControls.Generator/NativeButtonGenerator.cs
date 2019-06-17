@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows.Forms;
 using Codeer.Friendly.Windows.NativeStandardControls.Inside;
 using Codeer.TestAssistant.GeneratorToolKit;
 
@@ -54,6 +55,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Generator
             {
                 BeginInvoke(delegate
                 {
+                    AddUsingNamespace(typeof(CheckState).Namespace);
                     AddSentence(new TokenName(), ".EmulateCheck(CheckState." + NativeButton.GetCheckStateInTarget(WindowHandle), new TokenAsync(CommaType.Before), ");");
                 });
             }

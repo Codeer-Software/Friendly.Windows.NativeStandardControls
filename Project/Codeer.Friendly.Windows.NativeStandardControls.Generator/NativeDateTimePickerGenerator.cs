@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using Codeer.Friendly.Windows.NativeStandardControls.Inside;
 using Codeer.TestAssistant.GeneratorToolKit;
@@ -33,6 +32,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Generator
                 return;
             }
 
+            AddUsingNamespace(typeof(DateTime).Namespace);
             DateTime time = NativeDataUtility.ToDateTime(data.st);
             Sentence line = new Sentence(this, new TokenName(), ".EmulateSelectDay(new DateTime(" + time.Year + ", " + time.Month + ", " + time.Day + ")", new TokenAsync(CommaType.Before), ");");
             if (!LastLineIsSame(line))
