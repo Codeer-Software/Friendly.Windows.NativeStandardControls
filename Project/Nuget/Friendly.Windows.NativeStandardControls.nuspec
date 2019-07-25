@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>Codeer.Friendly.Windows.NativeStandardControls</id>
-    <version>2.12.9</version>
+    <version>2.12.12</version>
     <title>Friendly.Windows.NativeStandardControls</title>
     <authors>Codeer</authors>
     <owners>Codeer</owners>
@@ -16,7 +16,7 @@
       <frameworkAssembly assemblyName="System.Windows.Forms"/>
     </frameworkAssemblies>
     <dependencies>
-      <dependency id="Codeer.Friendly.Windows.Grasp" version="2.11.1" />
+      <dependency id="Codeer.Friendly.Windows.Grasp" version="2.11.3" />
       <dependency id="Codeer.TestAssistant.GeneratorToolKit" version="3.4.4" />
     </dependencies>
   </metadata>
