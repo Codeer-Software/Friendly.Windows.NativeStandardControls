@@ -139,8 +139,15 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Generator.CreateDriver
                 var typeName = DriverCreatorUtils.GetTypeName(e.TypeFullName);
                 var nameSpace = DriverCreatorUtils.GetTypeNamespace(e.TypeFullName);
                 var todo = (e.IsPerfect.HasValue && !e.IsPerfect.Value) ? NativeDriverCreator.TODO_COMMENT : string.Empty;
-                members.Add($"public {typeName} {e.Name} => new {typeName}({e.Identify}); {todo}");
 
+                if (e.TypeFullName == "Codeer.Friendly.Windows.Grasp.WindowControl")
+                {
+                    members.Add($"public {typeName} {e.Name} => {e.Identify}; {todo}");
+                }
+                else
+                {
+                    members.Add($"public {typeName} {e.Name} => new {typeName}({e.Identify}); {todo}");
+                }
                 if (!usings.Contains(nameSpace)) usings.Add(nameSpace);
                 foreach (var x in e.ExtensionUsingNamespaces)
                 {
