@@ -8,7 +8,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Generator.CreateDriver
 {
     internal class NativeDriverCreator
     {
-        private const string TODO_COMMENT = "// TODO It is not the best way to identify. Please change to a better method.";
+        internal const string TODO_COMMENT = "// TODO It is not the best way to identify. Please change to a better method.";
         private const string INDENT = "    ";
 
         private readonly CodeDomProvider _dom;
@@ -151,7 +151,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Generator.CreateDriver
                     DriverCreatorAdapter.AddCodeLineSelectInfo(fileName, key, handle);
                 }
 
-                //さらに子を持っているならUserControlDriverを作成する
+                //さらに子を持っている場合はその下のもフラットに生成する
                 if (searchDescendantUserControls && (0 < childWindowInfo.Children.Length))
                 {
                     string key;
@@ -184,7 +184,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Generator.CreateDriver
             return list;
         }
 
-        private string MakeDriverName(string text, List<string> names)
+        internal string MakeDriverName(string text, List<string> names)
         {
             text = text.Replace(" ", "");
             foreach (var err in "(){}<>+-=*/%!\"#$&'^~\\|@;:,.?")
@@ -205,7 +205,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Generator.CreateDriver
             }
         }
 
-        private string GenerateCode(bool isTopLevel, string rootDriver, string nameSpace, string driverClassName, string windowText, int zIndex, List<string> usings, List<string> members)
+        internal string GenerateCode(bool isTopLevel, string rootDriver, string nameSpace, string driverClassName, string windowText, int zIndex, List<string> usings, List<string> members)
         {
             var code = new List<string>
             {

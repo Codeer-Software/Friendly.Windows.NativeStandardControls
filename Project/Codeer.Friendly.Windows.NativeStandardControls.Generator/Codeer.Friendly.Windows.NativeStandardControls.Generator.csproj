@@ -69,6 +69,7 @@
     <Compile Include="CreateDriver\CollectionUtility.cs" />
     <Compile Include="CreateDriver\CreateMenu.cs" />
     <Compile Include="CreateDriver\DriverCreatorUtils.cs" />
+    <Compile Include="CreateDriver\DriverDesigner.cs" />
     <Compile Include="CreateDriver\DriverElementNameGeneratorAdaptor.cs" />
     <Compile Include="CreateDriver\NativeDriverCreator.cs" />
     <Compile Include="CreateDriver\NativeMethods.cs" />
