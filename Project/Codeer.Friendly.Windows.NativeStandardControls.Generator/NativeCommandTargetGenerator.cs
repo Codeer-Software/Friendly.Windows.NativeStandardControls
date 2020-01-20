@@ -3,6 +3,7 @@ using Codeer.Friendly.Windows.NativeStandardControls.Inside;
 using Codeer.Friendly.Windows.NativeStandardControls.Generator.Hook;
 using Codeer.TestAssistant.GeneratorToolKit;
 using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace Codeer.Friendly.Windows.NativeStandardControls.Generator
 {
@@ -44,9 +45,15 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Generator
         {
             if (_commandMap == null) return;
             if (message != WM_COMMAND) return;
-            
-            if (!_commandMap.TryGetValue(wparam.ToInt32(), out var path)) return;
 
+            if (!_commandMap.TryGetValue(wparam.ToInt32(), out var path))
+            {
+                if ((Control.ModifierKeys & Keys.Control) == Keys.Control)
+                {
+                    AddSentence("//" + wparam.ToInt32());
+                }
+                return;
+            }
             AddSentence(new TokenName(), "." + path + ".EmulateClick(", new TokenAsync(CommaType.Non), ");");
         }
     }
