@@ -5,7 +5,7 @@ This library is a layer on top of
 Friendly, so you must learn that first.
 But it is very easy to learn.
 
-https://github.com/Codeer-Software/Friendly.Windows
+https://github.com/Codeer-Software/Friendly
 
 ## Getting Started
 Install Friendly.Windows from NuGet
@@ -69,10 +69,3 @@ https://www.nuget.org/packages/Ong.Friendly.FormsStandardControls/
 
 * For getting the target window.  
 https://www.nuget.org/packages/Codeer.Friendly.Windows.Grasp/  
-
-***
-If you use PinInterface, you map control simple.  
-https://www.nuget.org/packages/VSHTC.Friendly.PinInterface/
-
-
-
