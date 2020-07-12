@@ -1,9 +1,6 @@
-﻿using Codeer.Friendly.Windows.Grasp.Inside.InApp;
-using Codeer.TestAssistant.GeneratorToolKit;
+﻿using Codeer.TestAssistant.GeneratorToolKit;
 using System;
-using System.CodeDom.Compiler;
 using System.Collections.Generic;
-using System.Windows.Forms;
 
 namespace Codeer.Friendly.Windows.NativeStandardControls.Generator.CreateDriver
 {
@@ -14,20 +11,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Generator.CreateDriver
             var dic = new Dictionary<string, MenuAction>();
             if (target is IntPtr handle)
             {
-                dic["Create Driver(&C)"] = () =>
-                {
-                    using (var dom = CodeDomProvider.CreateProvider("CSharp"))
-                    {
-                        new NativeDriverCreator(dom).CreateDriver(WindowAnalyzer.Analyze(handle, new IOtherSystemWindowAnalyzer[0]));
-                    }
-                };
-                dic["Create Driver Flat(&F)"] = () =>
-                {
-                    using (var dom = CodeDomProvider.CreateProvider("CSharp"))
-                    {
-                        new NativeDriverCreator(dom).CreateDriverFlat(WindowAnalyzer.Analyze(handle, new IOtherSystemWindowAnalyzer[0]));
-                    }
-                };
+                dic["Pickup Children(&P)"] = () => ControlPicker.PickupChildren(handle);
             }
             return dic;
         }
