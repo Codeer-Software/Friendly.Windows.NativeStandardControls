@@ -132,7 +132,8 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Generator.CreateDriver
                     IsPerfect = isPerfect,
                     Identify = "Core." + accessPath,
                     DefaultName = name,
-                    ExtensionUsingNamespaces = new string[0]
+                    ExtensionUsingNamespaces = new string[0],
+                    DriverTypeCandidates = DriverCreatorUtils.GetControlDriverTypeFullNames(WindowAnalyzer.Analyze(elementHandle, new IOtherSystemWindowAnalyzer[0]))
                 }
             };
         }
