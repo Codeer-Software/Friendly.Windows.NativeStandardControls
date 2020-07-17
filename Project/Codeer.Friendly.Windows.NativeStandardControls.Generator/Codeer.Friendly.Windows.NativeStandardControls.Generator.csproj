@@ -96,6 +96,7 @@
     <Compile Include="NativeTabGenerator.cs" />
     <Compile Include="NativeTreeGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WindowControlGenerator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config">
