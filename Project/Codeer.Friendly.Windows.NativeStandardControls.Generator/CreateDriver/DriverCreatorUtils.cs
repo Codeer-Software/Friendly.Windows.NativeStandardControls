@@ -9,7 +9,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Generator.CreateDriver
 {
     static class DriverCreatorUtils
     {
-        internal static string Suffix { get; } = "_Driver";
+        internal static string Suffix { get; } = "Driver";
 
         internal static string GetTypeName(string driver)
         {
