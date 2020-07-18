@@ -287,6 +287,7 @@ namespace [*namespace]
                     }, usings);
             DistinctAddRange(memberUsings, usings);
             DistinctAddRange(extensionUsings, usings);
+            usings.Remove(DriverCreatorAdapter.SelectedNamespace);
             usings.Sort();
 
             //コード作成
