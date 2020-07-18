@@ -37,24 +37,35 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Generator.CreateDriver
             var types = new List<string>();
 
             {
-                if (DriverCreatorAdapter.MultiWindowClassNameAndControlDriver.TryGetValue(windowInfo.ClassName, out var driverByClass))
+                if (DriverCreatorAdapter.MultiWindowClassNameAndControlDriver.TryGetValue(windowInfo.ClassName, out var drivers))
                 {
-                    foreach (var e in driverByClass)
+                    foreach (var e in drivers)
                     {
                         types.Add(e.ControlDriverTypeFullName);
                     }
                 }
             }
             {
-                if (DriverCreatorAdapter.MultiWindowClassNameAndWindowDriver.TryGetValue(windowInfo.ClassName, out var driverByClass))
+                if (DriverCreatorAdapter.MultiWindowClassNameAndWindowDriver.TryGetValue(windowInfo.ClassName, out var drivers))
                 {
-                    foreach (var e in driverByClass)
+                    foreach (var e in drivers)
                     {
                         types.Add(e.DriverTypeFullName);
                     }
                 }
             }
+
             types.Add(typeof(WindowControl).FullName);
+
+            {
+                if (DriverCreatorAdapter.MultiTypeFullNameAndUserControlDriver.TryGetValue(string.Empty, out var drivers))
+                {
+                    foreach (var e in drivers)
+                    {
+                        types.Add(e.DriverTypeFullName);
+                    }
+                }
+            }
             return types.ToArray();
         }
     }

@@ -1,6 +1,7 @@
 ﻿using Codeer.Friendly.Windows.Grasp;
 using Codeer.Friendly.Windows.Grasp.Inside;
 using Codeer.Friendly.Windows.Grasp.Inside.InApp;
+using Codeer.Friendly.Windows.NativeStandardControls.Inside;
 using Codeer.TestAssistant.GeneratorToolKit;
 using System;
 using System.CodeDom.Compiler;
@@ -47,15 +48,46 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Generator.CreateDriver
             if (!(obj is IntPtr elementHandle)) return new string[0];
 
             var candidates = new List<string>();
-            var parent = NativeMethods.GetParent(elementHandle);
-            while (parent != IntPtr.Zero)
+
+            if (NativeMethods.GetAncestor(elementHandle, NativeMethods.Ancestor_Root) != elementHandle)
             {
-                var driver = DriverCreatorUtils.GetDriverTypeName(parent);
-                if (!string.IsNullOrEmpty(driver))
+                var parent = NativeMethods.GetParent(elementHandle);
+                while (parent != IntPtr.Zero)
                 {
-                    candidates.Add(driver);
+                    var driver = DriverCreatorUtils.GetDriverTypeName(parent);
+                    if (!string.IsNullOrEmpty(driver))
+                    {
+                        candidates.Add(driver);
+                    }
+                    parent = NativeMethods.GetParent(parent);
                 }
-                parent = NativeMethods.GetParent(parent);
+                if (DriverCreatorAdapter.MultiTypeFullNameAndUserControlDriver.TryGetValue(string.Empty, out var nativeUserControls))
+                {
+                    foreach (var x in nativeUserControls)
+                    {
+                        candidates.Add(x.DriverTypeFullName);
+                    }
+                }
+                foreach (var x in DriverCreatorAdapter.MultiWindowTextAndWindowDriver)
+                {
+                    foreach (var y in x.Value)
+                    {
+                        if (!candidates.Contains(y.DriverTypeFullName))
+                        {
+                            candidates.Add(y.DriverTypeFullName);
+                        }
+                    }
+                }
+                foreach (var x in DriverCreatorAdapter.MultiWindowTextAndWindowDriver)
+                {
+                    foreach (var y in x.Value)
+                    {
+                        if (!candidates.Contains(y.DriverTypeFullName))
+                        {
+                            candidates.Add(y.DriverTypeFullName);
+                        }
+                    }
+                }
             }
             candidates.Add(WindowsAppFriendTypeFullName);
             return candidates.ToArray();
@@ -87,9 +119,9 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Generator.CreateDriver
             }
             if (current != rootHandle) return new DriverIdentifyInfo[0];
 
-            var windowInfo = WindowAnalyzer.Analyze(rootHandle, new IOtherSystemWindowAnalyzer[0]);
+            var parentInfoSrc = WindowAnalyzer.Analyze(rootHandle, new IOtherSystemWindowAnalyzer[0]);
+            var parentInfo = parentInfoSrc;
             var target = elementHandle;
-            var parentInfo = windowInfo;
             var isPerfect = true;
             var accessPaths = new List<string>();
             for (int i = 0; i < handles.Count - 1; i++)
@@ -105,17 +137,32 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Generator.CreateDriver
                 }
                 if (childInfo == null) return new DriverIdentifyInfo[0];
 
-                if (1 < CollectionUtility.Where(dialogIds, x => x == childInfo.DialogId).Count)
+                if (1 == CollectionUtility.Where(dialogIds, x => x == childInfo.DialogId).Count)
+                {
+                    accessPaths.Add($"IdentifyFromDialogId({ childInfo.DialogId})");
+                }
+                else if (1 == CollectionUtility.Where(parentInfo.Children, x => x.Text == childInfo.Text).Count)
+                {
+                    accessPaths.Add($"GetChildren().Where(e => e.GetWindowText() == { NativeEditGenerator.AdjustText(childInfo.Text)}).Single()");
+                }
+                else
                 {
                     isPerfect = false;
                     if (childInfo.ZIndex.Length <= i) return new DriverIdentifyInfo[0];
                     accessPaths.Add($"IdentifyFromZIndex({ childInfo.ZIndex[i]})");
                 }
-                else
-                {
-                    accessPaths.Add($"IdentifyFromDialogId({ childInfo.DialogId})");
-                }
                 parentInfo = childInfo;
+            }
+
+            if (!isPerfect)
+            {
+                var builder = new StringBuilder(1024);
+                NativeMethods.GetWindowText(elementHandle, builder, 1024);
+                if (GetSameWindowTextCount(builder.ToString(), parentInfoSrc) == 1)
+                {
+                    accessPaths.Clear();
+                    accessPaths.Add($"IdentifyFromWindowText({NativeEditGenerator.AdjustText(builder.ToString())})");
+                }
             }
 
             string name = "window";
@@ -136,6 +183,20 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Generator.CreateDriver
                     DriverTypeCandidates = DriverCreatorUtils.GetControlDriverTypeFullNames(WindowAnalyzer.Analyze(elementHandle, new IOtherSystemWindowAnalyzer[0]))
                 }
             };
+        }
+
+        static int GetSameWindowTextCount(string text, WindowInfo parentInfoSrc)
+        {
+            int count = 0;
+            if (parentInfoSrc.Text == text)
+            {
+                count++;
+            }
+            foreach (var e in parentInfoSrc.Children)
+            {
+                count += GetSameWindowTextCount(text, e);
+            }
+            return count;
         }
 
         public void GenerateCode(object targetControl, DriverDesignInfo info)
