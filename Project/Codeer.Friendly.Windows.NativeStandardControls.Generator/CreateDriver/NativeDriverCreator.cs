@@ -185,6 +185,9 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Generator.CreateDriver
         }
 
         internal string MakeDriverName(string text, List<string> names)
+            => MakeDriverName(text, names, "Window");
+
+        internal string MakeDriverName(string text, List<string> names, string defaultName)
         {
             text = text.Replace(" ", "");
             foreach (var err in "(){}<>+-=*/%!\"#$&'^~\\|@;:,.?")
@@ -192,7 +195,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Generator.CreateDriver
                 text = text.Replace(err, '_');
             }
 
-            var nameSrc = _dom.IsValidIdentifier(text) ? text : "Window";
+            var nameSrc = _dom.IsValidIdentifier(text) ? text : defaultName;
             var name = nameSrc;
             for (int i = 0;; i++)
             {

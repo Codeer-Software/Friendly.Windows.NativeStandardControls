@@ -103,6 +103,59 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Generator.CreateDriver
             return candidates.ToArray();
         }
 
+        internal static void CreateControlDriver(IntPtr handle)
+        {
+            var info = WindowAnalyzer.Analyze(handle, new IOtherSystemWindowAnalyzer[0]);
+
+            var driverName = info.ClassName + "Driver";
+            using (var dom = CodeDomProvider.CreateProvider("CSharp"))
+            {
+                driverName = new NativeDriverCreator(dom).MakeDriverName(driverName, new List<string>(), "Control");
+            }
+
+            var generatorName = driverName + "Generator";
+
+            var driverCode = @"using Codeer.Friendly;
+using Codeer.Friendly.Dynamic;
+using Codeer.Friendly.Windows;
+using Codeer.Friendly.Windows.Grasp;
+using Codeer.TestAssistant.GeneratorToolKit;
+using Codeer.Friendly.Windows.NativeStandardControls;
+
+namespace [*namespace]
+{
+    [ControlDriver(WindowClassName = ""{className}"", Priority = 2)]
+    public class {driverName} : NativeWindow
+    {
+        public {driverName}(WindowControl window)
+            : base(window) { }
+    }
+}
+";
+            DriverCreatorAdapter.AddCode($"{driverName}.cs", driverCode.Replace("{className}", info.ClassName).Replace("{driverName}", driverName), handle);
+
+            var generatorCode = @"using System;
+using Codeer.TestAssistant.GeneratorToolKit;
+using Codeer.Friendly.Windows.NativeStandardControls.Generator;
+
+namespace [*namespace]
+{
+    [CaptureCodeGenerator(""[*namespace.{driverName}]"")]
+    public class {generatorName} : NativeGeneratorBase
+    {
+        protected override void AnalyzeMessage(int message, IntPtr wparam, IntPtr lparam)
+        {
+        }
+
+        protected override void Detach()
+        {
+        }
+    }
+}
+";
+            DriverCreatorAdapter.AddCode($"{generatorName}.cs", generatorCode.Replace("{generatorName}", generatorName).Replace("{driverName}", driverName), handle);
+        }
+
         DriverIdentifyInfo[] GetIdentifyingCandidatesCore(DriverElementNameGeneratorAdaptor customNameGenerator, object root, object element)
         {
             if (!(root is IntPtr rootHandle)) return new DriverIdentifyInfo[0];

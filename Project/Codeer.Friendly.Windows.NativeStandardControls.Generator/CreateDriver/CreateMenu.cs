@@ -14,6 +14,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Generator.CreateDriver
             if (target is IntPtr handle)
             {
                 dic["Pickup Children(&P)"] = () => ControlPicker.PickupChildren(handle);
+                dic["Create Control Driver(&D)"] = () => DriverDesigner.CreateControlDriver(handle);
 
                 //非推奨
                 dic["Create Driver (*Obsolete)"] = () =>
