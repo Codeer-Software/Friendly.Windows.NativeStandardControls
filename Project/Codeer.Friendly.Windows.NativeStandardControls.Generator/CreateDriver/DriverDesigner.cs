@@ -68,7 +68,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Generator.CreateDriver
                         candidates.Add(x.DriverTypeFullName);
                     }
                 }
-                foreach (var x in DriverCreatorAdapter.MultiWindowTextAndWindowDriver)
+                foreach (var x in DriverCreatorAdapter.MultiWindowClassNameAndWindowDriver)
                 {
                     foreach (var y in x.Value)
                     {
@@ -415,10 +415,10 @@ namespace [*namespace]
                     {
                         code.Add($"{Indent}{Indent}[UserControlDriverIdentify(CustomMethod = \"TryGet\")]");
                         code.Add($"{Indent}{Indent}public static {info.ClassName} {funcName}(this WindowsAppFriend app, string text)");
-                        code.Add($"{Indent}{Indent}{Indent}=> app.GetTopLevelWindows().SelectMany(e => e.GetFromWindowText(text)).SingleOrDefault()?.Convert();");
+                        code.Add($"{Indent}{Indent}{Indent}=> app.GetTopLevelWindows().SelectMany(e => e.GetFromWindowText(text)).FirstOrDefault()?.Convert();");
                         code.Add(string.Empty);
                         code.Add($"{Indent}{Indent}public static void TryGet(this WindowsAppFriend app, out string[] texts)");
-                        code.Add($"{Indent}{Indent}{Indent}=> texts = app.GetTopLevelWindows().SelectMany(e => e.GetFromWindowClass(\"{windowInfo.ClassName}\")).Select(e => (string)e.Convert().Text).ToArray();");
+                        code.Add($"{Indent}{Indent}{Indent}=> texts = app.GetTopLevelWindows().SelectMany(e => e.GetFromWindowClass(\"{windowInfo.ClassName}\")).Select(e => e.GetWindowText()).ToArray();");
                     }
                     else
                     {
@@ -426,13 +426,13 @@ namespace [*namespace]
                         {
                             code.Add($"{Indent}{Indent}[UserControlDriverIdentify]");
                             code.Add($"{Indent}{Indent}public static {info.ClassName} {funcName}(this WindowsAppFriend app)");
-                            code.Add($"{Indent}{Indent}{Indent}=> app.GetTopLevelWindows().SelectMany(e => e.GetFromWindowClass(\"{windowInfo.ClassName}\")).SingleOrDefault()?.Convert();");
+                            code.Add($"{Indent}{Indent}{Indent}=> app.GetTopLevelWindows().SelectMany(e => e.GetFromWindowClass(\"{windowInfo.ClassName}\")).FirstOrDefault()?.Convert();");
                         }
                         else
                         {
                             code.Add($"{Indent}{Indent}[UserControlDriverIdentify]");
                             code.Add($"{Indent}{Indent}public static {info.ClassName} {funcName}(this WindowsAppFriend app)");
-                            code.Add($"{Indent}{Indent}{Indent}=> app.GetTopLevelWindows().SelectMany(e => e.GetFromWindowText(\"{windowInfo.Text}\")).SingleOrDefault()?.Convert();");
+                            code.Add($"{Indent}{Indent}{Indent}=> app.GetTopLevelWindows().SelectMany(e => e.GetFromWindowText(\"{windowInfo.Text}\")).FirstOrDefault()?.Convert();");
                         }
                     }
                 }
@@ -466,7 +466,7 @@ namespace [*namespace]
                     code.Add($"{Indent}{Indent}{Indent}=> parent.Core.IdentifyFromWindowText(\"{windowInfo.Text}\").Convert();");
                     code.Add(string.Empty);
                     code.Add($"{Indent}{Indent}public static void TryGet(this {parentDriver} parent, out string[] texts)");
-                    code.Add($"{Indent}{Indent}{Indent}=> texts = parent.Core.GetFromWindowClass(\"{windowInfo.ClassName}\").Select(e => (string)e.Convert().Text).ToArray();");
+                    code.Add($"{Indent}{Indent}{Indent}=> texts = parent.Core.GetFromWindowClass(\"{windowInfo.ClassName}\").Select(e => e.GetWindowText()).ToArray();");
                 }
                 else
                 {
@@ -474,13 +474,13 @@ namespace [*namespace]
                     {
                         code.Add($"{Indent}{Indent}[UserControlDriverIdentify]");
                         code.Add($"{Indent}{Indent}public static {info.ClassName} {funcName}(this {parentDriver} parent)");
-                        code.Add($"{Indent}{Indent}{Indent}=> parent.Core.GetFromWindowClass(\"{windowInfo.ClassName}\").SingleOrDefault()?.Convert();");
+                        code.Add($"{Indent}{Indent}{Indent}=> parent.Core.GetFromWindowClass(\"{windowInfo.ClassName}\").FirstOrDefault()?.Convert();");
                     }
                     else
                     {
                         code.Add($"{Indent}{Indent}[UserControlDriverIdentify]");
                         code.Add($"{Indent}{Indent}public static {info.ClassName} {funcName}(this {parentDriver} parent)");
-                        code.Add($"{Indent}{Indent}{Indent}=> parent.Core.GetFromWindowText(\"{windowInfo.Text}\").SingleOrDefault()?.Convert();");
+                        code.Add($"{Indent}{Indent}{Indent}=> parent.Core.GetFromWindowText(\"{windowInfo.Text}\").FirstOrDefault()?.Convert();");
                     }
                 }
             }
