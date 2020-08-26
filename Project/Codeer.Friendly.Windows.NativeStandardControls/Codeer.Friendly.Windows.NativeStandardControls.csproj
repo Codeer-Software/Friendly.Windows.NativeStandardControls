@@ -146,11 +146,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Codeer.Friendly.Windows.NativeStandardControls.Plugin.xml">
-      <SubType>Designer</SubType>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

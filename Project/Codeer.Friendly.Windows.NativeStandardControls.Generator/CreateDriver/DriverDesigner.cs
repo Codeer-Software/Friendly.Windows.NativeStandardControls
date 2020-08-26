@@ -196,7 +196,16 @@ namespace [*namespace]
                 }
                 else if (1 == CollectionUtility.Where(parentInfo.Children, x => x.Text == childInfo.Text).Count)
                 {
-                    accessPaths.Add($"GetChildren().Where(e => e.GetWindowText() == { NativeEditGenerator.AdjustText(childInfo.Text)}).Single()");
+                    //先頭から特定できる場合
+                    if (GetSameWindowTextCount(childInfo.Text, parentInfoSrc) == 1)
+                    {
+                        accessPaths.Clear();
+                        accessPaths.Add($"IdentifyFromWindowText({NativeEditGenerator.AdjustText(childInfo.Text)})");
+                    }
+                    else
+                    {
+                        accessPaths.Add($"GetChildren().Where(e => e.GetWindowText() == { NativeEditGenerator.AdjustText(childInfo.Text)}).Single()");
+                    }
                 }
                 else
                 {
@@ -205,17 +214,6 @@ namespace [*namespace]
                     accessPaths.Add($"IdentifyFromZIndex({ childInfo.ZIndex[i]})");
                 }
                 parentInfo = childInfo;
-            }
-
-            if (!isPerfect)
-            {
-                var builder = new StringBuilder(1024);
-                NativeMethods.GetWindowText(elementHandle, builder, 1024);
-                if (GetSameWindowTextCount(builder.ToString(), parentInfoSrc) == 1)
-                {
-                    accessPaths.Clear();
-                    accessPaths.Add($"IdentifyFromWindowText({NativeEditGenerator.AdjustText(builder.ToString())})");
-                }
             }
 
             string typeName = "window";

@@ -110,11 +110,6 @@
       <Name>Codeer.Friendly.Windows.NativeStandardControls</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="Codeer.Friendly.Windows.NativeStandardControls.Generator.Plugin.xml">
-      <SubType>Designer</SubType>
-    </Content>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>if $(ConfigurationName) == Release Copy "$(TargetPath)" "../../../ReleaseBinary/$(TargetFileName)"
