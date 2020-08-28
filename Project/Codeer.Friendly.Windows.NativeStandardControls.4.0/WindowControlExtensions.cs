@@ -28,6 +28,11 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
                     result = Activator.CreateInstance(binder.Type, new object[] { _src });
                     return true;
                 }
+                if (binder.ReturnType == typeof(WindowControl))
+                {
+                    result = _src;
+                    return true;
+                }
                 return false;
             }
         }

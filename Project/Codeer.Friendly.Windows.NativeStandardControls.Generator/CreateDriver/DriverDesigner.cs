@@ -228,7 +228,7 @@ namespace [*namespace]
                 new DriverIdentifyInfo
                 {
                     IsPerfect = isPerfect,
-                    Identify = "Core." + accessPath,
+                    Identify = "Core." + accessPath + ".Convert()",
                     DefaultName = name,
                     ExtensionUsingNamespaces = new string[0],
                     DriverTypeCandidates = DriverCreatorUtils.GetControlDriverTypeFullNames(WindowAnalyzer.Analyze(elementHandle, new IOtherSystemWindowAnalyzer[0]))
@@ -529,15 +529,7 @@ namespace [*namespace]
                 var typeName = DriverCreatorUtils.GetTypeName(e.TypeFullName);
                 var nameSpace = DriverCreatorUtils.GetTypeNamespace(e.TypeFullName);
                 var todo = (e.IsPerfect.HasValue && !e.IsPerfect.Value) ? NativeDriverCreator.TODO_COMMENT : string.Empty;
-
-                if (e.TypeFullName == "Codeer.Friendly.Windows.Grasp.WindowControl")
-                {
-                    members.Add($"public {typeName} {e.Name} => {e.Identify}; {todo}");
-                }
-                else
-                {
-                    members.Add($"public {typeName} {e.Name} => {e.Identify}.Convert(); {todo}");
-                }
+                members.Add($"public {typeName} {e.Name} => {e.Identify}; {todo}");
                 if (!usings.Contains(nameSpace)) usings.Add(nameSpace);
                 foreach (var x in e.ExtensionUsingNamespaces)
                 {
