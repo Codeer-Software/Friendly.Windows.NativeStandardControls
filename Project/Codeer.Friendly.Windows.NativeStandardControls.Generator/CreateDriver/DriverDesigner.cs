@@ -404,7 +404,7 @@ namespace [*namespace]
                         code.Add($"{Indent}{Indent}{Indent}//TODO");
                         code.Add($"{Indent}{Indent}}}");
                         code.Add(string.Empty);
-                        code.Add($"{Indent}{Indent}public static void TryGet(this WindowsAppFriend app, out T[] identifiers)");
+                        code.Add($"{Indent}{Indent}public static T[] TryGet(this WindowsAppFriend app)");
                         code.Add($"{Indent}{Indent}{{");
                         code.Add($"{Indent}{Indent}{Indent}//TODO");
                         code.Add($"{Indent}{Indent}}}");
@@ -415,8 +415,8 @@ namespace [*namespace]
                         code.Add($"{Indent}{Indent}public static {info.ClassName} {funcName}(this WindowsAppFriend app, string text)");
                         code.Add($"{Indent}{Indent}{Indent}=> app.GetTopLevelWindows().SelectMany(e => e.GetFromWindowText(text)).FirstOrDefault()?.Convert();");
                         code.Add(string.Empty);
-                        code.Add($"{Indent}{Indent}public static void TryGet(this WindowsAppFriend app, out string[] texts)");
-                        code.Add($"{Indent}{Indent}{Indent}=> texts = app.GetTopLevelWindows().SelectMany(e => e.GetFromWindowClass(\"{windowInfo.ClassName}\")).Select(e => e.GetWindowText()).ToArray();");
+                        code.Add($"{Indent}{Indent}public static string[] TryGet(this WindowsAppFriend app)");
+                        code.Add($"{Indent}{Indent}{Indent}=> app.GetTopLevelWindows().SelectMany(e => e.GetFromWindowClass(\"{windowInfo.ClassName}\")).Select(e => e.GetWindowText()).ToArray();");
                     }
                     else
                     {
@@ -452,7 +452,7 @@ namespace [*namespace]
                     code.Add($"{Indent}{Indent}{Indent}//TODO");
                     code.Add($"{Indent}{Indent}}}");
                     code.Add(string.Empty);
-                    code.Add($"{Indent}{Indent}public static void TryGet(this {parentDriver} parent, out T[] identifier)");
+                    code.Add($"{Indent}{Indent}public static T[] TryGet(this {parentDriver} parent)");
                     code.Add($"{Indent}{Indent}{{");
                     code.Add($"{Indent}{Indent}{Indent}//TODO");
                     code.Add($"{Indent}{Indent}}}");
@@ -463,8 +463,8 @@ namespace [*namespace]
                     code.Add($"{Indent}{Indent}public static {info.ClassName} {funcName}(this {parentDriver} parent, string text)");
                     code.Add($"{Indent}{Indent}{Indent}=> parent.Core.IdentifyFromWindowText(\"{windowInfo.Text}\").Convert();");
                     code.Add(string.Empty);
-                    code.Add($"{Indent}{Indent}public static void TryGet(this {parentDriver} parent, out string[] texts)");
-                    code.Add($"{Indent}{Indent}{Indent}=> texts = parent.Core.GetFromWindowClass(\"{windowInfo.ClassName}\").Select(e => e.GetWindowText()).ToArray();");
+                    code.Add($"{Indent}{Indent}public static string[] TryGet(this {parentDriver} parent)");
+                    code.Add($"{Indent}{Indent}{Indent}=> parent.Core.GetFromWindowClass(\"{windowInfo.ClassName}\").Select(e => e.GetWindowText()).ToArray();");
                 }
                 else
                 {
