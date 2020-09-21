@@ -31,7 +31,7 @@ using System.Runtime.InteropServices;
 //
 // すべての値を指定するか、下のように '*' を使ってビルドおよびリビジョン番号を 
 // 既定値にすることができます:
-[assembly: AssemblyVersion("2.16.0.0")]
-[assembly: AssemblyFileVersion("2.16.0.0")]
+[assembly: AssemblyVersion("2.16.1.0")]
+[assembly: AssemblyFileVersion("2.16.1.0")]
 [assembly: System.CLSCompliant(true)]
 [assembly: InternalsVisibleTo("Codeer.Friendly.Windows.NativeStandardControls.Generator, PublicKey=0024000004800000940000000602000000240000525341310004000001000100ed6ffd2defcd012e5a0c343956816adc3de734243f8d4e59858be908e94e10852ccb95ff9e2414811b584ec25ec295f78a49acc6698694014fe3d52dba7fe2245d31bd25e590648e9417a09a4164ebdf63d79a500be3b753438f1532a19704fe57700dd76c007d5339fb619288e4b27811f5d06a86437f5647d815ad289b868d")]
