@@ -320,13 +320,13 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
         static bool IsOn(uint fState, int flg) => (fState & flg) == flg;
 
         [Serializable]
-        class Core
+        public class Core
         {
             public RECT Rect { get; set; }
             public int Id { get; set; }
             public string Text { get; set; }
             public bool Enabled { get; set; }
-
+            public Core() { }
             public Core(RECT rc, int id, string text, bool enabled)
             {
                 Rect = rc;

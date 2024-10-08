@@ -7,12 +7,12 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Inside
     /// ローカライズ済みリソース。
     /// </summary>
     [Serializable]
-    class ResourcesLocal
+    public class ResourcesLocal
     {
         static internal ResourcesLocal Instance;
 
-        internal string CheckStateIsNotSupported;
-        internal string SpinButtonHasNoBuddy;
+        public string CheckStateIsNotSupported { get; set; }
+        public string SpinButtonHasNoBuddy { get; set; }
 
         /// <summary>
         /// 初期化。
@@ -26,7 +26,7 @@ namespace Codeer.Friendly.Windows.NativeStandardControls.Inside
         }
 
         /// <summary>
-        /// コンストラクタ。
+        /// 初期化。
         /// </summary>
         void Initialize()
         {

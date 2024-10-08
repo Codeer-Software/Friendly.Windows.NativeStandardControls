@@ -16,11 +16,11 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
     public class NativeToolBarItem : IUIObject
     {
         [Serializable]
-        internal class Core
+        public class Core
         {
-            internal int Id { get; set; }
-            internal byte State { get; set; }
-            internal Rectangle Rect { get; set; }
+            public int Id { get; set; }
+            public byte State { get; set; }
+            public Rectangle Rect { get; set; }
         }
 
         WindowControl _toolBarWindow;

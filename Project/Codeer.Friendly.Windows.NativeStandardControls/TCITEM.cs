@@ -39,14 +39,14 @@ namespace Codeer.Friendly.Windows.NativeStandardControls
 #endif
     [Serializable]
     [StructLayout(LayoutKind.Sequential)]
-    struct TCITEM_CORE
+    public struct TCITEM_CORE
     {
-        internal int mask;
-        internal int dwState;
-        internal int dwStateMask;
-        internal IntPtr pszText;
-        internal int cchTextMax;
-        internal int iImage;
-        internal IntPtr lParam;
+        public int mask;
+        public int dwState;
+        public int dwStateMask;
+        public IntPtr pszText;
+        public int cchTextMax;
+        public int iImage;
+        public IntPtr lParam;
     }
 }
