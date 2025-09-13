@@ -28,7 +28,7 @@ namespace NativeStandardControls.TestLib
 #if UNI
                 name += "-Uni";
 #endif
-                return Path.GetFullPath("..\\..\\debug" + name + "\\NativeControls.exe"); 
+                return Path.GetFullPath("..\\..\\..\\Target\\NativeControls\\Debug\\NativeControls.exe"); 
             }
         }
     }

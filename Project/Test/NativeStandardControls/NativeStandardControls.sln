@@ -1,11 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36221.1 d17.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NativeStandardControls", "NativeStandardControls.csproj", "{D53D0CEE-8F60-42B0-B935-3AFD6D5E134B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Codeer.Friendly.Windows.NativeStandardControls", "..\..\Codeer.Friendly.Windows.NativeStandardControls\Codeer.Friendly.Windows.NativeStandardControls.csproj", "{3C95E0F9-0F43-4E4D-8A6D-24F90DB8B2C0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{DDB4EF12-CC4E-5E88-E6FC-71A802F4DE97}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormsApp", "..\WinFormsApp\WinFormsApp.csproj", "{351E1F76-6CB5-5F78-5731-884EB3FF7FB4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestNetCore", "..\TestNetCore\TestNetCore.csproj", "{82FC0E4C-BFFA-4670-9CF1-D8153FC3355C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,8 +37,31 @@ Global
 		{3C95E0F9-0F43-4E4D-8A6D-24F90DB8B2C0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3C95E0F9-0F43-4E4D-8A6D-24F90DB8B2C0}.Release-English|Any CPU.ActiveCfg = Release-English|Any CPU
 		{3C95E0F9-0F43-4E4D-8A6D-24F90DB8B2C0}.Release-English|Any CPU.Build.0 = Release-English|Any CPU
+		{351E1F76-6CB5-5F78-5731-884EB3FF7FB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{351E1F76-6CB5-5F78-5731-884EB3FF7FB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{351E1F76-6CB5-5F78-5731-884EB3FF7FB4}.Debug-Uni|Any CPU.ActiveCfg = Debug|Any CPU
+		{351E1F76-6CB5-5F78-5731-884EB3FF7FB4}.Debug-Uni|Any CPU.Build.0 = Debug|Any CPU
+		{351E1F76-6CB5-5F78-5731-884EB3FF7FB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{351E1F76-6CB5-5F78-5731-884EB3FF7FB4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{351E1F76-6CB5-5F78-5731-884EB3FF7FB4}.Release-English|Any CPU.ActiveCfg = Release|Any CPU
+		{351E1F76-6CB5-5F78-5731-884EB3FF7FB4}.Release-English|Any CPU.Build.0 = Release|Any CPU
+		{82FC0E4C-BFFA-4670-9CF1-D8153FC3355C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82FC0E4C-BFFA-4670-9CF1-D8153FC3355C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82FC0E4C-BFFA-4670-9CF1-D8153FC3355C}.Debug-Uni|Any CPU.ActiveCfg = Debug|Any CPU
+		{82FC0E4C-BFFA-4670-9CF1-D8153FC3355C}.Debug-Uni|Any CPU.Build.0 = Debug|Any CPU
+		{82FC0E4C-BFFA-4670-9CF1-D8153FC3355C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82FC0E4C-BFFA-4670-9CF1-D8153FC3355C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82FC0E4C-BFFA-4670-9CF1-D8153FC3355C}.Release-English|Any CPU.ActiveCfg = Release|Any CPU
+		{82FC0E4C-BFFA-4670-9CF1-D8153FC3355C}.Release-English|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{351E1F76-6CB5-5F78-5731-884EB3FF7FB4} = {DDB4EF12-CC4E-5E88-E6FC-71A802F4DE97}
+		{82FC0E4C-BFFA-4670-9CF1-D8153FC3355C} = {DDB4EF12-CC4E-5E88-E6FC-71A802F4DE97}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0FEF3E69-908A-42FD-9481-381898143ECC}
 	EndGlobalSection
 EndGlobal
