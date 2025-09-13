@@ -16,7 +16,7 @@
       <frameworkAssembly assemblyName="System.Windows.Forms"/>
     </frameworkAssemblies>
     <dependencies>
-      <dependency id="Codeer.Friendly.Windows.Grasp" version="2.15.0" />
+      <dependency id="Codeer.Friendly.Windows.Grasp" version="2.16.0" />
       <dependency id="Codeer.TestAssistant.GeneratorToolKit" version="3.13.0" />
     </dependencies>
   </metadata>
